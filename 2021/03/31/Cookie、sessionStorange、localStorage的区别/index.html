@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Cookie、sessionStorange、localStorage的区别 | NiePeng</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="共同点都是保存在浏览器端，并且是同源的 Cookiecookie 数据始终在同源的http请求中携带（即使不需要），即cookie在浏览器和服务器间来回传递。而sessionStorage和localStorage不会自动把数据发给服务器，仅在本地保存。cookie数据还有路径（path）概念，可以限制cookie只属于某个路径下，存储的大小很小只有4k左右。 可以在浏览器和服务器端来回传递，存储">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cookie、sessionStorange、localStorage的区别">
+<meta property="og:url" content="http://yoursite.com/2021/03/31/Cookie%E3%80%81sessionStorange%E3%80%81localStorage%E7%9A%84%E5%8C%BA%E5%88%AB/index.html">
+<meta property="og:site_name" content="NiePeng">
+<meta property="og:description" content="共同点都是保存在浏览器端，并且是同源的 Cookiecookie 数据始终在同源的http请求中携带（即使不需要），即cookie在浏览器和服务器间来回传递。而sessionStorage和localStorage不会自动把数据发给服务器，仅在本地保存。cookie数据还有路径（path）概念，可以限制cookie只属于某个路径下，存储的大小很小只有4k左右。 可以在浏览器和服务器端来回传递，存储">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-03-31T02:36:40.000Z">
+<meta property="article:modified_time" content="2021-03-31T03:59:22.896Z">
+<meta property="article:author" content="NiePeng">
+<meta property="article:tag" content="浏览器">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="NiePeng" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <!-- <h1 id="logo-wrap">
+        <a href="/" id="logo">NiePeng</a><br/>
+      </h1> -->
+      <div id="header-photo"></div>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">合抱之木生于毫末，九层高台起于垒土，千里之行始于足下。</a> 
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Cookie、sessionStorange、localStorage的区别" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/03/31/Cookie%E3%80%81sessionStorange%E3%80%81localStorage%E7%9A%84%E5%8C%BA%E5%88%AB/" class="article-date">
+  <time datetime="2021-03-31T02:36:40.000Z" itemprop="datePublished">2021-03-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Cookie、sessionStorange、localStorage的区别
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="共同点"><a href="#共同点" class="headerlink" title="共同点"></a>共同点</h3><p>都是保存在浏览器端，并且是同源的</p>
+<h3 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h3><p>cookie 数据始终在同源的http请求中携带（即使不需要），即cookie在浏览器和服务器间来回传递。而sessionStorage和localStorage不会自动把数据发给服务器，仅在本地保存。cookie数据还有路径（path）概念，可以限制cookie只属于某个路径下，存储的大小很小只有4k左右。</p>
+<p class="sf-warning">可以在浏览器和服务器端来回传递，存储容量小，只有大约4k左右</p>
+
+<h3 id="sessionStorage"><a href="#sessionStorage" class="headerlink" title="sessionStorage"></a>sessionStorage</h3><p>仅在当前浏览器窗口关闭前有效，自然也就不可能持久保存，localStorage始终有效，窗口或浏览器关闭也一直保存，因此用作持久数据；cookie只在设置的cookie过期时间之前一直有效，即使窗口或浏览器关闭。</p>
+<p class="sf-warning">本身就是一个会话过程，关闭浏览器后消失，session为一个会话，当页面不同即使是同一页面打开两次，也被视为同一次会话</p>
+
+<h3 id="localStorage"><a href="#localStorage" class="headerlink" title="localStorage"></a>localStorage</h3><p>localStorage在所有同源窗口中都是共享的；cookie也是在所有同源窗口中都是共享的。</p>
+<p class="sf-warning">同源窗口都会共享，并且不会失效哦，不管窗口或者浏览器关闭与否都会始终生效</p>
+
+<h3 id="补充说明cookie的作用"><a href="#补充说明cookie的作用" class="headerlink" title="补充说明cookie的作用"></a>补充说明cookie的作用</h3><ul>
+<li><p>保存用户登录状态<br>例如将用户id存储于一个cookie内，这样当用户下次访问该页面时就不需要重新登录了，现在很多论坛和社区都有提供这样的功能。cookie还可以设置过期时间，当超过时间期限后，cookie就会自动消失。因此，系统往往可以提示用户保持登录状态的时间：常见选项为一个月、三个月、一年等。<br>跟踪用户行为。例如一个天气预报网站，能够根据用户选择的地区显示当地的天气情况。如果每次都需要选择所在地是烦琐的，当利用了cookie后就会显得很人性化了，系统能够记住上一次访问的地区，当下次再打开该页面时，它就会自动显示上次用户所在地区的天气情况。因为一切都是再后台完成，所以这样的页面就像为某个用户所定制的一样，使用起来非常方便定制页面。如果网站提供了换肤或更换布局的功能，那么可以使用cookie来记录用户的选项，例如：背景色、分辨率等。当用户下次访问时，仍然可以保存上一次访问的界面风格。</p>
+</li>
+<li><p>存储sessionId<br>HTTP 是一个无状态协议，因此Cookie的最大作用就是存储sessionId用来唯一标识用户。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/03/31/Cookie%E3%80%81sessionStorange%E3%80%81localStorage%E7%9A%84%E5%8C%BA%E5%88%AB/" data-id="ckmwu8rg60000vls61me87j8d" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" rel="tag">浏览器</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/03/31/web-worker%E4%BB%8B%E7%BB%8D/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          web worker介绍
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/03/31/%E7%8A%B6%E6%80%81%E7%A0%81/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">状态码</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Camunda/" rel="tag">Camunda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GIS/" rel="tag">GIS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ThingJS/" rel="tag">ThingJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/" rel="tag">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Waiting/" rel="tag">Waiting</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E7%89%A9%E9%97%B4/" rel="tag">杂物间</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A6%82%E5%BF%B5/" rel="tag">概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" rel="tag">浏览器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/" rel="tag">物联网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%98%E5%9B%BE/" rel="tag">绘图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag">网络</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS/" style="font-size: 20px;">CSS</a> <a href="/tags/Camunda/" style="font-size: 10px;">Camunda</a> <a href="/tags/GIS/" style="font-size: 12.86px;">GIS</a> <a href="/tags/Git/" style="font-size: 12.86px;">Git</a> <a href="/tags/HTML/" style="font-size: 12.86px;">HTML</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 11.43px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Node-js/" style="font-size: 10px;">Node.js</a> <a href="/tags/React/" style="font-size: 11.43px;">React</a> <a href="/tags/ThingJS/" style="font-size: 10px;">ThingJS</a> <a href="/tags/Vue/" style="font-size: 15.71px;">Vue</a> <a href="/tags/Waiting/" style="font-size: 10px;">Waiting</a> <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 10px;">小程序</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 17.14px;">数据库</a> <a href="/tags/%E6%9D%82%E7%89%A9%E9%97%B4/" style="font-size: 11.43px;">杂物间</a> <a href="/tags/%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">概念</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 18.57px;">浏览器</a> <a href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/" style="font-size: 11.43px;">物联网</a> <a href="/tags/%E7%BB%98%E5%9B%BE/" style="font-size: 10px;">绘图</a> <a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 14.29px;">网络</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/28/State-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">State &amp; 生命周期</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/28/%E7%BB%84%E4%BB%B6-Props/">组件 &amp; Props</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/26/Flex%E5%B8%83%E5%B1%80/">Flex布局</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/09/HTTP%E6%96%B9%E6%B3%95/">HTTP方法</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/09/%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96/">前端优化</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 NiePeng<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

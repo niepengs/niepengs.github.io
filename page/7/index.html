@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>NiePeng</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="afasdfafa">
+<meta property="og:type" content="website">
+<meta property="og:title" content="NiePeng">
+<meta property="og:url" content="http://yoursite.com/page/7/index.html">
+<meta property="og:site_name" content="NiePeng">
+<meta property="og:description" content="afasdfafa">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="NiePeng">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="NiePeng" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <!-- <h1 id="logo-wrap">
+        <a href="/" id="logo">NiePeng</a><br/>
+      </h1> -->
+      <div id="header-photo"></div>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">合抱之木生于毫末，九层高台起于垒土，千里之行始于足下。</a> 
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-Render函数" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/05/Render%E5%87%BD%E6%95%B0/" class="article-date">
+  <time datetime="2020-08-05T02:04:08.000Z" itemprop="datePublished">2020-08-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/05/Render%E5%87%BD%E6%95%B0/">Render函数</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="数据对象结构"><a href="#数据对象结构" class="headerlink" title="数据对象结构"></a>数据对象结构</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//对应属性的数据对象（可选）</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//对应 v-bind:class</span></span><br><span class="line">    <span class="string">'class'</span>: &#123;&#125;,</span><br><span class="line">    <span class="comment">//对应 v-bind:style</span></span><br><span class="line">    style: &#123;&#125;,</span><br><span class="line">    <span class="comment">//HTML 属性</span></span><br><span class="line">    attrs: &#123;&#125;,</span><br><span class="line">    <span class="comment">//组件 props</span></span><br><span class="line">    props: &#123;&#125;,</span><br><span class="line">    <span class="comment">//DOM 属性</span></span><br><span class="line">    domProps: &#123;&#125;,</span><br><span class="line">    <span class="comment">//自定义 on 事件监听器，不支持修饰器</span></span><br><span class="line">    on: &#123;&#125;,</span><br><span class="line">    <span class="comment">//仅适用于组件，用于监听原生事件</span></span><br><span class="line">    nativeOn: &#123;&#125;,</span><br><span class="line">    <span class="comment">//自定义指令</span></span><br><span class="line">    directives: [],</span><br><span class="line">    <span class="comment">//作用域 slot</span></span><br><span class="line">    <span class="comment">// &#123;name:props =&gt; VNode | Array&lt;VNode&gt;&#125;</span></span><br><span class="line">    scopedSlots: &#123;&#125;,</span><br><span class="line">    <span class="comment">//子组件中的 slot 名称（如果组件中有定义）</span></span><br><span class="line">    slot: <span class="string">'xxx'</span>,</span><br><span class="line">    <span class="comment">//其它自定义属性</span></span><br><span class="line">    xxx: <span class="string">'xxx'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>参考链接🔗 </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/08/05/Render%E5%87%BD%E6%95%B0/" data-id="ckdh2rhfu0000zxs65dao9bcf" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/" rel="tag">Vue</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-vue中Bus如何使用" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/05/vue%E4%B8%ADBus%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8/" class="article-date">
+  <time datetime="2020-08-05T01:40:27.000Z" itemprop="datePublished">2020-08-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/05/vue%E4%B8%ADBus%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8/">vue中Bus如何使用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="与vuex的区别"><a href="#与vuex的区别" class="headerlink" title="与vuex的区别"></a>与vuex的区别</h3><p>vue中非父子组件之间通信除了使用vuex，也可以通过bus总线，两者适用场景不同。<br>bus适合小项目、数据被更少组件使用的项目，对于中大型项目数据在很多组件之间使用的情况，bus就不太适用了。<br>bus其实就是一个发布订阅模式，利用vue的自定义事件机制，在触发的地方通过$emit向外发布一个事件，在需要监听的页面，通过$on监听事件。<br>vuex适合中大型项目、数据在多组件之间公用的情况。</p>
+<h3 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h3><ol>
+<li><p>main.js 中定义</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> Bus = <span class="keyword">new</span> Vue();</span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el: <span class="string">'#app'</span>,</span><br><span class="line">    router,</span><br><span class="line">    <span class="comment">// store,</span></span><br><span class="line">    components: &#123;</span><br><span class="line">        App</span><br><span class="line">    &#125;,</span><br><span class="line">    data() &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            Bus     </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    template: <span class="string">'&lt;App/&gt;'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>A.vue 通过$on发布一个事件</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.$root.Bus.$on(<span class="string">"ElEdrag"</span>, e =&gt; &#123;&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>B.vue通过$emit订阅</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.$root.Bus.$emit(<span class="string">"ElEdrag"</span>, <span class="string">'hello'</span>);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>参考链接🔗<br><a href="https://zhuanlan.zhihu.com/p/76147272" target="_blank" rel="noopener">vue中Bus如何使用</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/08/05/vue%E4%B8%ADBus%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8/" data-id="ckdh2rxmr000004s62cgl2i23" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/" rel="tag">Vue</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-ESRI" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/04/ESRI/" class="article-date">
+  <time datetime="2020-08-04T02:01:31.000Z" itemprop="datePublished">2020-08-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/04/ESRI/">ESRI</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>&emsp;&emsp;美国环境系统研究所公司（Environmental Systems Research Institute, Inc. 简称ESRI公司）成立于1969年，总部设在美国加利福尼亚州雷德兰兹市，是世界最大的地理信息系统技术提供商。在全美各地都设有办事处，世界各主要国家均设有分公司或者代理，全球员工总数超过4000名。其商业合作伙伴计划，在全球有超过2000个领域开发商、咨询服务商、增值代理以及数据提供商，与分布在80个国家的国际代理一起，构成了ESRI公司强大的技术支持与服务网络。</p>
+<h2 id="市场地位"><a href="#市场地位" class="headerlink" title="市场地位"></a>市场地位</h2><p>&emsp;&emsp;多年来，ESRI公司始终将GIS视为一门科学，并坚持运用独特的科学思维和方法，紧跟IT主流技术，开发出丰富而完整的产品线。公司致力于为全球各行业的用户提供先进的GIS技术和全面的GIS解决方案。ESRI其多层次、可扩展，功能强大、开放性强的ArcGIS解决方案已经迅速成为提高政府部门和企业服务水平的重要工具。全球200多个国家超过百万用户单位正在使用ESRI公司的GIS技术，以提高他们组织和管理业务的能力。在美国ESRI被认为是紧随微软、Oracle和IBM之后，美国联邦政府最大的软件供应商之一。</p>
+<h2 id="国内发展"><a href="#国内发展" class="headerlink" title="国内发展"></a>国内发展</h2><p>&emsp;&emsp;ESRI公司关注中国空间信息技术的发展已有二十多年的历史。ESRI公司的ArcGIS系列软件已成为中国用户群体最大，应用领域最广的GIS技术平台。ESRI中国（北京）有限公司作为ESRI在中国大陆的唯一分支机构，将禀承ESRI公司一贯的探索精神和独树一帜的管理风格，以开放、合作、以人为本和对社会负责为立身之本，并结合多年来为中国用户技术支持与集成的经验，为广大中国用户提供满足今天需要的服务，更为其将来的发展奠定坚实的基础的先进的技术构架。ESRI中国（北京）有限公司同时还为中国用户提供遥感图像处理解决方案和eYaImage影像压缩工具的销售和技术支持服务。此外，还设有ESRI中国（北京）培训中心。ESRI中国（北京）有限公司也希望通过与国内各相关部门建立广泛而密切的合作关系，携手共进，共同推动中国空间信息产业发展。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/08/04/ESRI/" data-id="ckdfasl5p0000r1s6hld16hwi" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GIS/" rel="tag">GIS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-浏览器缓存" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/04/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98/" class="article-date">
+  <time datetime="2020-08-04T01:35:15.000Z" itemprop="datePublished">2020-08-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/04/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98/">浏览器缓存</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>参考链接🔗<br><a href="https://mp.weixin.qq.com/s/GvaKe531KcjyzXeUZVzTEQ" target="_blank" rel="noopener">浏览器缓存</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/08/04/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98/" data-id="ckdf9vlq50003p1s69xm53qke" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Waiting/" rel="tag">Waiting</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" rel="tag">浏览器</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-前端开发技巧" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/03/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7/" class="article-date">
+  <time datetime="2020-08-03T03:53:38.000Z" itemprop="datePublished">2020-08-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/03/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7/">前端开发技巧</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-利用-CSS-穿透覆盖默认样式"><a href="#1-利用-CSS-穿透覆盖默认样式" class="headerlink" title="1. 利用 CSS 穿透覆盖默认样式"></a>1. 利用 CSS 穿透覆盖默认样式</h3><p>常见发生场景：假如我们需要通过 input，type=”file”来上传文件，而这个 input 的默认样式，可以说是非常地丑。所以我们希望通过一张图片，与这个 input 大小一样，位置一致地盖在上面。这个时候，显然，这个时候点击图片，input 是不会起作用的。就是因为 img 隔绝了 click 的穿透，而我们希望的是，这个 img 只是视觉上遮挡了 input 的样式，但是点击的时候还是点击到 input。所以，只要让 img 可穿透即可。<br>css 代码如下：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">img</span> &#123;</span><br><span class="line">  <span class="attribute">pointer-events</span>: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-实现自定义原生-select-控件的样式"><a href="#2-实现自定义原生-select-控件的样式" class="headerlink" title="2. 实现自定义原生 select 控件的样式"></a>2. 实现自定义原生 select 控件的样式</h3><p>由于 select 移动端原生样式很丑，但是原生弹出效果是符合我们设计的原则。直接修改 select 的样式的时候，一个奇怪的现象出现了，在 chrome 上调试的时候，自己定义的样式起了作用，在 Android 手机上也起了作用，但是到了 ios 手机上就不行了，典型的不兼容问题，这个时候禁用原生的样式即可。<br>css 代码如下：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">select</span> &#123;</span><br><span class="line">  <span class="attribute">-webkit-appearance</span>: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-文本溢出处理"><a href="#3-文本溢出处理" class="headerlink" title="3. 文本溢出处理"></a>3. 文本溢出处理</h3><p>移动设备相对来说页面较小，很多时候显示的一些信息都需要省略部分。最常见的是单行标题溢出省略，多行详情介绍溢出省略。现在都用框架开发了，这种建议需求建议形成一个基础组件，方便快捷。<br>css 代码如下：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">//单行</span><br><span class="line"><span class="selector-class">.single</span> &#123;</span><br><span class="line">  <span class="attribute">overflow</span>: hidden;</span><br><span class="line">  <span class="attribute">white-space</span>: nowrap;</span><br><span class="line">  <span class="attribute">text-overflow</span>: ellipsis;</span><br><span class="line">&#125;</span><br><span class="line">//多行</span><br><span class="line"><span class="selector-class">.more</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: -webkit-box <span class="meta">!important</span>;</span><br><span class="line">  <span class="attribute">overflow</span>: hidden;</span><br><span class="line">  <span class="attribute">text-overflow</span>: ellipsis;</span><br><span class="line">  <span class="attribute">work-break</span>: break-all;</span><br><span class="line">  <span class="attribute">-webkit-box-orient</span>: vertical;</span><br><span class="line">  -webkit-line-clamp: 2; //指定行数</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-开启弹性滚动"><a href="#4-开启弹性滚动" class="headerlink" title="4. 开启弹性滚动"></a>4. 开启弹性滚动</h3><p>css 代码如下：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">overflow</span>: scroll;</span><br><span class="line">  <span class="attribute">-webkit-overflow-scrolling</span>: touch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意：Android 不支持原生的弹性滚动，但可以借助第三方库 iScroll 来实现。</p>
+<h3 id="5-一像素边框设置"><a href="#5-一像素边框设置" class="headerlink" title="5. 一像素边框设置"></a>5. 一像素边框设置</h3><p>很多时候，想保持边框的大小在任何设置上都是 1px，但是因为 1px 使用 2dp 渲染，也就是说会显示为 2px 大小。所以，要采用 css3 缩放一下。<br>css 代码如下：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.folder</span> <span class="selector-tag">li</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">5px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.folder</span> <span class="selector-tag">li</span> + <span class="selector-tag">li</span><span class="selector-pseudo">:before</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">top</span>: -<span class="number">1px</span>;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">" "</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">1px</span>;</span><br><span class="line">  <span class="attribute">border-top</span>: <span class="number">1px</span> solid <span class="number">#ccc</span>;</span><br><span class="line">  <span class="attribute">-webkit-transform</span>: <span class="built_in">scaleY</span>(<span class="number">0.5</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-防止鼠标选中事件"><a href="#6-防止鼠标选中事件" class="headerlink" title="6. 防止鼠标选中事件"></a>6. 防止鼠标选中事件</h3><p>给元素添加了onslectstart=”return false”,就可以防止鼠标选中事件。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"mask"</span> onselectstart=<span class="string">"return false"</span>&gt;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;div class="link"&gt;</span></span><br><span class="line"><span class="regexp">  &lt;a href="javascrip;;"&gt;登录&lt;/</span>a&gt;</span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="7-给动态添加的元素绑定事件"><a href="#7-给动态添加的元素绑定事件" class="headerlink" title="7. 给动态添加的元素绑定事件"></a>7. 给动态添加的元素绑定事件</h3><p>利用事件代理达到这个效果即可。如：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$(<span class="built_in">document</span>).on(<span class="string">"click"</span>, <span class="string">".large"</span>, slide); <span class="comment">//jq中的写法</span></span><br><span class="line"><span class="comment">//第一个参数表示的是对应事件，第二个是需要绑定事件的元素的id或class，第三个是绑定的对应的事件函数名</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="8-兼容-IE-浏览器的透明度处理"><a href="#8-兼容-IE-浏览器的透明度处理" class="headerlink" title="8. 兼容 IE 浏览器的透明度处理"></a>8. 兼容 IE 浏览器的透明度处理</h3><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.ui</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">0.4</span>;</span><br><span class="line">  filter: Alpha(opacity=40); //兼容IE浏览器的处理</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="9-常用的全屏居中-JS-函数"><a href="#9-常用的全屏居中-JS-函数" class="headerlink" title="9. 常用的全屏居中 JS 函数"></a>9. 常用的全屏居中 JS 函数</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//获取元素</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getElement</span>(<span class="params">ele</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">document</span>.getElementById(ele);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//自动居中函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">autoCenter</span>(<span class="params">el</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> bodyX = <span class="built_in">document</span>.documentElement.offsetWidth || <span class="built_in">document</span>.body.offsetWidth;</span><br><span class="line">  <span class="keyword">var</span> bodyY =</span><br><span class="line">    <span class="built_in">document</span>.documentElement.offsetHeight || <span class="built_in">document</span>.body.offsetHeight;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> elementX = el.offsetWidth;</span><br><span class="line">  <span class="keyword">var</span> elementY = el.offsetHeight;</span><br><span class="line"></span><br><span class="line">  el.style.left = (bodyX - elementX) / <span class="number">2</span> + <span class="string">"px"</span>;</span><br><span class="line">  el.style.top = (bodyY - elementY) / <span class="number">2</span> + <span class="string">"px"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="10-常用的全屏居中-CSS-函数"><a href="#10-常用的全屏居中-CSS-函数" class="headerlink" title="10. 常用的全屏居中 CSS 函数"></a>10. 常用的全屏居中 CSS 函数</h3><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100vh</span>;</span><br><span class="line">  <span class="attribute">text-align</span>: center;</span><br><span class="line">  <span class="attribute">line-height</span>: <span class="number">100vh</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="11-在输入框输入完内容并按回车的时候进行判断"><a href="#11-在输入框输入完内容并按回车的时候进行判断" class="headerlink" title="11. 在输入框输入完内容并按回车的时候进行判断"></a>11. 在输入框输入完内容并按回车的时候进行判断</h3><p>比如说输入完 11000 在按下回车的时候。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;input type=<span class="string">"textbox"</span> id=<span class="string">"textbox1"</span> onkeypress=<span class="string">"CheckInfo"</span> /&gt;</span><br><span class="line"></span><br><span class="line">&lt;script language=<span class="string">"javascript"</span> type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">CheckInfo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (event.keyCode==<span class="number">13</span>) &#123;</span><br><span class="line">            alert(textbox1.text);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="12-chrome-调试快捷键"><a href="#12-chrome-调试快捷键" class="headerlink" title="12. chrome 调试快捷键"></a>12. chrome 调试快捷键</h3><p>① ctrl+shift+f 全文查找<br>② ctrl+o 查找文件名<br>③ ctrl+shift+o 查找 js 函数名</p>
+<p>参考链接🔗<br><a href="https://mp.weixin.qq.com/s/SZkZe_CkbLUzwTqQ1X9zMw" target="_blank" rel="noopener">12 个实用的前端开发技巧总结</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/08/03/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7/" data-id="ckdf9vlq60004p1s64w0ca7ap" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-小程序技巧" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/01/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%8A%80%E5%B7%A7/" class="article-date">
+  <time datetime="2020-08-01T04:21:41.000Z" itemprop="datePublished">2020-08-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/01/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%8A%80%E5%B7%A7/">小程序技巧</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="将某个页面设置为首页"><a href="#将某个页面设置为首页" class="headerlink" title="将某个页面设置为首页"></a>将某个页面设置为首页</h3><p>在app.json 中，将该页面的路径设置为 pages 数组中的第一条数据</p>
+<h3 id="下拉刷新"><a href="#下拉刷新" class="headerlink" title="下拉刷新"></a>下拉刷新</h3><ol>
+<li>开启全局的下拉刷新功能</li>
+<li>下拉刷新 loading 样式</li>
+<li>下拉刷新的背景颜色修改</li>
+</ol>
+<h3 id="sitemap-json"><a href="#sitemap-json" class="headerlink" title="sitemap.json"></a>sitemap.json</h3><p>用于配置小程序及其页面是否允许被微信索引</p>
+<h2 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h2><ol>
+<li><text> 相当于以前web中的 span 标签， 行内元素， 不会换行</li>
+<li><view> 相当于以前web中的 div 标签，块级元素， 会换行</li>
+<li><checkbox> 相当于以前web中的 复选框</li>
+</ol>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><h2 id="1-使用bool类型充当属性"><a href="#1-使用bool类型充当属性" class="headerlink" title="1. 使用bool类型充当属性"></a>1. 使用bool类型充当属性</h2><ul>
+<li>字符串和花括号之间一定不要存在空格，否则会导致识别失败，以下为错误示范：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;checkbox checked&#x3D;&quot;     &#123;&#123;isChecked&#125;&#125;&quot;&gt;&lt;&#x2F;checkbox&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/08/01/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%8A%80%E5%B7%A7/" data-id="ckdf9vlpo0000p1s67vnv6h52" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-POI" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/07/30/POI/" class="article-date">
+  <time datetime="2020-07-30T01:38:25.000Z" itemprop="datePublished">2020-07-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/30/POI/">POI</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>POI是“Point of Information”的缩写，中文可以翻译为“信息点”。在地理信息系统中，一个POI可以是一栋房子、一个商铺、一个邮筒、一个公交站等。</p>
+<h2 id="信息点"><a href="#信息点" class="headerlink" title="信息点"></a>信息点</h2><p>&emsp;&emsp;传统的地理信息采集方法需要地图测绘人员采用精密的测绘仪器去获取一个信息点的经纬度，然后标记下来。正因为POI的采集是一个非常费时费事的工作，对一个地理信息系统来说，POI的数量在一定程度代表着整个系统的价值。<br>&emsp;&emsp;每个POI包含四方面的信息，名称、类别、坐标、分类，全面的POI讯息是丰富导航地图的必备资讯，及时的POI信息点能提醒用户路况的分支及周边建筑的详尽信息，也能方便导航中查到你所需要的各个地方，选择最为便捷和通畅的道路来进行路径规划，因此，导航地图POI多少状况直接影响到导航的好用程度。</p>
+<h2 id="分类及属性"><a href="#分类及属性" class="headerlink" title="分类及属性"></a>分类及属性</h2><p>&emsp;&emsp;POI（信息点）是有分类的，有一级类和二级类，每个分类都有相应的行业的代码和名称对应。方便信息采集的记录和区分。</p>
+<h2 id="在导航的应用"><a href="#在导航的应用" class="headerlink" title="在导航的应用"></a>在导航的应用</h2><p>&emsp;&emsp;无论是车载还是手机导航，如今市面上的导航都有自己的POI信息点，导航地图中POI信息点的多少以及信息的准确程度和信息更新速度，都严重影响到一款导航的使用情况。</p>
+<h2 id="移动通信应用"><a href="#移动通信应用" class="headerlink" title="移动通信应用"></a>移动通信应用</h2><p>&emsp;&emsp;多系统接入平台，将不同运营商的不同通信系统，通过该设备接入到公共天线活着其他通信设备中。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/07/30/POI/" data-id="ckdf9vlpu0001p1s6g5un4re2" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GIS/" rel="tag">GIS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-浏览器调试" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/07/29/%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B0%83%E8%AF%95/" class="article-date">
+  <time datetime="2020-07-29T01:21:20.000Z" itemprop="datePublished">2020-07-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/29/%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B0%83%E8%AF%95/">浏览器调试</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Network-面板"><a href="#Network-面板" class="headerlink" title="Network 面板"></a>Network 面板</h2><p>该区域大概分为如下几个区域：</p>
+<img src="/2020/07/29/%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B0%83%E8%AF%95/network.png" class="" title="图片描述">
+<ol>
+<li><strong>Controls</strong> - 控制 Network 功能选项，以及一些展示外观</li>
+<li><strong>Filters</strong> - 控制在 Requests Table 中显示哪些类型的资源</li>
+<li><strong>Overview</strong> - 此图表显示了资源检索时间的时间线。如果看到多条竖线堆叠在一起，则说明这些资源被同时检索</li>
+<li><strong>Requests Table</strong> - 此表格列出了检索的每一个资源。默认情况下，此表格按时间顺序排序，最早的资源在顶部。点击资源的名称可以显示更多信息。提示：右键点击 Timeline 以外的任何一个表格标题可以添加或移除信息列</li>
+<li><strong>Summary</strong> - 可以一目了然地看到页面的请求总数、传输的数据总量、加载时间</li>
+</ol>
+<h3 id="Controls，Filters-区域"><a href="#Controls，Filters-区域" class="headerlink" title="Controls，Filters 区域"></a>Controls，Filters 区域</h3><img src="/2020/07/29/%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B0%83%E8%AF%95/640.png" class="" title="图片描述">
+<p>Filters 控制的展示：</p>
+<ul>
+<li><strong>使用大请求行</strong> - 默认情况下，Requests Table一个资源只显示很小的一行。选中Use large resource rows(使用大资源行)按钮可以显示两个文本字段：主要字段和次要字段。</li>
+<li><strong>捕获屏幕截图</strong> - 将鼠标悬停在某个屏幕截图上的时候，Timeline/Waterfall(时间轴)会显示一条垂直的黄线，指示该帧是何时被捕获的</li>
+<li><strong>显示概述</strong> - 展示页面整个生命周期的各个阶段（Overview 区域）的耗时（蓝色绿色的那些横杠）</li>
+</ul>
+<h3 id="Overview-区域"><a href="#Overview-区域" class="headerlink" title="Overview 区域"></a>Overview 区域</h3><p>页面整个生命周期的各个阶段网络资源加载耗时信息的汇总，可以选择区域来筛选 Requests Table 的详细资源信息</p>
+<h3 id="Requests-Table-区域"><a href="#Requests-Table-区域" class="headerlink" title="Requests Table 区域"></a>Requests Table 区域</h3><p>标题栏的对应描述：</p>
+<ul>
+<li><strong>Name</strong>(名称): 资源的名称。</li>
+<li><strong>Status</strong>(状态): HTTP 状态代码。</li>
+<li><strong>Type</strong>(类型): 请求的资源的 MIME 类型。<ul>
+<li><strong>Initiator</strong>(发起): 发起请求的对象或进程。它可能有以下几种值：</li>
+<li><strong>Parser</strong>(解析器): Chrome 的 HTML 解析器发起了请求。</li>
+<li><strong>Redirect</strong>(重定向): HTTP 重定向启动了请求。</li>
+<li><strong>Script</strong>(脚本): 脚本启动了请求。</li>
+<li><strong>Other</strong>(其他): 一些其他进程或动作发起请求，例如用户点击链接跳转到页面，或在地址栏中输入网址。</li>
+</ul>
+</li>
+<li><strong>Size</strong>(大小): 响应头的大小（通常是几百字节）加上响应数据，由服务器提供。</li>
+<li><strong>Time</strong>(时间): 总持续时间，从请求的开始到接收响应中的最后一个字节</li>
+<li><strong>Timeline/Waterfall</strong>(时间轴): 显示所有网络请求的可视化统计信息</li>
+</ul>
+<p class="sf-warning">在标题栏如(Name 上)右键，可以添加或删除信息列。比如可以多加一列 Response Header => Content-Encoding 选项来总览页面资源的 gzip 压缩情况:</p>
+
+
+
+<p>参考链接🔗<br><a href="https://mp.weixin.qq.com/s/X4dQ4NqDF3UmNCZ4nqDX_A" target="_blank" rel="noopener">Chrome DevTools 全攻略！助力高效开发</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/07/29/%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B0%83%E8%AF%95/" data-id="ckd6owtmh0000qms6a4yt73fh" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" rel="tag">浏览器</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Grid布局" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/07/28/Grid%E5%B8%83%E5%B1%80/" class="article-date">
+  <time datetime="2020-07-28T01:05:31.000Z" itemprop="datePublished">2020-07-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/28/Grid%E5%B8%83%E5%B1%80/">Grid布局</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h2><p>网格布局（Grid）是最强大的 CSS 布局方案。<br>它将网页划分成一个个网格，可以任意组合不同的网格，做出各种各样的布局。以前，只能通过复杂的 CSS 框架达到的效果，现在浏览器内置了。 </p>
+<p><strong><em>网格容器(Grid Container)属性</em></strong></p>
+<ul>
+<li>display</li>
+<li>grid-template-columns</li>
+<li>grid-template-rows</li>
+<li>grid-template-areas</li>
+<li>grid-template</li>
+<li>grid-column-gap</li>
+<li>grid-row-gap</li>
+<li>grid-gap</li>
+<li>justify-items</li>
+<li>align-items</li>
+<li>place-items</li>
+<li>justify-content</li>
+<li>align-items</li>
+<li>place-items</li>
+<li>justify-content</li>
+<li>align-content</li>
+<li>place-content</li>
+<li>grid-auto-columns</li>
+<li>grid-auto-rows</li>
+<li>grid</li>
+</ul>
+<p><strong><em>网格项(Grid Items)属性</em></strong></p>
+<ul>
+<li>grid-column-start</li>
+<li>grid-column-end</li>
+<li>grid-row-start</li>
+<li>grid-row-end</li>
+<li>grid-column</li>
+<li>grid-row</li>
+<li>grid-area</li>
+<li>justify-self</li>
+<li>align-self</li>
+<li>place-self</li>
+</ul>
+<h3 id="与Flex布局的区别"><a href="#与Flex布局的区别" class="headerlink" title="与Flex布局的区别"></a>与Flex布局的区别</h3><p>Flex 布局是轴线布局，只能指定”项目”针对轴线的位置，可以看作是一维布局。Grid 布局则是将容器划分成”行”和”列”，产生单元格，然后指定”项目所在”的单元格，可以看作是二维布局。<br>Grid 布局远比 Flex 布局强大。</p>
+<hr>
+<h2 id="二、基本概念"><a href="#二、基本概念" class="headerlink" title="二、基本概念"></a>二、基本概念</h2><h3 id="2-1-行和列"><a href="#2-1-行和列" class="headerlink" title="2.1 行和列"></a>2.1 行和列</h3><p>容器里面的水平区域称为”行”（row），垂直区域称为”列”（column）。</p>
+<h3 id="2-2-单元格"><a href="#2-2-单元格" class="headerlink" title="2.2 单元格"></a>2.2 单元格</h3><p>行和列的交叉区域，称为”单元格”（cell）。<br>正常情况下，n行和m列会产生n x m个单元格。比如，3行3列会产生9个单元格。  </p>
+<h3 id="2-3-网格线"><a href="#2-3-网格线" class="headerlink" title="2.3 网格线"></a>2.3 网格线</h3><p>划分网格的线，称为”网格线”（grid line）。水平网格线划分出行，垂直网格线划分出列。<br>正常情况下，n行有n + 1根水平网格线，m列有m + 1根垂直网格线，比如三行就有四根水平网格线。  </p>
+<hr>
+<h2 id="三、容器属性"><a href="#三、容器属性" class="headerlink" title="三、容器属性"></a>三、容器属性</h2><p>Grid 布局的属性分成两类。一类定义在容器上面，称为容器属性；另一类定义在项目上面，称为项目属性。这部分先介绍容器属性。  </p>
+<h3 id="3-1-display-属性"><a href="#3-1-display-属性" class="headerlink" title="3.1 display 属性"></a>3.1 display 属性</h3><p>display: grid 指定一个容器采用网格布局。<br>display: inline-grid 指定div是一个行内元素，该元素内部采用网格布局。<br>注意，设为网格布局以后，容器子元素（项目）的float、display: inline-block、display: table-cell、vertical-align和column-*等设置都将失效。  </p>
+<h3 id="3-2-grid-template-columns、-grid-template-rows"><a href="#3-2-grid-template-columns、-grid-template-rows" class="headerlink" title="3.2 grid-template-columns、 grid-template-rows"></a>3.2 grid-template-columns、 grid-template-rows</h3><ul>
+<li>grid-template-columns 属性定义每一列的列宽  </li>
+<li>grid-template-rows 属性定义每一行的行高</li>
+</ul>
+<p><strong><em>指定一个三行三列的网格</em></strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// 固定像素</span><br><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: grid;</span><br><span class="line">    <span class="attribute">grid-template-columns</span>: <span class="number">100px</span> <span class="number">100px</span> <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">grid-template-rows</span>: <span class="number">100px</span> <span class="number">100px</span> <span class="number">100px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 百分比</span><br><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: grid;</span><br><span class="line">    <span class="attribute">grid-template-columns</span>: <span class="number">33.33%</span> <span class="number">33.33%</span> <span class="number">33.33%</span>;</span><br><span class="line">    <span class="attribute">grid-template-rows</span>: <span class="number">33.33%</span> <span class="number">33.33%</span> <span class="number">33.33%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>(1)repeat()</strong><br>有时候，重复写同样的值非常麻烦，尤其网格很多时。这时，可以使用repeat()函数，简化重复的值。repeat()接受两个参数，第一个参数是重复的次数（上例是3），第二个参数是所要重复的值。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// repeat()</span><br><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: grid;</span><br><span class="line">    <span class="attribute">grid-template-columns</span>: <span class="built_in">repeat</span>(<span class="number">3</span>, <span class="number">33.33%</span>);</span><br><span class="line">    <span class="attribute">grid-template-rows</span>: <span class="built_in">repeat</span>(<span class="number">3</span>, <span class="number">33.33%</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// repeat()</span><br><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">    <span class="attribute">grid-template-columns</span>: <span class="built_in">repeat</span>(<span class="number">2</span>, <span class="number">100px</span> <span class="number">20px</span> <span class="number">80px</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>（2）auto-fill 关键字</strong><br>有时，单元格的大小是固定的，但是容器的大小不确定。如果希望每一行（或每一列）容纳尽可能多的单元格，这时可以使用auto-fill关键字表示自动填充。  </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 每列宽度100px，然后自动填充，直到容器不能放置更多的列。 </span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: grid;</span><br><span class="line">  <span class="attribute">grid-template-columns</span>: <span class="built_in">repeat</span>(auto-fill, <span class="number">100px</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>（3）fr 关键字</strong><br>为了方便表示比例关系，网格布局提供了fr关键字（fraction 的缩写，意为”片段”）。如果两列的宽度分别为1fr和2fr，就表示后者是前者的两倍。  </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 两个相同宽度的列。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: grid;</span><br><span class="line">  <span class="attribute">grid-template-columns</span>: <span class="number">1</span>fr <span class="number">1</span>fr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 与绝对长度的单位结合使用, 第一列的宽度为150像素，第二列的宽度是第三列的一半</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: grid;</span><br><span class="line">  <span class="attribute">grid-template-columns</span>: <span class="number">150px</span> <span class="number">1</span>fr <span class="number">2</span>fr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>（4）minmax()</strong><br>minmax()函数产生一个长度范围，表示长度就在这个范围之中。它接受两个参数，分别为最小值和最大值。  </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* minmax(100px, 1fr)表示列宽不小于100px，不大于1fr。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="selector-tag">grid-template-columns</span>: 1<span class="selector-tag">fr</span> 1<span class="selector-tag">fr</span> <span class="selector-tag">minmax</span>(100<span class="selector-tag">px</span>, 1<span class="selector-tag">fr</span>);</span><br></pre></td></tr></table></figure>
+
+<p><strong>（5）auto 关键字</strong><br>auto关键字表示由浏览器自己决定长度。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 第二列的宽度，基本上等于该列单元格的最大宽度，除非单元格内容设置了min-width，且这个值大于最大宽度。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="selector-tag">grid-template-columns</span>: 100<span class="selector-tag">px</span> <span class="selector-tag">auto</span> 100<span class="selector-tag">px</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>（6）网格线的名称</strong><br>grid-template-columns属性和grid-template-rows属性里面，还可以使用方括号，指定每一根网格线的名字，方便以后的引用。  </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 1. 指定网格布局为3行 x 3列，因此有4根垂直网格线和4根水平网格线。方括号里面依次是这八根线的名字。</span></span><br><span class="line"><span class="comment">* 2. 网格布局允许同一根线有多个名字，比如[fifth-line row-5]。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: grid;</span><br><span class="line">  <span class="attribute">grid-template-columns</span>: [c1] <span class="number">100px</span> [c2] <span class="number">100px</span> [c3] auto [c4];</span><br><span class="line">  <span class="attribute">grid-template-rows</span>: [r1] <span class="number">100px</span> [r2] <span class="number">100px</span> [r3] auto [r4];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>（7）布局实例</strong><br>grid-template-columns属性对于网页布局非常有用。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*将左边栏设为70%，右边栏设为30%。*/</span></span><br><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: grid;</span><br><span class="line">  <span class="attribute">grid-template-columns</span>: <span class="number">70%</span> <span class="number">30%</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*传统的十二网格布局*/</span></span><br><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: grid;</span><br><span class="line">  <span class="attribute">grid-template-columns</span>: <span class="built_in">repeat</span>(<span class="number">12</span>, <span class="number">1</span>fr);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-3-grid-row-gap、grid-column-gap、grid-gap"><a href="#3-3-grid-row-gap、grid-column-gap、grid-gap" class="headerlink" title="3.3 grid-row-gap、grid-column-gap、grid-gap"></a>3.3 grid-row-gap、grid-column-gap、grid-gap</h3><ul>
+<li>grid-row-gap属性设置行与行的间隔（行间距）</li>
+<li>grid-column-gap属性设置列与列的间隔（列间距）</li>
+<li>grid-gap属性是grid-column-gap和grid-row-gap的合并简写形式</li>
+</ul>
+<ul>
+<li>注意：根据最新标准，上面三个属性名的grid-前缀已经删除，grid-column-gap和grid-row-gap写成column-gap和row-gap，grid-gap写成gap。</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">grid-row-gap</span>: <span class="number">20px</span>;</span><br><span class="line">  <span class="attribute">grid-column-gap</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* grid-gap: &lt;grid-row-gap&gt; &lt;grid-column-gap&gt;;</span></span><br><span class="line"><span class="comment">* 如果grid-gap省略了第二个值，浏览器认为第二个值等于第一个值。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">grid-gap</span>: <span class="number">20px</span> <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-4-grid-template-areas"><a href="#3-4-grid-template-areas" class="headerlink" title="3.4 grid-template-areas"></a>3.4 grid-template-areas</h3><p>网格布局允许指定”区域”（area），一个区域由单个或多个单元格组成。grid-template-areas属性用于定义区域。</p>
+<ul>
+<li>注意：区域的命名会影响到网格线。每个区域的起始网格线，会自动命名为区域名-start，终止网格线自动命名为区域名-end。比如，区域名为header，则起始位置的水平网格线和垂直网格线叫做header-start，终止位置的水平网格线和垂直网格线叫做header-end。</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 先划分出9个单元格，然后将其定名为a到i的九个区域，分别对应这九个单元格。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: grid;</span><br><span class="line">    <span class="attribute">grid-template-columns</span>: <span class="number">100px</span> <span class="number">100px</span> <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">grid-template-rows</span>: <span class="number">100px</span> <span class="number">100px</span> <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">grid-template-areas</span>: <span class="string">'a b c'</span></span><br><span class="line">                         <span class="string">'d e f'</span></span><br><span class="line">                         <span class="string">'g h i'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 将9个单元格分成a、b、c三个区域。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">    <span class="attribute">grid-template-areas</span>: <span class="string">'a a a'</span></span><br><span class="line">                         <span class="string">'b b b'</span></span><br><span class="line">                         <span class="string">'c c c'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 1. 如果某些区域不需要利用，则使用"点"（.）表示。</span></span><br><span class="line"><span class="comment">* 2. 中间一列为点，表示没有用到该单元格，或者该单元格不属于任何区域。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">    <span class="attribute">grid-template-areas</span>: <span class="string">'a . c'</span></span><br><span class="line">                         <span class="string">'d . f'</span></span><br><span class="line">                         <span class="string">'g . i'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 顶部是页眉区域header，底部是页脚区域footer，中间部分则为main和sidebar。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">    <span class="attribute">grid-template-areas</span>: <span class="string">"header header header"</span></span><br><span class="line">                         <span class="string">"main main sidebar"</span></span><br><span class="line">                         <span class="string">"footer footer footer"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-5-grid-auto-flow-属性"><a href="#3-5-grid-auto-flow-属性" class="headerlink" title="3.5 grid-auto-flow 属性"></a>3.5 grid-auto-flow 属性</h3><p>划分网格以后，容器的子元素会按照顺序，自动放置在每一个网格。默认的放置顺序是”先行后列”，即先填满第一行，再开始放入第二行。</p>
+<ul>
+<li>这个顺序由grid-auto-flow属性决定，默认值是row，即”先行后列”。也可以将它设成column，变成”先列后行”。</li>
+<li>grid-auto-flow属性除了设置成row和column，还可以设成row dense和column dense。这两个值主要用于，某些项目指定位置以后，剩下的项目怎么自动放置。</li>
+<li>设为row dense，表示”先行后列”，并且尽可能紧密填满，尽量不出现空格。</li>
+</ul>
+<h3 id="3-6-justify-items、align-items、place-items"><a href="#3-6-justify-items、align-items、place-items" class="headerlink" title="3.6 justify-items、align-items、place-items"></a>3.6 justify-items、align-items、place-items</h3><ul>
+<li>justify-items属性设置单元格内容的水平位置（左中右），</li>
+<li>align-items属性设置单元格内容的垂直位置（上中下）。</li>
+<li>place-items属性是align-items属性和justify-items属性的合并简写形式。</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">    <span class="attribute">justify-items</span>: start | end | center | stretch;</span><br><span class="line">    <span class="attribute">align-items</span>: start | end | center | stretch;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* place-items: &lt;align-items&gt; &lt;justify-items&gt;;</span></span><br><span class="line"><span class="comment">* 如果省略第二个值，则浏览器认为与第一个值相等。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">    <span class="attribute">place-items</span>: start end;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这两个属性的写法完全相同，都可以取下面这些值。  </p>
+<ul>
+<li>start：对齐单元格的起始边缘。</li>
+<li>end：对齐单元格的结束边缘。</li>
+<li>center：单元格内部居中。</li>
+<li>stretch：拉伸，占满单元格的整个宽度（默认值）。</li>
+</ul>
+<h3 id="3-7-justify-content、align-content、place-content"><a href="#3-7-justify-content、align-content、place-content" class="headerlink" title="3.7 justify-content、align-content、place-content"></a>3.7 justify-content、align-content、place-content</h3><ul>
+<li>justify-content属性是整个内容区域在容器里面的水平位置（左中右），</li>
+<li>align-content属性是整个内容区域的垂直位置（上中下）。</li>
+<li>place-content属性是align-content属性和justify-content属性的合并简写形式。<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">    <span class="attribute">justify-content</span>: start | end | center | stretch | space-around | space-between | space-evenly;</span><br><span class="line">    <span class="attribute">align-content</span>: start | end | center | stretch | space-around | space-between | space-evenly;  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* place-content: &lt;align-content&gt; &lt;justify-content&gt;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">    <span class="attribute">place-content</span>: space-around space-evenly;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>这两个属性的写法完全相同，都可以取下面这些值。  </p>
+<ul>
+<li>start：对齐容器的起始边框。</li>
+<li>end：对齐容器的结束边框。</li>
+<li>center：容器内部居中。</li>
+<li>stretch：项目大小没有指定时，拉伸占据整个网格容器。</li>
+<li>space-around：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与容器边框的间隔大一倍。</li>
+<li>space-between：项目与项目的间隔相等，项目与容器边框之间没有间隔。</li>
+<li>space-evenly：项目与项目的间隔相等，项目与容器边框之间也是同样长度的间隔。</li>
+</ul>
+<h3 id="3-8-grid-auto-columns、grid-auto-rows"><a href="#3-8-grid-auto-columns、grid-auto-rows" class="headerlink" title="3.8 grid-auto-columns、grid-auto-rows"></a>3.8 grid-auto-columns、grid-auto-rows</h3><p>有时候，一些项目的指定位置，在现有网格的外部。比如网格只有3列，但是某一个项目指定在第5行。这时，浏览器会自动生成多余的网格，以便放置项目。<br>grid-auto-columns属性和grid-auto-rows属性用来设置，浏览器自动创建的多余网格的列宽和行高。它们的写法与grid-template-columns和grid-template-rows完全相同。如果不指定这两个属性，浏览器完全根据单元格内容的大小，决定新增网格的列宽和行高。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 指定新增的行高统一为50px（原始的行高为100px）。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: grid;</span><br><span class="line">    <span class="attribute">grid-template-columns</span>: <span class="number">100px</span> <span class="number">100px</span> <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">grid-template-rows</span>: <span class="number">100px</span> <span class="number">100px</span> <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">grid-auto-rows</span>: <span class="number">50px</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-9-grid-template、grid"><a href="#3-9-grid-template、grid" class="headerlink" title="3.9 grid-template、grid"></a>3.9 grid-template、grid</h3><ul>
+<li>grid-template属性是grid-template-columns、grid-template-rows和grid-template-areas这三个属性的合并简写形式。</li>
+<li>grid属性是grid-template-rows、grid-template-columns、grid-template-areas、 grid-auto-rows、grid-auto-columns、grid-auto-flow这六个属性的合并简写形式。</li>
+</ul>
+<h2 id="四、项目属性"><a href="#四、项目属性" class="headerlink" title="四、项目属性"></a>四、项目属性</h2><h3 id="4-1-grid-column-start、grid-column-end、grid-row-start、grid-row-end"><a href="#4-1-grid-column-start、grid-column-end、grid-row-start、grid-row-end" class="headerlink" title="4.1 grid-column-start、grid-column-end、grid-row-start、grid-row-end"></a>4.1 grid-column-start、grid-column-end、grid-row-start、grid-row-end</h3><ol>
+<li>项目的位置是可以指定的，具体方法就是指定项目的四个边框，分别定位在哪根网格线。  </li>
+<li>这四个属性的值还可以使用span关键字，表示”跨越”，即左右边框（上下边框）之间跨越多少个网格。   </li>
+<li>使用这四个属性，如果产生了项目的重叠，则使用z-index属性指定项目的重叠顺序。  </li>
+</ol>
+<ul>
+<li>grid-column-start属性：左边框所在的垂直网格线</li>
+<li>grid-column-end属性：右边框所在的垂直网格线</li>
+<li>grid-row-start属性：上边框所在的水平网格线</li>
+<li>grid-row-end属性：下边框所在的水平网格线</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 1号项目的左边框是第二根垂直网格线，右边框是第四根垂直网格线。</span></span><br><span class="line"><span class="comment">* 只指定了1号项目的左右边框，没有指定上下边框，所以会采用默认位置，即上边框是第一根水平网格线，下边框是第二根水平网格线。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="selector-class">.item-1</span> &#123;</span><br><span class="line">  <span class="attribute">grid-column-start</span>: <span class="number">2</span>;</span><br><span class="line">  <span class="attribute">grid-column-end</span>: <span class="number">4</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 指定四个边框位置的效果。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="selector-class">.item-1</span> &#123;</span><br><span class="line">  <span class="attribute">grid-column-start</span>: <span class="number">1</span>;</span><br><span class="line">  <span class="attribute">grid-column-end</span>: <span class="number">3</span>;</span><br><span class="line">  <span class="attribute">grid-row-start</span>: <span class="number">2</span>;</span><br><span class="line">  <span class="attribute">grid-row-end</span>: <span class="number">4</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 这四个属性的值，除了指定为第几个网格线，还可以指定为网格线的名字。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="selector-class">.item-1</span> &#123;</span><br><span class="line">  <span class="attribute">grid-column-start</span>: header-start;</span><br><span class="line">  <span class="attribute">grid-column-end</span>: header-end;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 1号项目的左边框距离右边框跨越2个网格。</span></span><br><span class="line"><span class="comment">* 这两种写法效果一样</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="selector-class">.item-1</span> &#123;</span><br><span class="line">  <span class="attribute">grid-column-start</span>: span <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.item-1</span> &#123;</span><br><span class="line">  <span class="attribute">grid-column-end</span>: span <span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-2-grid-column、grid-row"><a href="#4-2-grid-column、grid-row" class="headerlink" title="4.2 grid-column、grid-row"></a>4.2 grid-column、grid-row</h3><ol>
+<li>grid-column属性是grid-column-start和grid-column-end的合并简写形式</li>
+<li>grid-row属性是grid-row-start属性和grid-row-end的合并简写形式。</li>
+</ol>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">    <span class="attribute">grid-column</span>:  / ;</span><br><span class="line">    <span class="attribute">grid-row</span>:  / ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.item-1</span> &#123;</span><br><span class="line">  <span class="attribute">grid-column</span>: <span class="number">1</span> / <span class="number">3</span>;</span><br><span class="line">  <span class="attribute">grid-row</span>: <span class="number">1</span> / <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 等同于 */</span></span><br><span class="line"><span class="selector-class">.item-1</span> &#123;</span><br><span class="line">  <span class="attribute">grid-column-start</span>: <span class="number">1</span>;</span><br><span class="line">  <span class="attribute">grid-column-end</span>: <span class="number">3</span>;</span><br><span class="line">  <span class="attribute">grid-row-start</span>: <span class="number">1</span>;</span><br><span class="line">  <span class="attribute">grid-row-end</span>: <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 项目item-1占据的区域，包括第一行 + 第二行、第一列 + 第二列。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="selector-class">.item-1</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="number">#b03532</span>;</span><br><span class="line">  <span class="attribute">grid-column</span>: <span class="number">1</span> / <span class="number">3</span>;</span><br><span class="line">  <span class="attribute">grid-row</span>: <span class="number">1</span> / <span class="number">3</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 等同于 */</span></span><br><span class="line"><span class="selector-class">.item-1</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="number">#b03532</span>;</span><br><span class="line">  <span class="attribute">grid-column</span>: <span class="number">1</span> / span <span class="number">2</span>;</span><br><span class="line">  <span class="attribute">grid-row</span>: <span class="number">1</span> / span <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 1. 斜杠以及后面的部分可以省略，默认跨越一个网格。</span></span><br><span class="line"><span class="comment">* 2. 项目item-1占据左上角第一个网格。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="selector-class">.item-1</span> &#123;</span><br><span class="line">  <span class="attribute">grid-column</span>: <span class="number">1</span>;</span><br><span class="line">  <span class="attribute">grid-row</span>: <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-3-grid-area"><a href="#4-3-grid-area" class="headerlink" title="4.3 grid-area"></a>4.3 grid-area</h3><ul>
+<li>grid-area属性指定项目放在哪一个区域。</li>
+<li>grid-area属性还可用作grid-row-start、grid-column-start、grid-row-end、grid-column-end的合并简写形式，直接指定项目的位置。</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*1号项目位于e区域*/</span></span><br><span class="line"><span class="selector-class">.item-1</span> &#123;</span><br><span class="line">  <span class="attribute">grid-area</span>: e;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">  <span class="attribute">grid-area</span>: &lt;row-start&gt; / &lt;column-start&gt; / &lt;row-end&gt; / &lt;column-end&gt;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.item-1</span> &#123;</span><br><span class="line">  <span class="attribute">grid-area</span>: <span class="number">1</span> / <span class="number">1</span> / <span class="number">3</span> / <span class="number">3</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-4-justify-self、align-self、place-self"><a href="#4-4-justify-self、align-self、place-self" class="headerlink" title="4.4 justify-self、align-self、place-self"></a>4.4 justify-self、align-self、place-self</h3><ul>
+<li>justify-self属性设置单元格内容的水平位置（左中右），跟justify-items属性的用法完全一致，但只作用于单个项目。</li>
+<li>align-self属性设置单元格内容的垂直位置（上中下），跟align-items属性的用法完全一致，也是只作用于单个项目。</li>
+<li>place-self属性是align-self属性和justify-self属性的合并简写形式。</li>
+<li>这两个属性都可以取下面四个值。</li>
+<li>start：对齐单元格的起始边缘。</li>
+<li>end：对齐单元格的结束边缘。</li>
+<li>center：单元格内部居中。</li>
+<li>stretch：拉伸，占满单元格的整个宽度（默认值）。</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">  <span class="attribute">justify-self</span>: start | end | center | stretch;</span><br><span class="line">  <span class="attribute">align-self</span>: start | end | center | stretch;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.item-1</span>  &#123;</span><br><span class="line">  <span class="attribute">justify-self</span>: start;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* place-self: &lt;align-self&gt; &lt;justify-self&gt;;</span></span><br><span class="line"><span class="comment">* 如果省略第二个值，place-self属性会认为这两个值相等。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="selector-class">.item-1</span>  &#123;</span><br><span class="line">  <span class="attribute">place-self</span>: center center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<p>参考链接🔗<br><a href="http://www.ruanyifeng.com/blog/2019/03/grid-layout-tutorial.html" target="_blank" rel="noopener">CSS Grid 网格布局教程</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/07/28/Grid%E5%B8%83%E5%B1%80/" data-id="ckd58pq0h0000k7s6e24r0pfu" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-父元素高度塌陷" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/07/27/%E7%88%B6%E5%85%83%E7%B4%A0%E9%AB%98%E5%BA%A6%E5%A1%8C%E9%99%B7/" class="article-date">
+  <time datetime="2020-07-27T03:40:37.000Z" itemprop="datePublished">2020-07-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/27/%E7%88%B6%E5%85%83%E7%B4%A0%E9%AB%98%E5%BA%A6%E5%A1%8C%E9%99%B7/">父元素高度塌陷</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="浮动元素使其父元素高度塌陷"><a href="#浮动元素使其父元素高度塌陷" class="headerlink" title="浮动元素使其父元素高度塌陷"></a>浮动元素使其父元素高度塌陷</h3><h4 id="情况描述："><a href="#情况描述：" class="headerlink" title="情况描述："></a>情况描述：</h4><p>给一个元素设置浮动之后 <span class="sf-d">float:left/right;</span>，如果该元素的父元素有背景颜色，那么会发现父元素的背景颜色消失了；如果父元素有一个边框，那么浮动元素无法将边框撑开。 </p>
+<h4 id="原因："><a href="#原因：" class="headerlink" title="原因："></a>原因：</h4><p>当元素设置浮动后，会自动脱离文档流，翻译成白话就是说，元素浮动后，就不在整个文档流的管辖范围，那么它之前存在在父元素内的高度就随着浮动不复存在了，而此时父元素会默认自己里面没有任何内容（前提是未给父元素设置固定高度，如果父元素本身有固定高度，就不会出现这种情况）</p>
+<h4 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a>解决方法：</h4><ol>
+<li>给父元素也添加float。这样让父元素与子元素一起脱离文档流浮动起来，保证子元素在父元素内，这样父元素就能自适应子元素的高度，但是此方法有一弊端，一定会影响父元素之后的元素排列，甚至影响布局。</li>
+<li>给父元素一个固定高度，此方法适用于子元素高度已知并且固定的情况。</li>
+<li>添加一个块级元素，并给此元素设置clear:both;清除浮动。在很早之前用的就是这种解决办法，新建一个空的div，为这个div设置clear：both；这样无疑是增加了无意义的标签，一个大型页面中，这种标签太多是不好的。</li>
+<li>给父元素添加 <span class="sf-d">overflow：hidden；</span></li>
+<li>通过伪类<span class="sf-d">::after</span>清除浮动 </li>
+</ol>
+<h4 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h4><p><strong><em>overflow:hidden;</em></strong></p>
+<ul>
+<li>隐藏溢出，当内容超过其父元素时，可以使用该属性和值将溢出的部分裁剪掉，使页面更加美观</li>
+<li>清除浮动，当子元素浮动时，给父元素添加overflow：hidden，按照它的第一个特性，应该将子元素超出的部分截掉，但是因为子元素有浮动，无法裁剪，所有只能由父元素增加高度去包裹住子元素，使得父元素拥有了高度，而这个高度是跟随子元素自适应的高度，这样就把浮动的子元素包含在父元素内了。</li>
+</ul>
+<p><strong><em>::after 伪类</em></strong></p>
+<ul>
+<li>利用伪类来清楚浮动，其效果跟创建一个空的div并设置其为clear：both；是一样的，只不过这里用伪类代替了空的div元素</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&lt;div class="box"&gt;</span><br><span class="line">    &lt;div class="son"&gt;我是浮动的子元素&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>:<span class="number">400px</span>;</span><br><span class="line">    <span class="attribute">background</span>:<span class="number">#F00</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.son</span> &#123;</span><br><span class="line">    <span class="attribute">float</span>:left;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.box</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">    <span class="attribute">content</span>:<span class="string">""</span>;</span><br><span class="line">    <span class="attribute">clear</span>:both;<span class="comment">/*清除浮动*/</span></span><br><span class="line">    <span class="attribute">display</span>:block;<span class="comment">/*确保该元素是一个块级元素*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/07/27/%E7%88%B6%E5%85%83%E7%B4%A0%E9%AB%98%E5%BA%A6%E5%A1%8C%E9%99%B7/" data-id="ckd3ysc700000v3s65llsgmjk" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/6/"> 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/8/">下一页 </a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Camunda/" rel="tag">Camunda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GIS/" rel="tag">GIS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ThingJS/" rel="tag">ThingJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/" rel="tag">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Waiting/" rel="tag">Waiting</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E7%89%A9%E9%97%B4/" rel="tag">杂物间</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A6%82%E5%BF%B5/" rel="tag">概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" rel="tag">浏览器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/" rel="tag">物联网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%98%E5%9B%BE/" rel="tag">绘图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag">网络</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS/" style="font-size: 20px;">CSS</a> <a href="/tags/Camunda/" style="font-size: 10px;">Camunda</a> <a href="/tags/GIS/" style="font-size: 12.86px;">GIS</a> <a href="/tags/Git/" style="font-size: 12.86px;">Git</a> <a href="/tags/HTML/" style="font-size: 12.86px;">HTML</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 11.43px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Node-js/" style="font-size: 10px;">Node.js</a> <a href="/tags/React/" style="font-size: 11.43px;">React</a> <a href="/tags/ThingJS/" style="font-size: 10px;">ThingJS</a> <a href="/tags/Vue/" style="font-size: 15.71px;">Vue</a> <a href="/tags/Waiting/" style="font-size: 10px;">Waiting</a> <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 10px;">小程序</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 17.14px;">数据库</a> <a href="/tags/%E6%9D%82%E7%89%A9%E9%97%B4/" style="font-size: 11.43px;">杂物间</a> <a href="/tags/%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">概念</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 18.57px;">浏览器</a> <a href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/" style="font-size: 11.43px;">物联网</a> <a href="/tags/%E7%BB%98%E5%9B%BE/" style="font-size: 10px;">绘图</a> <a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 14.29px;">网络</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/28/State-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">State &amp; 生命周期</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/28/%E7%BB%84%E4%BB%B6-Props/">组件 &amp; Props</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/26/Flex%E5%B8%83%E5%B1%80/">Flex布局</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/09/HTTP%E6%96%B9%E6%B3%95/">HTTP方法</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/09/%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96/">前端优化</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 NiePeng<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

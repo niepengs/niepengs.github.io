@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>NiePeng</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="afasdfafa">
+<meta property="og:type" content="website">
+<meta property="og:title" content="NiePeng">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="NiePeng">
+<meta property="og:description" content="afasdfafa">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="NiePeng">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="NiePeng" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <!-- <h1 id="logo-wrap">
+        <a href="/" id="logo">NiePeng</a><br/>
+      </h1> -->
+      <div id="header-photo"></div>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">合抱之木生于毫末，九层高台起于垒土，千里之行始于足下。</a> 
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-State-生命周期" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/04/28/State-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" class="article-date">
+  <time datetime="2021-04-28T03:07:57.000Z" itemprop="datePublished">2021-04-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/04/28/State-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">State &amp; 生命周期</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="封装一个Clock组件"><a href="#封装一个Clock组件" class="headerlink" title="封装一个Clock组件"></a>封装一个Clock组件</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Clock</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">        <span class="keyword">super</span>(props);</span><br><span class="line">        <span class="keyword">this</span>.state = &#123;<span class="attr">date</span>: <span class="keyword">new</span> <span class="built_in">Date</span>()&#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    componentDidMount() &#123;</span><br><span class="line">        <span class="keyword">this</span>.timerID = setInterval(</span><br><span class="line">            () =&gt; <span class="keyword">this</span>.tick(),</span><br><span class="line">            <span class="number">1000</span></span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    componentWillUnmount() &#123;</span><br><span class="line">        clearInterval(<span class="keyword">this</span>.timerID);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    tick() &#123;</span><br><span class="line">        <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">            date: <span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                &lt;h1&gt;Hello, world!&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">                &lt;h2&gt;It is &#123;this.state.date.toLocaleTimeString()&#125;.&lt;/</span>h2&gt;</span><br><span class="line">            &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">        );</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">ReactDOM.render(</span></span><br><span class="line"><span class="regexp">    &lt;Clock /</span>&gt;,</span><br><span class="line">    <span class="built_in">document</span>.getElementById(<span class="string">'root'</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p><strong>快速概括一下发生了什么和这些方法的调用顺序：</strong></p>
+<ol>
+<li>当 <span class="sf-d">&lt;Clock /&gt;</span> 被传给 <span class="sf-d">ReactDOM.render()</span>的时候，React 会调用 <span class="sf-d">Clock</span> 组件的构造函数。因为 <span class="sf-d">Clock</span> 需要显示当前的时间，所以它会用一个包含当前时间的对象来初始化 <span class="sf-d">this.state</span>。我们会在之后更新 state。</li>
+<li>之后 React 会调用组件的 <span class="sf-d">render()</span> 方法。这就是 React 确定该在页面上展示什么的方式。然后 React 更新 DOM 来匹配 <span class="sf-d">Clock</span> 渲染的输出。</li>
+<li>当 <span class="sf-d">Clock</span> 的输出被插入到 DOM 中后，React 就会调用 <span class="sf-d">ComponentDidMount()</span> 生命周期方法。在这个方法中，<span class="sf-d">Clock</span> 组件向浏览器请求设置一个计时器来每秒调用一次组件的 <span class="sf-d">tick()</span> 方法。</li>
+<li>浏览器每秒都会调用一次 <span class="sf-d">tick()</span> 方法。 在这方法之中，<span class="sf-d">Clock</span> 组件会通过调用 <span class="sf-d">setState()</span> 来计划进行一次 UI 更新。得益于 <span class="sf-d">setState()</span> 的调用，React 能够知道 state 已经改变了，然后会重新调用 <span class="sf-d">render()</span> 方法来确定页面上该显示什么。这一次，<span class="sf-d">render()</span> 方法中的 this.state.date 就不一样了，如此一来就会渲染输出更新过的时间。React 也会相应的更新 DOM。</li>
+<li>一旦 Clock 组件从 DOM 中被移除，React 就会调用 <span class="sf-d">componentWillUnmount()</span> 生命周期方法，这样计时器就停止了。</li>
+</ol>
+<h2 id="正确的使用state"><a href="#正确的使用state" class="headerlink" title="正确的使用state"></a>正确的使用state</h2><h3 id="不要直接修改-State"><a href="#不要直接修改-State" class="headerlink" title="不要直接修改 State"></a>不要直接修改 State</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Wrong</span></span><br><span class="line"><span class="keyword">this</span>.state.comment = <span class="string">'Hello'</span>;</span><br><span class="line"><span class="comment">// Correct</span></span><br><span class="line"><span class="keyword">this</span>.setState(&#123;<span class="attr">comment</span>: <span class="string">'Hello'</span>&#125;);</span><br></pre></td></tr></table></figure>
+<p class="sf-warning">构造函数是唯一可以给 this.state 赋值的地方</p>
+
+<h3 id="State-的更新可能是异步的"><a href="#State-的更新可能是异步的" class="headerlink" title="State 的更新可能是异步的"></a>State 的更新可能是异步的</h3><p>出于性能考虑，React 可能会把多个 setState() 调用合并成一个调用。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Wrong</span></span><br><span class="line"><span class="keyword">this</span>.setState(&#123;</span><br><span class="line">  counter: <span class="keyword">this</span>.state.counter + <span class="keyword">this</span>.props.increment,</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// Correct</span></span><br><span class="line"><span class="keyword">this</span>.setState(<span class="function">(<span class="params">state, props</span>) =&gt;</span> (&#123;</span><br><span class="line">  counter: state.counter + props.increment</span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure>
+
+<h3 id="State-的更新会被合并"><a href="#State-的更新会被合并" class="headerlink" title="State 的更新会被合并"></a>State 的更新会被合并</h3><p>当你调用 setState() 的时候，React 会把你提供的对象<span class="sf-d">合并</span>到当前的 state。</p>
+<h2 id="数据是向下流动的"><a href="#数据是向下流动的" class="headerlink" title="数据是向下流动的"></a>数据是向下流动的</h2><p>不管是父组件或是子组件都无法知道某个组件是有状态的还是无状态的，并且它们也并不关心它是函数组件还是 class 组件。<br>这就是为什么称 state 为局部的或是封装的的原因。除了拥有并设置了它的组件，其他组件都无法访问。  </p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;FormattedDate date=&#123;<span class="keyword">this</span>.state.date&#125; /&gt;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">FormattedDate</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>It is &#123;props.date.toLocaleTimeString()&#125;.<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>FormattedDate 组件会在其 props 中接收参数 date，但是组件本身无法知道它是来自于 Clock 的 state，或是 Clock 的 props，还是手动输入的：</p>
+<p>这通常会被叫做“自上而下”或是“单向”的数据流。<span class="sf-d">任何的 state 总是所属于特定的组件</span>，而且从该 state 派生的任何数据或 UI 只能影响树中“低于”它们的组件。</p>
+<p>如果你把一个以组件构成的树想象成一个 props 的数据瀑布的话，那么每一个组件的 state 就像是在任意一点上给瀑布增加额外的水源，但是它只能向下流动。</p>
+<p class="sf-warning">
+在 React 应用中，组件是有状态组件还是无状态组件属于组件实现的细节，它可能会随着时间的推移而改变。你可以在有状态的组件中使用无状态的组件，反之亦然。
+</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/04/28/State-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" data-id="cko0vopkb0003rns67pdmgwy4" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/" rel="tag">React</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-组件-Props" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/04/28/%E7%BB%84%E4%BB%B6-Props/" class="article-date">
+  <time datetime="2021-04-28T02:18:13.000Z" itemprop="datePublished">2021-04-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/04/28/%E7%BB%84%E4%BB%B6-Props/">组件 &amp; Props</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="函数组件与-class-组件"><a href="#函数组件与-class-组件" class="headerlink" title="函数组件与 class 组件"></a>函数组件与 class 组件</h2><h3 id="函数组件"><a href="#函数组件" class="headerlink" title="函数组件"></a>函数组件</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Welcome</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, &#123;props.name&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="class-组件"><a href="#class-组件" class="headerlink" title="class 组件"></a>class 组件</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Welcome</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, &#123;this.props.name&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="渲染组件"><a href="#渲染组件" class="headerlink" title="渲染组件"></a>渲染组件</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Welcome</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, &#123;props.name&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> element = <span class="xml"><span class="tag">&lt;<span class="name">Welcome</span> <span class="attr">name</span>=<span class="string">"Sara"</span> /&gt;</span></span>;</span><br><span class="line">ReactDOM.render(</span><br><span class="line">    element,</span><br><span class="line">    <span class="built_in">document</span>.getElementById(<span class="string">'root'</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>这段代码会在页面上渲染 “Hello, Sara”。</p>
+<p><strong>这个例子中发生了什么：</strong></p>
+<ol>
+<li>我们调用 <span class="sf-d">ReactDOM.render()</span> 函数，并传入 <span class="sf-d">&lt;Welcome name=”Sara” /&gt;</span> 作为参数。</li>
+<li>React 调用 <span class="sf-d">Welcome</span> 组件，并将 <span class="sf-d">{name: ‘Sara’}</span> 作为 props 传入。</li>
+<li><span class="sf-d">Welcome</span> 组件将 <span class="sf-d">&lt;h1&gt;Hello, Sara&lt;/h1&gt;</span> 元素作为返回值。</li>
+<li>React DOM 将 DOM 高效地更新为 <span class="sf-d">&lt;h1&gt;Hello, Sara&lt;/h1&gt;</span>。</li>
+</ol>
+<p class="sf-warning">
+<b>注意： 组件名称必须以大写字母开头。</b>
+<br>
+React 会将以小写字母开头的组件视为原生 DOM 标签。例如，&lt;div /&gt; 代表 HTML 的 div 标签，而 &lt;Welcome /&gt; 则代表一个组件，并且需在作用域内使用 Welcome。
+</p>
+
+<h2 id="组合组件"><a href="#组合组件" class="headerlink" title="组合组件"></a>组合组件</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Welcome</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, &#123;props.name&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;Welcome name=<span class="string">"Sara"</span> /&gt;</span><br><span class="line">        &lt;Welcome name=<span class="string">"Cahal"</span> /&gt;</span><br><span class="line">        &lt;Welcome name=<span class="string">"Edite"</span> /&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">ReactDOM.render(</span></span><br><span class="line"><span class="regexp">    &lt;App /</span>&gt;,</span><br><span class="line">    <span class="built_in">document</span>.getElementById(<span class="string">'root'</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h2 id="提取组件"><a href="#提取组件" class="headerlink" title="提取组件"></a>提取组件</h2><p>将组件拆分为更小的组件。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Comment</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div className=<span class="string">"Comment"</span>&gt;</span><br><span class="line">      &lt;div className=<span class="string">"UserInfo"</span>&gt;</span><br><span class="line">        &lt;img className=<span class="string">"Avatar"</span></span><br><span class="line">          src=&#123;props.author.avatarUrl&#125;</span><br><span class="line">          alt=&#123;props.author.name&#125;</span><br><span class="line">        /&gt;</span><br><span class="line">        &lt;div className=<span class="string">"UserInfo-name"</span>&gt;</span><br><span class="line">          &#123;props.author.name&#125;</span><br><span class="line">        &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">      &lt;/</span>div&gt;</span><br><span class="line">      &lt;div className=<span class="string">"Comment-text"</span>&gt;</span><br><span class="line">        &#123;props.text&#125;</span><br><span class="line">      &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">      &lt;div className="Comment-date"&gt;</span></span><br><span class="line"><span class="regexp">        &#123;formatDate(props.date)&#125;</span></span><br><span class="line"><span class="regexp">      &lt;/</span>div&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>首先，我们将提取 Avatar 组件：</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Avatar</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;img className=<span class="string">"Avatar"</span></span><br><span class="line">      src=&#123;props.user.avatarUrl&#125;</span><br><span class="line">      alt=&#123;props.user.name&#125;</span><br><span class="line">    /&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>现在针对 Comment 做些微小调整：</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Comment</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div className=<span class="string">"Comment"</span>&gt;</span><br><span class="line">      &lt;div className=<span class="string">"UserInfo"</span>&gt;</span><br><span class="line">        &lt;Avatar user=&#123;props.author&#125; /&gt;</span><br><span class="line">        &lt;div className=<span class="string">"UserInfo-name"</span>&gt;</span><br><span class="line">          &#123;props.author.name&#125;</span><br><span class="line">        &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">      &lt;/</span>div&gt;</span><br><span class="line">      &lt;div className=<span class="string">"Comment-text"</span>&gt;</span><br><span class="line">        &#123;props.text&#125;</span><br><span class="line">      &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">      &lt;div className="Comment-date"&gt;</span></span><br><span class="line"><span class="regexp">        &#123;formatDate(props.date)&#125;</span></span><br><span class="line"><span class="regexp">      &lt;/</span>div&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>提取 UserInfo 组件</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">UserInfo</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div className=<span class="string">"UserInfo"</span>&gt;</span><br><span class="line">      &lt;Avatar user=&#123;props.user&#125; /&gt;</span><br><span class="line">      &lt;div className=<span class="string">"UserInfo-name"</span>&gt;</span><br><span class="line">        &#123;props.user.name&#125;</span><br><span class="line">      &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>进一步简化 Comment 组件：</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Comment</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div className=<span class="string">"Comment"</span>&gt;</span><br><span class="line">      &lt;UserInfo user=&#123;props.author&#125; /&gt;</span><br><span class="line">      &lt;div className=<span class="string">"Comment-text"</span>&gt;</span><br><span class="line">        &#123;props.text&#125;</span><br><span class="line">      &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">      &lt;div className="Comment-date"&gt;</span></span><br><span class="line"><span class="regexp">        &#123;formatDate(props.date)&#125;</span></span><br><span class="line"><span class="regexp">      &lt;/</span>div&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>最初看上去，提取组件可能是一件繁重的工作，但是，在大型应用中，构建可复用组件库是完全值得的。根据经验来看，如果 UI 中有一部分被多次使用（Button，Panel，Avatar），或者组件本身就足够复杂（App，FeedStory，Comment），那么它就是一个可复用组件的候选项。</p>
+<h2 id="Props-的只读性"><a href="#Props-的只读性" class="headerlink" title="Props 的只读性"></a>Props 的只读性</h2><p>组件无论是使用函数声明还是通过 class 声明，都决不能修改自身的 props。来看下这个 sum 函数：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样的函数被称为“纯函数”，因为该函数不会尝试更改入参，且多次调用下相同的入参始终返回相同的结果。</p>
+<p>相反，下面这个函数则不是纯函数，因为它更改了自己的入参：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">withdraw</span>(<span class="params">account, amount</span>) </span>&#123;</span><br><span class="line">  account.total -= amount;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>React 非常灵活，但它也有一个严格的规则：</p>
+<p class="sf-warning">所有 React 组件都必须像纯函数一样保护它们的 props 不被更改。</p>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/04/28/%E7%BB%84%E4%BB%B6-Props/" data-id="cko0tx2hk0000rns67zaq0b4w" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/" rel="tag">React</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Flex布局" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/04/26/Flex%E5%B8%83%E5%B1%80/" class="article-date">
+  <time datetime="2021-04-26T01:21:52.000Z" itemprop="datePublished">2021-04-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/04/26/Flex%E5%B8%83%E5%B1%80/">Flex布局</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="常用"><a href="#常用" class="headerlink" title="常用"></a>常用</h2><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  	<span class="attribute">display</span>: flex;</span><br><span class="line">	<span class="attribute">justify-content</span>: center;</span><br><span class="line">	<span class="attribute">justify-content</span>: flex-end;</span><br><span class="line">	<span class="attribute">align-items</span>: center;</span><br><span class="line">	<span class="attribute">align-content</span>: flex-start;</span><br><span class="line">	<span class="attribute">flex-direction</span>: column;</span><br><span class="line">	<span class="attribute">flex-wrap</span>: wrap;</span><br><span class="line">	<span class="attribute">flex-flow</span>: row wrap; </span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">	<span class="attribute">flex-grow</span>: <span class="number">0</span>;</span><br><span class="line">	<span class="attribute">flex-shrink</span>: <span class="number">1</span>;</span><br><span class="line">	<span class="attribute">flex-basis</span>: <span class="number">50%</span>;</span><br><span class="line">	<span class="attribute">flex</span>: <span class="number">1</span>;</span><br><span class="line">	<span class="attribute">flex</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">25%</span>;</span><br><span class="line">	<span class="attribute">flex</span>: auto; <span class="comment">/* (1 1 auto) */</span></span><br><span class="line">	<span class="attribute">flex</span>: none; <span class="comment">/* (0 0 auto) */</span></span><br><span class="line">	<span class="attribute">align-self</span>: center;</span><br><span class="line">	<span class="attribute">order</span>: -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="一、Flex-布局是什么？"><a href="#一、Flex-布局是什么？" class="headerlink" title="一、Flex 布局是什么？"></a>一、Flex 布局是什么？</h2><p>Flex 是 Flexible Box 的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性。</p>
+<h2 id="二、基本概念"><a href="#二、基本概念" class="headerlink" title="二、基本概念"></a>二、基本概念</h2><p>采用 Flex 布局的元素，称为 Flex 容器（flex container），简称”容器”。它的所有子元素自动成为容器成员，称为 Flex 项目（flex item），简称”项目”。</p>
+<h2 id="三、容器的属性"><a href="#三、容器的属性" class="headerlink" title="三、容器的属性"></a>三、容器的属性</h2><p>以下六个属性设置在容器上：</p>
+<ul>
+<li>flex-direction</li>
+<li>flex-wrap</li>
+<li>flex-flow</li>
+<li>justify-content</li>
+<li>align-items</li>
+<li>align-content</li>
+</ul>
+<h3 id="3-1-flex-direction"><a href="#3-1-flex-direction" class="headerlink" title="3.1 flex-direction"></a>3.1 flex-direction</h3><p><span class="sf-d">flex-direction</span>属性决定<span class="sf-d">主轴</span>的方向（即项目的排列方向）。<br>可能取以下四个值：</p>
+<ul>
+<li><strong>row</strong>（默认值）：主轴为水平方向，起点在左端。</li>
+<li><strong>row-reverse</strong>：主轴为水平方向，起点在右端。</li>
+<li><strong>column</strong>：主轴为垂直方向，起点在上沿。</li>
+<li><strong>column-reverse</strong>：主轴为垂直方向，起点在下沿。</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="attribute">flex-direction</span>: row | row-reverse | column | column-reverse;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-flex-wrap"><a href="#3-2-flex-wrap" class="headerlink" title="3.2 flex-wrap"></a>3.2 flex-wrap</h3><p>默认情况下，项目都<span class="sf-d">排在一条线（又称”轴线”）上</span>。flex-wrap属性定义，如果一条轴线排不下，如何<span class="sf-d">换行</span>。<br>可能取以下三个值：</p>
+<ul>
+<li><strong>nowrap</strong>（默认）：不换行。</li>
+<li><strong>wrap</strong>：换行，第一行在上方。</li>
+<li><strong>wrap-reverse</strong>：换行，第一行在下方。</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.box</span>&#123;</span><br><span class="line">  <span class="attribute">flex-wrap</span>: nowrap | wrap | wrap-reverse;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-3-flex-flow"><a href="#3-3-flex-flow" class="headerlink" title="3.3 flex-flow"></a>3.3 flex-flow</h3><p><span class="sf-d">flex-flow</span>属性是<span class="sf-d">flex-direction</span>属性和<span class="sf-d">flex-wrap</span>属性的简写形式，默认值为<span class="sf-d">row nowrap</span>。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="attribute">flex-flow</span>: &lt;flex-direction&gt; || &lt;flex-wrap&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-4-justify-content"><a href="#3-4-justify-content" class="headerlink" title="3.4 justify-content"></a>3.4 justify-content</h3><p><span class="sf-d">justify-content</span>属性定义了项目在<span class="sf-d">主轴</span>上的对齐方式。<br>可能取5个值：</p>
+<ul>
+<li><strong>flex-start</strong>（默认值）：左对齐</li>
+<li><strong>flex-end</strong>：右对齐</li>
+<li><strong>center</strong>： 居中</li>
+<li><strong>space-between</strong>：两端对齐，项目之间的间隔都相等。</li>
+<li><strong>space-around</strong>：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="attribute">justify-content</span>: flex-start | flex-end | center | space-between | space-around;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-5-align-items"><a href="#3-5-align-items" class="headerlink" title="3.5 align-items"></a>3.5 align-items</h3><p><span class="sf-d">align-items</span>属性定义项目在<span class="sf-d">交叉轴</span>上如何对齐。<br>可能取以下五个值：</p>
+<ul>
+<li><strong>flex-start</strong>：交叉轴的起点对齐。</li>
+<li><strong>flex-end</strong>：交叉轴的终点对齐。</li>
+<li><strong>center</strong>：交叉轴的中点对齐。</li>
+<li><strong>baseline</strong>：项目的第一行文字的基线对齐。</li>
+<li><strong>stretch</strong>（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度。</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="attribute">align-items</span>: flex-start | flex-end | center | baseline | stretch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-6-align-content"><a href="#3-6-align-content" class="headerlink" title="3.6 align-content"></a>3.6 align-content</h3><p><span class="sf-d">align-content</span>属性定义了<span class="sf-d">多根轴线</span>的对齐方式。如果项目<span class="sf-d">只有一根轴线，该属性不起作用</span>。<br>可能取以下六个值：</p>
+<ul>
+<li><strong>flex-start</strong>：与交叉轴的起点对齐。</li>
+<li><strong>flex-end</strong>：与交叉轴的终点对齐。</li>
+<li><strong>center</strong>：与交叉轴的中点对齐。</li>
+<li><strong>space-between</strong>：与交叉轴两端对齐，轴线之间的间隔平均分布。</li>
+<li><strong>space-around</strong>：每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍。</li>
+<li><strong>stretch</strong>（默认值）：轴线占满整个交叉轴。<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="attribute">align-content</span>: flex-start | flex-end | center | space-between | space-around | stretch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="四、项目的属性"><a href="#四、项目的属性" class="headerlink" title="四、项目的属性"></a>四、项目的属性</h2><p>以下6个属性设置在项目上。</p>
+<ul>
+<li>order</li>
+<li>flex-grow</li>
+<li>flex-shrink</li>
+<li>flex-basis</li>
+<li>flex</li>
+<li>align-self</li>
+</ul>
+<h3 id="4-1-order"><a href="#4-1-order" class="headerlink" title="4.1 order"></a>4.1 order</h3><p><span class="sf-d">order</span>属性定义项目的排列顺序。<span class="sf-d">数值越小，排列越靠前</span>，默认为0。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">  <span class="attribute">order</span>: &lt;integer&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-2-flex-grow"><a href="#4-2-flex-grow" class="headerlink" title="4.2 flex-grow"></a>4.2 flex-grow</h3><p><span class="sf-d">flex-grow</span>属性定义项目的<span class="sf-d">放大比例</span>，默认为0，即如果存在剩余空间，也不放大。<br>如果所有项目的flex-grow属性都为1，则它们将等分剩余空间（如果有的话）。如果一个项目的flex-grow属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">  <span class="attribute">flex-grow</span>: &lt;number&gt;; <span class="comment">/* default 0 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-3-flex-shrink"><a href="#4-3-flex-shrink" class="headerlink" title="4.3 flex-shrink"></a>4.3 flex-shrink</h3><p><span class="sf-d">flex-shrink</span>属性定义了项目的<span class="sf-d">缩小比例</span>，默认为1，即如果空间不足，该项目将缩小。<br>如果所有项目的flex-shrink属性都为1，当空间不足时，都将等比例缩小。如果一个项目的flex-shrink属性为0，其他项目都为1，则空间不足时，前者不缩小。<br>负值对该属性无效。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">  <span class="attribute">flex-shrink</span>: &lt;number&gt;; <span class="comment">/* default 1 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-4-flex-basis"><a href="#4-4-flex-basis" class="headerlink" title="4.4 flex-basis"></a>4.4 flex-basis</h3><p><span class="sf-d">flex-basis</span>属性定义了在分配多余空间之前，项目<span class="sf-d">占据的主轴空间</span>（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。<br>它可以设为跟width或height属性一样的值（比如350px），则项目将占据固定空间。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line"><span class="attribute">flex-basis</span>: &lt;length&gt; | auto; <span class="comment">/* default auto */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-5-flex"><a href="#4-5-flex" class="headerlink" title="4.5 flex"></a>4.5 flex</h3><p><span class="sf-d">flex</span>属性是<span class="sf-d">flex-grow</span>, <span class="sf-d">flex-shrink</span> 和 <span class="sf-d">flex-basis</span>的简写，默认值为<span class="sf-d">0 1 auto</span>。后两个属性可选。<br>该属性有两个快捷值：auto (1 1 auto) 和 none (0 0 auto)。<br>建议优先使用这个属性，而不是单独写三个分离的属性，因为浏览器会推算相关值。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">  <span class="attribute">flex</span>: none | [ &lt;<span class="string">'flex-grow'</span>&gt; &lt;<span class="string">'flex-shrink'</span>&gt;? || &lt;<span class="string">'flex-basis'</span>&gt; ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-6-align-self"><a href="#4-6-align-self" class="headerlink" title="4.6 align-self"></a>4.6 align-self</h3><p><span class="sf-d">align-self</span>属性允许单个项目有与其他项目<span class="sf-d">不一样的对齐方式</span>，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。<br>该属性可能取6个值，除了auto，其他都与align-items属性完全一致。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">  <span class="attribute">align-self</span>: auto | flex-start | flex-end | center | baseline | stretch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>参考链接🔗<br><a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html" target="_blank" rel="noopener">Flex 布局教程：语法篇</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/04/26/Flex%E5%B8%83%E5%B1%80/" data-id="cknxx0y160007trs6b4lthbnk" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-HTTP方法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/04/09/HTTP%E6%96%B9%E6%B3%95/" class="article-date">
+  <time datetime="2021-04-09T08:47:18.000Z" itemprop="datePublished">2021-04-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/04/09/HTTP%E6%96%B9%E6%B3%95/">HTTP方法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/04/09/HTTP%E6%96%B9%E6%B3%95/" data-id="cknxx0y140003trs63ddy4n4o" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" rel="tag">浏览器</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-前端优化" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/04/09/%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96/" class="article-date">
+  <time datetime="2021-04-09T08:34:29.000Z" itemprop="datePublished">2021-04-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/04/09/%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96/">前端优化</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>降低请求量：合并资源，加少HTTP请求数，minify/gzip压缩，webP，lazyLoad。<br>加快请求速度：预解析DNS，减少域名数，并行加载，CDN分发。<br>缓存：HTTP协议缓存请求，离线缓存 manifest，离线数据缓存 localStorage。<br>渲染：JS/CSS优化，加载顺序，服务器渲染，pipeline。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/04/09/%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96/" data-id="cknxx0y130001trs69m854zc9" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" rel="tag">浏览器</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-强缓存、协商缓存" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/04/09/%E5%BC%BA%E7%BC%93%E5%AD%98%E3%80%81%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98/" class="article-date">
+  <time datetime="2021-04-09T08:04:37.000Z" itemprop="datePublished">2021-04-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/04/09/%E5%BC%BA%E7%BC%93%E5%AD%98%E3%80%81%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98/">强缓存、协商缓存</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>缓存分为两种：强缓存和协商缓存，根据响应的header内容来决定。</p>
+<h5 id="强缓存"><a href="#强缓存" class="headerlink" title="强缓存"></a>强缓存</h5><ul>
+<li>获取资源形式：从缓存取</li>
+<li>状态码：200</li>
+<li>发送请求到服务器：否，直接从缓存取</li>
+</ul>
+<h5 id="协商缓存"><a href="#协商缓存" class="headerlink" title="协商缓存"></a>协商缓存</h5><ul>
+<li>获取资源形式：从缓存取</li>
+<li>状态码：304</li>
+<li>发送请求到服务器：是，通过服务器来告知缓存是否可用</li>
+</ul>
+<p>强缓存相关字段有expires, cache-control。如果cache-control与expires同时存在的话，cache-control的优先级高于expires。<br>协商缓存相关字段有Last-Modified/If-Modified-Since，Etag/If-None-Match</p>
+<h3 id="304-介绍"><a href="#304-介绍" class="headerlink" title="304 介绍"></a>304 介绍</h3><p>如果客户端发送了一个带条件的GET请求且该请求已被允许，而文档的内容（自上次访问以来或者根据请求的条件）并没有改变，则服务器应当返回这个304状态码。</p>
+<h3 id="强缓存、协商缓存的使用场景"><a href="#强缓存、协商缓存的使用场景" class="headerlink" title="强缓存、协商缓存的使用场景"></a>强缓存、协商缓存的使用场景</h3><p>因为服务器上的资源不是一直固定不变的，大多数情况下它会更新，这个时候如果我们还访问本地缓存，那么对用户来说，那就相当于资源没有更新，用户看到的还是旧的资源；所以我们希望服务器上的资源更新了浏览器就请求新的资源，没有更新就使用本地的缓存，以最大程度的减少因网络请求而产生的资源浪费。</p>
+<img src="/2021/04/09/%E5%BC%BA%E7%BC%93%E5%AD%98%E3%80%81%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98/a.png" class="" title="图片描述">
+
+<h3 id="301和302的区别"><a href="#301和302的区别" class="headerlink" title="301和302的区别"></a>301和302的区别</h3><p>301 Moved Permanently 被请求的资源已永久移动到新位置，并且将来任何对此资源的引用都应该使用本响应返回的若干个URI之一。如果可能，拥有链接编辑功能的客户端应当自动把请求的地址修改为服务器反馈回来的地址。除非额外指定，否则这个响应也是可缓存的。<br>302 Found 请求的资源现在临时从不同的URI响应请求。由于这样的重定向是临时的，客户端应当继续向原有地址发送以后的请求。只有在Cache-Control或Expires中进行了指定的情况下，这个响应才是可缓存的。<br>字面上的区别就是301是永久重定向，而302是临时重定向。<br>301比较常用的场景是使用域名跳转。<br>302用来做临时跳转，比如未登录的用户访问用户中心重定向到登录页面。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/04/09/%E5%BC%BA%E7%BC%93%E5%AD%98%E3%80%81%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98/" data-id="cknxx0y170009trs6ccfbbrn2" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" rel="tag">浏览器</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-http常用请求头" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/04/09/http%E5%B8%B8%E7%94%A8%E8%AF%B7%E6%B1%82%E5%A4%B4/" class="article-date">
+  <time datetime="2021-04-09T07:35:45.000Z" itemprop="datePublished">2021-04-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/04/09/http%E5%B8%B8%E7%94%A8%E8%AF%B7%E6%B1%82%E5%A4%B4/">http常用请求头</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li>Accept: 可接受的响应内容类型（Content-Types）</li>
+<li>Accept-Charset: 可接受的字符集</li>
+<li>Accept-Encoding: 可接受的响应内容的编码方式</li>
+<li>Accept-Language: 可接受的响应内容语言列表</li>
+<li>Accept-Datetime: 可接受的按照时间来表示的响应内容版本</li>
+<li>Authorization: 用于表示HTTP协议中需要认证资源的认证信息</li>
+<li>Cache-Control: 用来指定当前的请求/回复中的，是否使用缓存机制</li>
+<li>Connection: 客户端（浏览器）想要优先使用的连接类型</li>
+<li>Cookie: 由之前服务器通过Set-Cookie设置的一个HTTP协议Cookie</li>
+<li>Content-Length: 以8进制表示的请求体的长度</li>
+<li>Content-MD5: 请求体的内容的二进制MD5散列值（数字签名），以Base64编码的结果</li>
+<li>Content-Type: 请求体的MIME类型（用于POST和PUT请求中）</li>
+<li>Date: 发送该消息的日期和时间（以RFC 7231中定义的“HTTP日期”格式来发送）</li>
+<li>Expect: 表示客户端要求服务器做出特定的行为</li>
+<li>From: 发起此请求的用户的邮件地址</li>
+<li>Host: 表示服务器的域名以及服务器所监听的端口号，如果所请求的端口是对应的服务的标准端口（80），则端口号可以省略</li>
+<li>If-Match: 仅当客户端提供的实体与服务器上对应的实体相匹配时，才进行对应的操作。主要用于像PUT这样的方法中，仅当从用户上次更新某个资源后，该资源未被修改的情况下，才更新该资源</li>
+<li>If-Modified-Since: 允许在对应的资源未被修改的情况下返回304未修改</li>
+<li>If-None-Match: 允许在对应的内容未被修改的情况下返回304未修改（304Not Modified）,参考超文本传输协议的实体标记</li>
+<li>If-Range: 如果该实体未被修改过，则将返回所缺少的那一个或多个部分。否则，返回整个新的实</li>
+<li>If-Unmodified-Since: 仅当该实体自某个特定时间以来未被修改的情况下，才发送回应</li>
+<li>Max-Forwards:  限制该消息可被代理及网关转发的次数</li>
+<li>Origin: 发起一个针对跨域资源共享的请求（该请求要求服务器在响应中加入一个Access-Control-Allow-Origin的消息头，表示访问控制所允许的来源）</li>
+<li>Pragma: 与具体的实现相关，这些字段可能在请求/回应链中的任何时候产生</li>
+<li>Proxy-Authorization: 用于向代理进行认证的认证信息</li>
+<li>Range: 表示请求某个实体的一部分，字节偏移以0开始</li>
+<li>Referer: 表示浏览器所访问的前一个页面，可以认为是之前访问页面的链接将浏览器带到了当前页面。Referer其实是Referrer这个单词，但REC制作标准时给拼错了，后来也就将错就错使用Referer了。</li>
+<li>TE: 浏览器预期接受的传输时的编码方式：可使用回应协议头Transfer-Encoding中的值（还可以使用“trailers”表示数据传输时的分块方式）用来表示浏览器希望在最后一个大小为0的块之后还接收到一些额外的字段。</li>
+<li>User-Agent: 浏览器的身份标识字符串</li>
+<li>Upgrade: 要求服务器升级到一个高版本协议</li>
+<li>Via: 告诉服务器，这个请求是由哪些代理发出的</li>
+<li>Warning: 一个一般性的警告，表示在实体内容体中可能存在错误</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/04/09/http%E5%B8%B8%E7%94%A8%E8%AF%B7%E6%B1%82%E5%A4%B4/" data-id="cknxx0y150005trs6fr6h6mmo" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" rel="tag">浏览器</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-cookie-session的区别" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/04/09/cookie-session%E7%9A%84%E5%8C%BA%E5%88%AB/" class="article-date">
+  <time datetime="2021-04-09T07:30:00.000Z" itemprop="datePublished">2021-04-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/04/09/cookie-session%E7%9A%84%E5%8C%BA%E5%88%AB/">cookie session的区别</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>cookie数据存放在客户的浏览器上，session数据放在服务器上。</li>
+<li>cookie不是很安全，别人可以分析存放在本地的cookie，并进行cookie欺骗，考虑到安全应当使用session。</li>
+<li>session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能，考虑到减轻服务器性能方面，应当使用cookie。</li>
+<li>单个cookie保存的数据不能超过4k，很多浏览器都限制一个站点最多保存20个cookie。</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/04/09/cookie-session%E7%9A%84%E5%8C%BA%E5%88%AB/" data-id="cknxx0y100000trs61i212t93" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" rel="tag">浏览器</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-package-json-版本号说明" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/04/08/package-json-%E7%89%88%E6%9C%AC%E5%8F%B7%E8%AF%B4%E6%98%8E/" class="article-date">
+  <time datetime="2021-04-08T07:54:33.000Z" itemprop="datePublished">2021-04-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/04/08/package-json-%E7%89%88%E6%9C%AC%E5%8F%B7%E8%AF%B4%E6%98%8E/">package.json 版本号说明</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="关于版本号的描述"><a href="#关于版本号的描述" class="headerlink" title="关于版本号的描述"></a>关于版本号的描述</h2><p>npm 模块的完整版本号一般是【主版本.次要版本.补丁版本】，一般情况下，次要版本号发生改变的话，表示程序有重大更新。</p>
+<h3 id="语义版本号"><a href="#语义版本号" class="headerlink" title="语义版本号"></a>语义版本号</h3><p>使用NPM下载和发布代码时都会接触到版本号。NPM使用语义版本号来管理代码，这里简单介绍一下。<br>语义版本号分为X.Y.Z三位，分别代表主版本号、次版本号和补丁版本号。当代码变更时，版本号按以下原则更新。</p>
+<ol>
+<li>如果只是修复bug，需要更新Z位。</li>
+<li>如果是新增了功能，但是向下兼容，需要更新Y位。</li>
+<li>如果有大变动，向下不兼容，需要更新X位。<br>版本号有个这个保证后，在申明第三方包依赖时，除了可依赖于一个<span class="sf-d">固定版本号</span>外，还可以依赖于<span class="sf-d">某个范围的版本号</span>。例如：”argv”:”0.0.x”表示依赖于0.0.x系列的最新版argv。</li>
+</ol>
+<h3 id="使用～表示版本范围"><a href="#使用～表示版本范围" class="headerlink" title="使用～表示版本范围"></a>使用～表示版本范围</h3><p class="sf-warning">不改变大版本和次要版本号</p>
+这里大概可以如此概述：
+1⃣️ 补丁版本号缺失，则允许补丁版本号升级；
+2⃣️ 次要版本号+补丁版本号缺失，则允许次要版本号+补丁版本号升级；
+
+<h5 id="～2-3-4"><a href="#～2-3-4" class="headerlink" title="～2.3.4"></a>～2.3.4</h5><ul>
+<li><b>描述：</b>主版本+次要版本+补丁版本 （2.3.4 &lt;= version &lt; 2.4.0）</li>
+<li><b>说明：</b>在主版本+次要版本不允许变更的前提下，允许补丁版本升级（补丁版本号下限是4，无上限）。</li>
+</ul>
+<h5 id="～2-3"><a href="#～2-3" class="headerlink" title="～2.3"></a>～2.3</h5><ul>
+<li><b>描述：</b>主版本+次要版本 （2.3.0 &lt;= version &lt; 2.4.0）</li>
+<li><b>说明：</b>在主版本+次要版本不允许变更的前提下，允许补丁版本升级。</li>
+</ul>
+<h5 id="～2"><a href="#～2" class="headerlink" title="～2"></a>～2</h5><ul>
+<li><b>描述：</b>主版本 （2.0.0 &lt;= version &lt; 3.0.0）</li>
+<li><b>说明：</b>在主版本不允许变更的前提下，允许次要版本+补丁版本升级。</li>
+</ul>
+<h3 id="使用-表示版本范围"><a href="#使用-表示版本范围" class="headerlink" title="使用^表示版本范围"></a>使用^表示版本范围</h3><p class="sf-warning">不改变大版本号</p>
+1⃣️ 若主版本号不为0，则允许次要版本号+补丁版本号升级；
+2⃣️ 若主版本号为0，次要版本号不为0，则允许补丁版本号升级；
+3⃣️ 若主版本号+次要版本号皆为0，将无法升级模块；
+4⃣️ 若主版本号不为0，补丁版本号缺失（将被视为0），那么将允许次要版本+补丁版本升级到最新；
+5⃣️ 若主版本为0，补丁版本缺失（将被视为0），那么允许补丁版本升级到最新；
+6⃣️ 若次要版本+补丁版本均缺失，此时补丁版本被视为1，那么将允许次要版本+补丁版本升级到最新。
+
+<h5 id="1-3-4"><a href="#1-3-4" class="headerlink" title="^1.3.4"></a>^1.3.4</h5><ul>
+<li><b>描述：</b>主版本号不为0 （1.3.4 &lt;= version &lt; 2.0.0）</li>
+<li><b>说明：</b>主版本不为0，允许次要版本+补丁版本升级</li>
+</ul>
+<h5 id="0-2-3"><a href="#0-2-3" class="headerlink" title="^0.2.3"></a>^0.2.3</h5><ul>
+<li><b>描述：</b>主版本号为0，次要版本号不为0 （0.2.3 &lt;= version &lt; 0.3.0）</li>
+<li><b>说明：</b>主版本为0，次要版本不为0，允许补丁版本升级</li>
+</ul>
+<h5 id="0-0-3"><a href="#0-0-3" class="headerlink" title="^0.0.3"></a>^0.0.3</h5><ul>
+<li><b>描述：</b>主版本号+次要版本号均为0 （0.0.3 &lt;= version &lt; 0.0.4）</li>
+<li><b>说明：</b>主版本号+次要版本号均为0，无法升级模块</li>
+</ul>
+<h5 id="1-3"><a href="#1-3" class="headerlink" title="^1.3"></a>^1.3</h5><ul>
+<li><b>描述：</b>主版本号不为0，补丁版本号缺失 （1.3.0 &lt;= version &lt; 2.0.0）</li>
+<li><b>说明：</b>主版本号不为0，补丁版本因缺失被视作0，允许次要版本+补丁版本升级到最新</li>
+</ul>
+<h5 id="0-2"><a href="#0-2" class="headerlink" title="^0.2"></a>^0.2</h5><ul>
+<li><b>描述：</b>主版本为0，补丁版本缺失 （0.2.0 &lt;= version &lt; 0.3.0）</li>
+<li><b>说明：</b>主版本为0，补丁版本因缺失被视作0，允许补丁版本升级到最新</li>
+</ul>
+<h5 id="1"><a href="#1" class="headerlink" title="^1"></a>^1</h5><ul>
+<li><b>描述：</b>主版本号不为0，次要版本+补丁版本均缺失 （1.0.0 &lt;= version &lt; 2.0.0）</li>
+<li><b>说明：</b>主版本不为0，次要版本+补丁版本因缺失被视作0，允许次要版本+补丁版本升级</li>
+</ul>
+<h5 id="0"><a href="#0" class="headerlink" title="^0"></a>^0</h5><ul>
+<li><b>描述：</b>主版本为0，次要版本+补丁版本均缺失 （0.0.1 &lt;= version &lt; 1.0.0）</li>
+<li><b>说明：</b>主版本为0，次要版本因缺失被视作0，补丁版本虽缺失但是智能被视作1，允许缺失的次要版本+补丁版本升级到最新</li>
+</ul>
+<p>参考链接🔗<br><a href="https://www.jianshu.com/p/b3d86ddfd555" target="_blank" rel="noopener">package.json文件说明解释</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/04/08/package-json-%E7%89%88%E6%9C%AC%E5%8F%B7%E8%AF%B4%E6%98%8E/" data-id="ckn8l481w00024us6eyuu9q75" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/" rel="tag">Vue</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-z-index详解" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/04/07/z-index%E8%AF%A6%E8%A7%A3/" class="article-date">
+  <time datetime="2021-04-07T03:00:54.000Z" itemprop="datePublished">2021-04-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/04/07/z-index%E8%AF%A6%E8%A7%A3/">z-index详解</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在一个层叠上下文中，一共可能出现<span class="sf-d">七个层叠等级</span>，从最低到最高排列，依次是：</p>
+<ol>
+<li>背景和边框 ：形成层叠上下文的元素的背景和边框，它是整个上下文中层叠等级最低的</li>
+<li>Z-Index 为负数 ：设置了 z-index 为负数的子元素以及由它所产生的层叠上下文</li>
+<li>块级盒模型：位于正常文档流中的、块级的、非定位的子元素</li>
+<li>浮动盒模型 ：浮动的、非定位的子元素</li>
+<li>内联盒模型 ：位于正常文档流中的、内联的、非定位的子元素</li>
+<li>Z-index 为 0：设置了 z-index 为 0 的、定位的子元素以及由它所产生的层叠上下文</li>
+<li>Z-Index 为正数 ：设置了 z-index 为正数的、定位的子元素以及由它所产生的层叠上下文，它是整个上下文中层叠等级最高的<img src="/2021/04/07/z-index%E8%AF%A6%E8%A7%A3/a.png" class="" title="图片描述">
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/04/07/z-index%E8%AF%A6%E8%A7%A3/" data-id="ckn8l343n00004us60pkncf62" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/">下一页 </a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Camunda/" rel="tag">Camunda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GIS/" rel="tag">GIS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ThingJS/" rel="tag">ThingJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/" rel="tag">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Waiting/" rel="tag">Waiting</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E7%89%A9%E9%97%B4/" rel="tag">杂物间</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A6%82%E5%BF%B5/" rel="tag">概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" rel="tag">浏览器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/" rel="tag">物联网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%98%E5%9B%BE/" rel="tag">绘图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag">网络</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS/" style="font-size: 20px;">CSS</a> <a href="/tags/Camunda/" style="font-size: 10px;">Camunda</a> <a href="/tags/GIS/" style="font-size: 12.86px;">GIS</a> <a href="/tags/Git/" style="font-size: 12.86px;">Git</a> <a href="/tags/HTML/" style="font-size: 12.86px;">HTML</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 11.43px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Node-js/" style="font-size: 10px;">Node.js</a> <a href="/tags/React/" style="font-size: 11.43px;">React</a> <a href="/tags/ThingJS/" style="font-size: 10px;">ThingJS</a> <a href="/tags/Vue/" style="font-size: 15.71px;">Vue</a> <a href="/tags/Waiting/" style="font-size: 10px;">Waiting</a> <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 10px;">小程序</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 17.14px;">数据库</a> <a href="/tags/%E6%9D%82%E7%89%A9%E9%97%B4/" style="font-size: 11.43px;">杂物间</a> <a href="/tags/%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">概念</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 18.57px;">浏览器</a> <a href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/" style="font-size: 11.43px;">物联网</a> <a href="/tags/%E7%BB%98%E5%9B%BE/" style="font-size: 10px;">绘图</a> <a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 14.29px;">网络</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/28/State-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">State &amp; 生命周期</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/28/%E7%BB%84%E4%BB%B6-Props/">组件 &amp; Props</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/26/Flex%E5%B8%83%E5%B1%80/">Flex布局</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/09/HTTP%E6%96%B9%E6%B3%95/">HTTP方法</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/09/%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96/">前端优化</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 NiePeng<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

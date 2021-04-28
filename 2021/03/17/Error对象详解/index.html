@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Error对象详解 | NiePeng</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一、概念error指程序中的非正常运行状态，在其他编程语言中称为“异常”或“错误”。解释器会为每个错误情形创建并抛出一个Error对象，其中包含错误的描述信息。ECMAScript定义了六种类型的错误。除此之外，还可以使用Error构造方法创建自定义的Error对象，并使用throw语句抛出该对象。 错误对象的类型： Error: 所有错误类型的父类型 SyntaxError: 语法错误，表示程序">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Error对象详解">
+<meta property="og:url" content="http://yoursite.com/2021/03/17/Error%E5%AF%B9%E8%B1%A1%E8%AF%A6%E8%A7%A3/index.html">
+<meta property="og:site_name" content="NiePeng">
+<meta property="og:description" content="一、概念error指程序中的非正常运行状态，在其他编程语言中称为“异常”或“错误”。解释器会为每个错误情形创建并抛出一个Error对象，其中包含错误的描述信息。ECMAScript定义了六种类型的错误。除此之外，还可以使用Error构造方法创建自定义的Error对象，并使用throw语句抛出该对象。 错误对象的类型： Error: 所有错误类型的父类型 SyntaxError: 语法错误，表示程序">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-03-17T01:26:47.000Z">
+<meta property="article:modified_time" content="2021-03-17T02:17:36.418Z">
+<meta property="article:author" content="NiePeng">
+<meta property="article:tag" content="JavaScript">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="NiePeng" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <!-- <h1 id="logo-wrap">
+        <a href="/" id="logo">NiePeng</a><br/>
+      </h1> -->
+      <div id="header-photo"></div>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">合抱之木生于毫末，九层高台起于垒土，千里之行始于足下。</a> 
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Error对象详解" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/03/17/Error%E5%AF%B9%E8%B1%A1%E8%AF%A6%E8%A7%A3/" class="article-date">
+  <time datetime="2021-03-17T01:26:47.000Z" itemprop="datePublished">2021-03-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Error对象详解
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p><span class="sf-d">error</span>指程序中的非正常运行状态，在其他编程语言中称为“异常”或“错误”。解释器会为每个错误情形创建并抛出一个Error对象，其中包含错误的描述信息。<br>ECMAScript定义了六种类型的错误。除此之外，还可以使用Error构造方法创建自定义的Error对象，并使用throw语句抛出该对象。</p>
+<h4 id="错误对象的类型："><a href="#错误对象的类型：" class="headerlink" title="错误对象的类型："></a>错误对象的类型：</h4><ul>
+<li>Error: 所有错误类型的父类型</li>
+<li>SyntaxError: 语法错误，表示程序的语法使用错误<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">" "</span><span class="string">" "</span>) ;     <span class="comment">// SyntaxError: Unexpected string</span></span><br></pre></td></tr></table></figure></li>
+<li>ReferenceError: 引用错误，表示引用的变量不存在<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(a) ;     <span class="comment">// ReferenceError: a is not defined</span></span><br></pre></td></tr></table></figure></li>
+<li>TypeError: 类型错误，表示使用了错误的数据类型<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a;</span><br><span class="line"><span class="built_in">console</span>.log(a.name);     <span class="comment">// TypeError: Cannot read property 'name' of undefined</span></span><br></pre></td></tr></table></figure></li>
+<li>RangeError: 范围错误，数据值不在其所允许的范围内（函数递归调用容易出此错误）<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 保留小数点多少位</span></span><br><span class="line">(<span class="number">10.24</span>).toFixed(<span class="number">-1</span>)；  <span class="comment">// toFixed() digits argument must be between 0 and 100</span></span><br></pre></td></tr></table></figure></li>
+<li>URIError: URI错误，向全局URI处理函数（decodeURI, decodeURIComponent）传递一个不合法的URI时，URIError错误会被抛出<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 解码URI地址   错误：格式不正确</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">decodeURI</span>(<span class="string">"%"</span>) );   <span class="comment">// URIError: URI malformed</span></span><br></pre></td></tr></table></figure></li>
+<li>EvalError: eval函数之行错误<br>EvalError 不在当前ECMAScript规范中使用，因此不会被运行时抛出。但是对象本身仍然与规范的早期版本向后兼容</li>
+</ul>
+<h2 id="二、错误处理"><a href="#二、错误处理" class="headerlink" title="二、错误处理"></a>二、错误处理</h2><p>即使程序发生错误，也保证不异常中断的机制。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">    可能发生错误的代码</span><br><span class="line">&#125;<span class="keyword">catch</span>(err)&#123;</span><br><span class="line">    只有发生错误时才执行的代码</span><br><span class="line">&#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">    无论是否出错，肯定都要执行的代码</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用要点：</p>
+<ul>
+<li>使用try包裹的代码，即使不出错，效率也比不用try包裹的代码低；</li>
+<li>在try中，尽量少的包含可能出错的代码；</li>
+<li>无法提前预知错误类型的错误，必须用try catch 捕获；</li>
+<li>finally可以省略；</li>
+</ul>
+<h2 id="三、抛出自定义错误"><a href="#三、抛出自定义错误" class="headerlink" title="三、抛出自定义错误"></a>三、抛出自定义错误</h2><p>何时抛出：如果函数的定义者，需要告知调用者使用过程中的错误；<br>如何抛出：throw new Error(“错误信息”);</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 程序员甲：定义函数的人</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">round</span>(<span class="params">num, d</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!<span class="built_in">isNaN</span>(num) &amp;&amp; !<span class="built_in">isNaN</span>(d))&#123;</span><br><span class="line">        num *= <span class="built_in">Math</span>.pow(<span class="number">10</span>, d);</span><br><span class="line">        <span class="keyword">return</span> num;</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 抛出自定义错误</span></span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"参数必须是数字"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 程序员乙：调用函数的人</span></span><br><span class="line"><span class="keyword">var</span> d = <span class="built_in">parseInt</span>(prompt(<span class="string">'请输入数字'</span>));</span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">    alert(round(<span class="number">123.456</span>), d);</span><br><span class="line">&#125;<span class="keyword">catch</span>(err)&#123;</span><br><span class="line">    alert(err.message); <span class="comment">// 接入抛出的自定义错误</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="错误对象的属性"><a href="#错误对象的属性" class="headerlink" title="错误对象的属性"></a>错误对象的属性</h4><h5 id="name-属性"><a href="#name-属性" class="headerlink" title="name 属性"></a>name 属性</h5><p>错误类型</p>
+<h5 id="message-属性"><a href="#message-属性" class="headerlink" title="message 属性"></a>message 属性</h5><p>错误相关的描述信息</p>
+<h5 id="stack-属性"><a href="#stack-属性" class="headerlink" title="stack 属性"></a>stack 属性</h5><p>函数调用栈记录信息（错误相关信息，错误出现的位置）</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">&#125;<span class="keyword">catch</span>(e) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(e.name);    <span class="comment">// ReferenceError</span></span><br><span class="line">    <span class="built_in">console</span>.log(e.message); <span class="comment">// a is not define</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="四、实例练习"><a href="#四、实例练习" class="headerlink" title="四、实例练习"></a>四、实例练习</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> n = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">try</span>&#123;</span><br><span class="line">        n++;</span><br><span class="line">        <span class="keyword">return</span> n;</span><br><span class="line">    &#125;<span class="keyword">catch</span>(err)&#123;    </span><br><span class="line">        <span class="comment">// 没错误，catch不执行</span></span><br><span class="line">        n++;</span><br><span class="line">        <span class="keyword">return</span> n;    </span><br><span class="line">    &#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">        n++;</span><br><span class="line">        <span class="keyword">return</span> n;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(fun());<span class="comment">// 3  return为finally的</span></span><br><span class="line"><span class="built_in">console</span>.log(n);<span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
+<h1 id=""><a href="#" class="headerlink" title=""></a></h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> n = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">try</span>&#123;</span><br><span class="line">        n++;</span><br><span class="line">        <span class="keyword">return</span> n;</span><br><span class="line">    &#125;<span class="keyword">catch</span>(err)&#123;</span><br><span class="line">        <span class="comment">// 没错误，catch不执行</span></span><br><span class="line">        n++;</span><br><span class="line">        <span class="keyword">return</span> n;</span><br><span class="line">    &#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">        n++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(fun()); <span class="comment">// 2  return为try的</span></span><br><span class="line"><span class="built_in">console</span>.log(n); <span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
+<h1 id="-1"><a href="#-1" class="headerlink" title=""></a></h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> n = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">try</span>&#123;</span><br><span class="line">        n++;</span><br><span class="line">        n += m;  <span class="comment">//出错</span></span><br><span class="line">        <span class="keyword">return</span> n;   </span><br><span class="line">    &#125;<span class="keyword">catch</span>(err)&#123;</span><br><span class="line">        n++;</span><br><span class="line">        <span class="keyword">return</span> n;</span><br><span class="line">    &#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">        n++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(fun());    <span class="comment">// 3 return为catch的</span></span><br><span class="line"><span class="built_in">console</span>.log(n);        <span class="comment">// 4</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/03/17/Error%E5%AF%B9%E8%B1%A1%E8%AF%A6%E8%A7%A3/" data-id="ckmcrlefh0000z0s6h3kq5x1m" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/03/17/white-space%E5%B1%9E%E6%80%A7/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          white-space属性
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/02/26/Git-%E5%85%B3%E4%BA%8EGitHub/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Git-关于GitHub</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Camunda/" rel="tag">Camunda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GIS/" rel="tag">GIS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ThingJS/" rel="tag">ThingJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/" rel="tag">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Waiting/" rel="tag">Waiting</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E7%89%A9%E9%97%B4/" rel="tag">杂物间</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A6%82%E5%BF%B5/" rel="tag">概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" rel="tag">浏览器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/" rel="tag">物联网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%98%E5%9B%BE/" rel="tag">绘图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag">网络</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS/" style="font-size: 20px;">CSS</a> <a href="/tags/Camunda/" style="font-size: 10px;">Camunda</a> <a href="/tags/GIS/" style="font-size: 12.86px;">GIS</a> <a href="/tags/Git/" style="font-size: 12.86px;">Git</a> <a href="/tags/HTML/" style="font-size: 12.86px;">HTML</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 11.43px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Node-js/" style="font-size: 10px;">Node.js</a> <a href="/tags/React/" style="font-size: 11.43px;">React</a> <a href="/tags/ThingJS/" style="font-size: 10px;">ThingJS</a> <a href="/tags/Vue/" style="font-size: 15.71px;">Vue</a> <a href="/tags/Waiting/" style="font-size: 10px;">Waiting</a> <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 10px;">小程序</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 17.14px;">数据库</a> <a href="/tags/%E6%9D%82%E7%89%A9%E9%97%B4/" style="font-size: 11.43px;">杂物间</a> <a href="/tags/%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">概念</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 18.57px;">浏览器</a> <a href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/" style="font-size: 11.43px;">物联网</a> <a href="/tags/%E7%BB%98%E5%9B%BE/" style="font-size: 10px;">绘图</a> <a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 14.29px;">网络</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/28/State-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">State &amp; 生命周期</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/28/%E7%BB%84%E4%BB%B6-Props/">组件 &amp; Props</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/26/Flex%E5%B8%83%E5%B1%80/">Flex布局</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/09/HTTP%E6%96%B9%E6%B3%95/">HTTP方法</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/09/%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96/">前端优化</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 NiePeng<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>前端开发技巧 | NiePeng</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1. 利用 CSS 穿透覆盖默认样式常见发生场景：假如我们需要通过 input，type&#x3D;”file”来上传文件，而这个 input 的默认样式，可以说是非常地丑。所以我们希望通过一张图片，与这个 input 大小一样，位置一致地盖在上面。这个时候，显然，这个时候点击图片，input 是不会起作用的。就是因为 img 隔绝了 click 的穿透，而我们希望的是，这个 img 只是视觉上遮挡了 in">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端开发技巧">
+<meta property="og:url" content="http://yoursite.com/2020/08/03/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7/index.html">
+<meta property="og:site_name" content="NiePeng">
+<meta property="og:description" content="1. 利用 CSS 穿透覆盖默认样式常见发生场景：假如我们需要通过 input，type&#x3D;”file”来上传文件，而这个 input 的默认样式，可以说是非常地丑。所以我们希望通过一张图片，与这个 input 大小一样，位置一致地盖在上面。这个时候，显然，这个时候点击图片，input 是不会起作用的。就是因为 img 隔绝了 click 的穿透，而我们希望的是，这个 img 只是视觉上遮挡了 in">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-08-03T03:53:38.000Z">
+<meta property="article:modified_time" content="2021-03-17T02:26:35.728Z">
+<meta property="article:author" content="NiePeng">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="CSS">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="NiePeng" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <!-- <h1 id="logo-wrap">
+        <a href="/" id="logo">NiePeng</a><br/>
+      </h1> -->
+      <div id="header-photo"></div>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">合抱之木生于毫末，九层高台起于垒土，千里之行始于足下。</a> 
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-前端开发技巧" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/03/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7/" class="article-date">
+  <time datetime="2020-08-03T03:53:38.000Z" itemprop="datePublished">2020-08-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      前端开发技巧
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-利用-CSS-穿透覆盖默认样式"><a href="#1-利用-CSS-穿透覆盖默认样式" class="headerlink" title="1. 利用 CSS 穿透覆盖默认样式"></a>1. 利用 CSS 穿透覆盖默认样式</h3><p>常见发生场景：假如我们需要通过 input，type=”file”来上传文件，而这个 input 的默认样式，可以说是非常地丑。所以我们希望通过一张图片，与这个 input 大小一样，位置一致地盖在上面。这个时候，显然，这个时候点击图片，input 是不会起作用的。就是因为 img 隔绝了 click 的穿透，而我们希望的是，这个 img 只是视觉上遮挡了 input 的样式，但是点击的时候还是点击到 input。所以，只要让 img 可穿透即可。<br>css 代码如下：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">img</span> &#123;</span><br><span class="line">  <span class="attribute">pointer-events</span>: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-实现自定义原生-select-控件的样式"><a href="#2-实现自定义原生-select-控件的样式" class="headerlink" title="2. 实现自定义原生 select 控件的样式"></a>2. 实现自定义原生 select 控件的样式</h3><p>由于 select 移动端原生样式很丑，但是原生弹出效果是符合我们设计的原则。直接修改 select 的样式的时候，一个奇怪的现象出现了，在 chrome 上调试的时候，自己定义的样式起了作用，在 Android 手机上也起了作用，但是到了 ios 手机上就不行了，典型的不兼容问题，这个时候禁用原生的样式即可。<br>css 代码如下：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">select</span> &#123;</span><br><span class="line">  <span class="attribute">-webkit-appearance</span>: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-文本溢出处理"><a href="#3-文本溢出处理" class="headerlink" title="3. 文本溢出处理"></a>3. 文本溢出处理</h3><p>移动设备相对来说页面较小，很多时候显示的一些信息都需要省略部分。最常见的是单行标题溢出省略，多行详情介绍溢出省略。现在都用框架开发了，这种建议需求建议形成一个基础组件，方便快捷。<br>css 代码如下：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">//单行</span><br><span class="line"><span class="selector-class">.single</span> &#123;</span><br><span class="line">  <span class="attribute">overflow</span>: hidden;</span><br><span class="line">  <span class="attribute">white-space</span>: nowrap;</span><br><span class="line">  <span class="attribute">text-overflow</span>: ellipsis;</span><br><span class="line">&#125;</span><br><span class="line">//多行</span><br><span class="line"><span class="selector-class">.more</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: -webkit-box <span class="meta">!important</span>;</span><br><span class="line">  <span class="attribute">overflow</span>: hidden;</span><br><span class="line">  <span class="attribute">text-overflow</span>: ellipsis;</span><br><span class="line">  <span class="attribute">work-break</span>: break-all;</span><br><span class="line">  <span class="attribute">-webkit-box-orient</span>: vertical;</span><br><span class="line">  -webkit-line-clamp: 2; //指定行数</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-开启弹性滚动"><a href="#4-开启弹性滚动" class="headerlink" title="4. 开启弹性滚动"></a>4. 开启弹性滚动</h3><p>css 代码如下：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">overflow</span>: scroll;</span><br><span class="line">  <span class="attribute">-webkit-overflow-scrolling</span>: touch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意：Android 不支持原生的弹性滚动，但可以借助第三方库 iScroll 来实现。</p>
+<h3 id="5-一像素边框设置"><a href="#5-一像素边框设置" class="headerlink" title="5. 一像素边框设置"></a>5. 一像素边框设置</h3><p>很多时候，想保持边框的大小在任何设置上都是 1px，但是因为 1px 使用 2dp 渲染，也就是说会显示为 2px 大小。所以，要采用 css3 缩放一下。<br>css 代码如下：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.folder</span> <span class="selector-tag">li</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">5px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.folder</span> <span class="selector-tag">li</span> + <span class="selector-tag">li</span><span class="selector-pseudo">:before</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">top</span>: -<span class="number">1px</span>;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">" "</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">1px</span>;</span><br><span class="line">  <span class="attribute">border-top</span>: <span class="number">1px</span> solid <span class="number">#ccc</span>;</span><br><span class="line">  <span class="attribute">-webkit-transform</span>: <span class="built_in">scaleY</span>(<span class="number">0.5</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-防止鼠标选中事件"><a href="#6-防止鼠标选中事件" class="headerlink" title="6. 防止鼠标选中事件"></a>6. 防止鼠标选中事件</h3><p>给元素添加了onslectstart=”return false”,就可以防止鼠标选中事件。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"mask"</span> onselectstart=<span class="string">"return false"</span>&gt;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;div class="link"&gt;</span></span><br><span class="line"><span class="regexp">  &lt;a href="javascrip;;"&gt;登录&lt;/</span>a&gt;</span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="7-给动态添加的元素绑定事件"><a href="#7-给动态添加的元素绑定事件" class="headerlink" title="7. 给动态添加的元素绑定事件"></a>7. 给动态添加的元素绑定事件</h3><p>利用事件代理达到这个效果即可。如：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$(<span class="built_in">document</span>).on(<span class="string">"click"</span>, <span class="string">".large"</span>, slide); <span class="comment">//jq中的写法</span></span><br><span class="line"><span class="comment">//第一个参数表示的是对应事件，第二个是需要绑定事件的元素的id或class，第三个是绑定的对应的事件函数名</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="8-兼容-IE-浏览器的透明度处理"><a href="#8-兼容-IE-浏览器的透明度处理" class="headerlink" title="8. 兼容 IE 浏览器的透明度处理"></a>8. 兼容 IE 浏览器的透明度处理</h3><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.ui</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">0.4</span>;</span><br><span class="line">  filter: Alpha(opacity=40); //兼容IE浏览器的处理</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="9-常用的全屏居中-JS-函数"><a href="#9-常用的全屏居中-JS-函数" class="headerlink" title="9. 常用的全屏居中 JS 函数"></a>9. 常用的全屏居中 JS 函数</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//获取元素</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getElement</span>(<span class="params">ele</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">document</span>.getElementById(ele);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//自动居中函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">autoCenter</span>(<span class="params">el</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> bodyX = <span class="built_in">document</span>.documentElement.offsetWidth || <span class="built_in">document</span>.body.offsetWidth;</span><br><span class="line">  <span class="keyword">var</span> bodyY =</span><br><span class="line">    <span class="built_in">document</span>.documentElement.offsetHeight || <span class="built_in">document</span>.body.offsetHeight;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> elementX = el.offsetWidth;</span><br><span class="line">  <span class="keyword">var</span> elementY = el.offsetHeight;</span><br><span class="line"></span><br><span class="line">  el.style.left = (bodyX - elementX) / <span class="number">2</span> + <span class="string">"px"</span>;</span><br><span class="line">  el.style.top = (bodyY - elementY) / <span class="number">2</span> + <span class="string">"px"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="10-常用的全屏居中-CSS-函数"><a href="#10-常用的全屏居中-CSS-函数" class="headerlink" title="10. 常用的全屏居中 CSS 函数"></a>10. 常用的全屏居中 CSS 函数</h3><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100vh</span>;</span><br><span class="line">  <span class="attribute">text-align</span>: center;</span><br><span class="line">  <span class="attribute">line-height</span>: <span class="number">100vh</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="11-在输入框输入完内容并按回车的时候进行判断"><a href="#11-在输入框输入完内容并按回车的时候进行判断" class="headerlink" title="11. 在输入框输入完内容并按回车的时候进行判断"></a>11. 在输入框输入完内容并按回车的时候进行判断</h3><p>比如说输入完 11000 在按下回车的时候。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;input type=<span class="string">"textbox"</span> id=<span class="string">"textbox1"</span> onkeypress=<span class="string">"CheckInfo"</span> /&gt;</span><br><span class="line"></span><br><span class="line">&lt;script language=<span class="string">"javascript"</span> type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">CheckInfo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (event.keyCode==<span class="number">13</span>) &#123;</span><br><span class="line">            alert(textbox1.text);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="12-chrome-调试快捷键"><a href="#12-chrome-调试快捷键" class="headerlink" title="12. chrome 调试快捷键"></a>12. chrome 调试快捷键</h3><p>① ctrl+shift+f 全文查找<br>② ctrl+o 查找文件名<br>③ ctrl+shift+o 查找 js 函数名</p>
+<p>参考链接🔗<br><a href="https://mp.weixin.qq.com/s/SZkZe_CkbLUzwTqQ1X9zMw" target="_blank" rel="noopener">12 个实用的前端开发技巧总结</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/08/03/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7/" data-id="ckdf9vlq60004p1s64w0ca7ap" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/08/04/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          浏览器缓存
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/08/01/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%8A%80%E5%B7%A7/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">小程序技巧</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Camunda/" rel="tag">Camunda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GIS/" rel="tag">GIS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ThingJS/" rel="tag">ThingJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/" rel="tag">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Waiting/" rel="tag">Waiting</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E7%89%A9%E9%97%B4/" rel="tag">杂物间</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A6%82%E5%BF%B5/" rel="tag">概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" rel="tag">浏览器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/" rel="tag">物联网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%98%E5%9B%BE/" rel="tag">绘图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag">网络</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS/" style="font-size: 20px;">CSS</a> <a href="/tags/Camunda/" style="font-size: 10px;">Camunda</a> <a href="/tags/GIS/" style="font-size: 12.86px;">GIS</a> <a href="/tags/Git/" style="font-size: 12.86px;">Git</a> <a href="/tags/HTML/" style="font-size: 12.86px;">HTML</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 11.43px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Node-js/" style="font-size: 10px;">Node.js</a> <a href="/tags/React/" style="font-size: 11.43px;">React</a> <a href="/tags/ThingJS/" style="font-size: 10px;">ThingJS</a> <a href="/tags/Vue/" style="font-size: 15.71px;">Vue</a> <a href="/tags/Waiting/" style="font-size: 10px;">Waiting</a> <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 10px;">小程序</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 17.14px;">数据库</a> <a href="/tags/%E6%9D%82%E7%89%A9%E9%97%B4/" style="font-size: 11.43px;">杂物间</a> <a href="/tags/%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">概念</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 18.57px;">浏览器</a> <a href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/" style="font-size: 11.43px;">物联网</a> <a href="/tags/%E7%BB%98%E5%9B%BE/" style="font-size: 10px;">绘图</a> <a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 14.29px;">网络</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/28/State-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">State &amp; 生命周期</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/28/%E7%BB%84%E4%BB%B6-Props/">组件 &amp; Props</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/26/Flex%E5%B8%83%E5%B1%80/">Flex布局</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/09/HTTP%E6%96%B9%E6%B3%95/">HTTP方法</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/09/%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96/">前端优化</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 NiePeng<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

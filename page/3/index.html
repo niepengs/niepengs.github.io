@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>NiePeng</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="afasdfafa">
+<meta property="og:type" content="website">
+<meta property="og:title" content="NiePeng">
+<meta property="og:url" content="http://yoursite.com/page/3/index.html">
+<meta property="og:site_name" content="NiePeng">
+<meta property="og:description" content="afasdfafa">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="NiePeng">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="NiePeng" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <!-- <h1 id="logo-wrap">
+        <a href="/" id="logo">NiePeng</a><br/>
+      </h1> -->
+      <div id="header-photo"></div>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">合抱之木生于毫末，九层高台起于垒土，千里之行始于足下。</a> 
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-学习Camunda" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/03/17/%E5%AD%A6%E4%B9%A0Camunda/" class="article-date">
+  <time datetime="2021-03-17T03:22:26.000Z" itemprop="datePublished">2021-03-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/03/17/%E5%AD%A6%E4%B9%A0Camunda/">学习Camunda(-)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="流程引擎API"><a href="#流程引擎API" class="headerlink" title="流程引擎API"></a>流程引擎API</h2><img src="/2021/03/17/%E5%AD%A6%E4%B9%A0Camunda/api.png" class="" title="图片描述">
+
+<h3 id="RepositoryService"><a href="#RepositoryService" class="headerlink" title="RepositoryService"></a>RepositoryService</h3><p>RepositoryService这是使用Camunda引擎时所需的第一项服务。该服务提供用于管理和操纵部署和流程定义的操作。<br>接口功能：</p>
+<ul>
+<li>查询引擎已知的部署和流程定义。</li>
+<li>挂起并激活流程定义。挂起表示无法对其进行进一步的操作，而激活是相反的操作。</li>
+<li>检索各种资源，例如部署中包含的文件或引擎自动生成的流程图。</li>
+</ul>
+<h3 id="RuntimeService"><a href="#RuntimeService" class="headerlink" title="RuntimeService"></a>RuntimeService</h3><p>处理启动流程定义的新流程实例。如上所述，过程定义定义了过程中不同步骤的结构和行为。流程实例是这种流程定义的一种执行。对于每个流程定义，通常有多个实例同时运行。RuntimeService还是用于检索和存储过程变量的服务。这是特定于给定流程实例的数据，并且可以由流程中的各种构造使用（例如，专用网关通常使用流程变量来确定选择哪个路径来继续该流程）。RuntimeService还允许查询流程实例和执行。执行是BPMN 2.0的“令牌”概念的表示。基本上，执行是指向流程实例当前所在位置的指针。最后，只要流程实例正在等待外部触发器并且需要继续流程，就使用RuntimeService。一个流程实例可以具有各种等待状态，并且该服务包含各种操作以“信号”该实例，即接收到外部触发器并且可以继续该流程实例。</p>
+<h3 id="TaskService"><a href="#TaskService" class="headerlink" title="TaskService"></a>TaskService</h3><p>用户需要执行的任务是流程引擎的核心。任务周围的所有内容都分组在TaskService中，<br>接口功能：</p>
+<ul>
+<li>查询分配给用户或组的任务。</li>
+<li>创建新的独立任务。这些是与流程实例无关的任务。</li>
+<li>操纵任务分配给哪个用户或该任务涉及某种用户。</li>
+<li>声明并完成任务。声明意味着某人决定担任该任务的受让人，这意味着该用户将完成任务。完成意味着“完成任务的工作”。通常，这是一种形式的填充。</li>
+</ul>
+<h3 id="IdentityService"><a href="#IdentityService" class="headerlink" title="IdentityService"></a>IdentityService</h3><p>IdentityService是非常简单的。它允许对组和用户进行管理（创建，更新，删除，查询等）。重要的是要了解，核心引擎实际上在运行时不对用户进行任何检查。例如，可以将任务分配给任何用户，但是引擎不会验证系统是否知道该用户。这是因为引擎还可以与LDAP，Active Directory等服务结合使用。</p>
+<h3 id="FormService"><a href="#FormService" class="headerlink" title="FormService"></a>FormService</h3><p>FormService是一个可选的服务。这意味着Camunda引擎在没有它的情况下可以完美地使用，而不会牺牲任何功能。该服务介绍了启动表单和任务表单的概念。起始表单是在流程实例启动之前向用户显示的表单，而任务表单是在用户想要完成任务时显示的表单。您可以在BPMN 2.0流程定义中定义这些形式。该服务以一种易于使用的方式公开此数据。但是，这又是可选的，因为表单不需要嵌入流程定义中。</p>
+<h3 id="HistoryService"><a href="#HistoryService" class="headerlink" title="HistoryService"></a>HistoryService</h3><p>HistoryService暴露了引擎收集的所有历史数据。在执行流程时，引擎可以保存很多数据（这是可配置的），例如流程实例的启动时间，谁执行了哪些任务，完成任务所花的时间，每个流程实例遵循的路径等。该服务主要公开查询功能以访问此数据。</p>
+<h3 id="ManagementService"><a href="#ManagementService" class="headerlink" title="ManagementService"></a>ManagementService</h3><p>ManagementService编码自定义应用程序时，通常是没有必要的。它允许检索有关数据库表和表元数据的信息。此外，它公开了作业的查询功能和管理操作。作业在引擎中用于各种事情，例如计时器，异步继续，延迟的挂起/激活等。</p>
+<h3 id="FilterService"><a href="#FilterService" class="headerlink" title="FilterService"></a>FilterService</h3><p>FilterService允许创建和管理过滤器。过滤器是存储的查询，例如任务查询。例如，任务列表使用过滤器来过滤用户任务。</p>
+<h3 id="ExternalTask​​Service"><a href="#ExternalTask​​Service" class="headerlink" title="ExternalTask​​Service"></a>ExternalTask​​Service</h3><p>ExternalTask​​Service可以访问外部任务实例。外部任务表示在外部独立于流程引擎处理的工作项。</p>
+<h3 id="CaseService"><a href="#CaseService" class="headerlink" title="CaseService"></a>CaseService</h3><p>CaseService就像RuntimeService但对于案件的情况。它处理启动案例定义的新案例实例并管理案例执行的生命周期。该服务还用于检索和更新案例实例的过程变量。</p>
+<h3 id="DecisionService"><a href="#DecisionService" class="headerlink" title="DecisionService"></a>DecisionService</h3><p>DecisionService允许评估部署到引擎的决定。在业务规则任务中评估独立于流程定义的决策是一种替代方法。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/03/17/%E5%AD%A6%E4%B9%A0Camunda/" data-id="ckmcvpmmm00007ns6e1awcr9i" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Camunda/" rel="tag">Camunda</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-text-overflow属性" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/03/17/text-overflow%E5%B1%9E%E6%80%A7/" class="article-date">
+  <time datetime="2021-03-17T02:55:57.000Z" itemprop="datePublished">2021-03-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/03/17/text-overflow%E5%B1%9E%E6%80%A7/">text-overflow属性</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="定义和用法"><a href="#定义和用法" class="headerlink" title="定义和用法"></a>定义和用法</h2><p>text-overflow 属性规定当<span class="sf-d">文本溢出包含元素时</span>发生的事情。</p>
+<h2 id="取值"><a href="#取值" class="headerlink" title="取值"></a>取值</h2><ul>
+<li>clip: 修剪文本。</li>
+<li>ellipsis: 显示省略符号来代表被修剪的文本。</li>
+<li>string: 使用给定的字符串来代表被修剪的文本。</li>
+</ul>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><img src="/2021/03/17/text-overflow%E5%B1%9E%E6%80%A7/test.png" class="" title="图片描述">
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/03/17/text-overflow%E5%B1%9E%E6%80%A7/" data-id="ckmcuuhf700004rs6c3to1fhw" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-white-space属性" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/03/17/white-space%E5%B1%9E%E6%80%A7/" class="article-date">
+  <time datetime="2021-03-17T02:29:36.000Z" itemprop="datePublished">2021-03-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/03/17/white-space%E5%B1%9E%E6%80%A7/">white-space属性</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="定义和用法"><a href="#定义和用法" class="headerlink" title="定义和用法"></a>定义和用法</h2><p>white-space 属性设置如何处理元素内的<span class="sf-d">空白</span>。<br>这个属性声明建立布局过程中如何处理元素中的空白符。值 pre-wrap 和 pre-line 是 CSS 2.1 中新增的。</p>
+<p>规定段落中的文本不进行换行：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">    <span class="attribute">white-space</span>: nowrap</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="取值"><a href="#取值" class="headerlink" title="取值"></a>取值</h2><ul>
+<li>normal: 默认。空白会被浏览器忽略。</li>
+<li>pre: 空白会被浏览器保留。其行为方式类似 HTML 中的  <span class="sf-d">&lt; pre &gt;</span> 标签。</li>
+<li>nowrap: 文本不会换行，文本会在在同一行上继续，直到遇到 <span class="sf-d">&lt; br &gt;</span> 标签为止。</li>
+<li>pre-wrap: 保留空白符序列，但是正常地进行换行。</li>
+<li>pre-line: 合并空白符序列，但是保留换行符。</li>
+<li>inherit: 规定应该从父元素继承 white-space 属性的值。</li>
+</ul>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h5 id="取值结果："><a href="#取值结果：" class="headerlink" title="取值结果："></a>取值结果：</h5><ol>
+<li><p><span class="sf-d">normal</span></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div1"</span>&gt;</span></span><br><span class="line">This is some text. This is some text. This is some text.</span><br><span class="line">This is some text. This is some text. This is some text.</span><br><span class="line">This is some text. This is some text. This is some text.</span><br><span class="line">This is some text. This is some text. This is some text.</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<img src="/2021/03/17/white-space%E5%B1%9E%E6%80%A7/a.png" class="" title="图片描述">
+</li>
+<li><p><span class="sf-d">pre</span></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div1"</span>&gt;</span></span><br><span class="line">This is some text. This is some text. This is some text.</span><br><span class="line">This is some text. This is some text. This is some text.</span><br><span class="line">This is some text. This is some text. This is some text.</span><br><span class="line">This is some text. This is some text. This is some text.</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<img src="/2021/03/17/white-space%E5%B1%9E%E6%80%A7/pre.png" class="" title="图片描述">
+</li>
+<li><p><span class="sf-d">nowrap</span></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div1"</span>&gt;</span></span><br><span class="line">This is some text. This is some text. This is some text.</span><br><span class="line">This is some text. This is some text. This is some text.</span><br><span class="line">This is some text. This is some text. This is some text.</span><br><span class="line">This is some text. This is some text. This is some text.</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<img src="/2021/03/17/white-space%E5%B1%9E%E6%80%A7/nowrap.png" class="" title="图片描述">
+</li>
+<li><p><span class="sf-d">pre-wrap</span></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div1"</span>&gt;</span></span><br><span class="line">This is some text.            This is some text. This is some text.</span><br><span class="line">This is some text. This is some text. This is some text.</span><br><span class="line">This is some text. This is some text. This is some text.</span><br><span class="line">This is some text. This is some text. This is some text.</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<img src="/2021/03/17/white-space%E5%B1%9E%E6%80%A7/pre-wrap.png" class="" title="图片描述">
+</li>
+<li><p><span class="sf-d">pre-line</span></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div1"</span>&gt;</span></span><br><span class="line">This is some text.            This is some text. This is some text.</span><br><span class="line">This is some text. This is some text. This is some text.</span><br><span class="line">This is some text. This is some text. This is some text.</span><br><span class="line">This is some text. This is some text. This is some text.</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<img src="/2021/03/17/white-space%E5%B1%9E%E6%80%A7/pre-line.png" class="" title="图片描述"></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/03/17/white-space%E5%B1%9E%E6%80%A7/" data-id="ckmcttnen000021s6ee2j8rn8" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Error对象详解" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/03/17/Error%E5%AF%B9%E8%B1%A1%E8%AF%A6%E8%A7%A3/" class="article-date">
+  <time datetime="2021-03-17T01:26:47.000Z" itemprop="datePublished">2021-03-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/03/17/Error%E5%AF%B9%E8%B1%A1%E8%AF%A6%E8%A7%A3/">Error对象详解</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p><span class="sf-d">error</span>指程序中的非正常运行状态，在其他编程语言中称为“异常”或“错误”。解释器会为每个错误情形创建并抛出一个Error对象，其中包含错误的描述信息。<br>ECMAScript定义了六种类型的错误。除此之外，还可以使用Error构造方法创建自定义的Error对象，并使用throw语句抛出该对象。</p>
+<h4 id="错误对象的类型："><a href="#错误对象的类型：" class="headerlink" title="错误对象的类型："></a>错误对象的类型：</h4><ul>
+<li>Error: 所有错误类型的父类型</li>
+<li>SyntaxError: 语法错误，表示程序的语法使用错误<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">" "</span><span class="string">" "</span>) ;     <span class="comment">// SyntaxError: Unexpected string</span></span><br></pre></td></tr></table></figure></li>
+<li>ReferenceError: 引用错误，表示引用的变量不存在<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(a) ;     <span class="comment">// ReferenceError: a is not defined</span></span><br></pre></td></tr></table></figure></li>
+<li>TypeError: 类型错误，表示使用了错误的数据类型<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a;</span><br><span class="line"><span class="built_in">console</span>.log(a.name);     <span class="comment">// TypeError: Cannot read property 'name' of undefined</span></span><br></pre></td></tr></table></figure></li>
+<li>RangeError: 范围错误，数据值不在其所允许的范围内（函数递归调用容易出此错误）<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 保留小数点多少位</span></span><br><span class="line">(<span class="number">10.24</span>).toFixed(<span class="number">-1</span>)；  <span class="comment">// toFixed() digits argument must be between 0 and 100</span></span><br></pre></td></tr></table></figure></li>
+<li>URIError: URI错误，向全局URI处理函数（decodeURI, decodeURIComponent）传递一个不合法的URI时，URIError错误会被抛出<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 解码URI地址   错误：格式不正确</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">decodeURI</span>(<span class="string">"%"</span>) );   <span class="comment">// URIError: URI malformed</span></span><br></pre></td></tr></table></figure></li>
+<li>EvalError: eval函数之行错误<br>EvalError 不在当前ECMAScript规范中使用，因此不会被运行时抛出。但是对象本身仍然与规范的早期版本向后兼容</li>
+</ul>
+<h2 id="二、错误处理"><a href="#二、错误处理" class="headerlink" title="二、错误处理"></a>二、错误处理</h2><p>即使程序发生错误，也保证不异常中断的机制。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">    可能发生错误的代码</span><br><span class="line">&#125;<span class="keyword">catch</span>(err)&#123;</span><br><span class="line">    只有发生错误时才执行的代码</span><br><span class="line">&#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">    无论是否出错，肯定都要执行的代码</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用要点：</p>
+<ul>
+<li>使用try包裹的代码，即使不出错，效率也比不用try包裹的代码低；</li>
+<li>在try中，尽量少的包含可能出错的代码；</li>
+<li>无法提前预知错误类型的错误，必须用try catch 捕获；</li>
+<li>finally可以省略；</li>
+</ul>
+<h2 id="三、抛出自定义错误"><a href="#三、抛出自定义错误" class="headerlink" title="三、抛出自定义错误"></a>三、抛出自定义错误</h2><p>何时抛出：如果函数的定义者，需要告知调用者使用过程中的错误；<br>如何抛出：throw new Error(“错误信息”);</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 程序员甲：定义函数的人</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">round</span>(<span class="params">num, d</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!<span class="built_in">isNaN</span>(num) &amp;&amp; !<span class="built_in">isNaN</span>(d))&#123;</span><br><span class="line">        num *= <span class="built_in">Math</span>.pow(<span class="number">10</span>, d);</span><br><span class="line">        <span class="keyword">return</span> num;</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 抛出自定义错误</span></span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"参数必须是数字"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 程序员乙：调用函数的人</span></span><br><span class="line"><span class="keyword">var</span> d = <span class="built_in">parseInt</span>(prompt(<span class="string">'请输入数字'</span>));</span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">    alert(round(<span class="number">123.456</span>), d);</span><br><span class="line">&#125;<span class="keyword">catch</span>(err)&#123;</span><br><span class="line">    alert(err.message); <span class="comment">// 接入抛出的自定义错误</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="错误对象的属性"><a href="#错误对象的属性" class="headerlink" title="错误对象的属性"></a>错误对象的属性</h4><h5 id="name-属性"><a href="#name-属性" class="headerlink" title="name 属性"></a>name 属性</h5><p>错误类型</p>
+<h5 id="message-属性"><a href="#message-属性" class="headerlink" title="message 属性"></a>message 属性</h5><p>错误相关的描述信息</p>
+<h5 id="stack-属性"><a href="#stack-属性" class="headerlink" title="stack 属性"></a>stack 属性</h5><p>函数调用栈记录信息（错误相关信息，错误出现的位置）</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">&#125;<span class="keyword">catch</span>(e) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(e.name);    <span class="comment">// ReferenceError</span></span><br><span class="line">    <span class="built_in">console</span>.log(e.message); <span class="comment">// a is not define</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="四、实例练习"><a href="#四、实例练习" class="headerlink" title="四、实例练习"></a>四、实例练习</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> n = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">try</span>&#123;</span><br><span class="line">        n++;</span><br><span class="line">        <span class="keyword">return</span> n;</span><br><span class="line">    &#125;<span class="keyword">catch</span>(err)&#123;    </span><br><span class="line">        <span class="comment">// 没错误，catch不执行</span></span><br><span class="line">        n++;</span><br><span class="line">        <span class="keyword">return</span> n;    </span><br><span class="line">    &#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">        n++;</span><br><span class="line">        <span class="keyword">return</span> n;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(fun());<span class="comment">// 3  return为finally的</span></span><br><span class="line"><span class="built_in">console</span>.log(n);<span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
+<h1 id=""><a href="#" class="headerlink" title=""></a></h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> n = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">try</span>&#123;</span><br><span class="line">        n++;</span><br><span class="line">        <span class="keyword">return</span> n;</span><br><span class="line">    &#125;<span class="keyword">catch</span>(err)&#123;</span><br><span class="line">        <span class="comment">// 没错误，catch不执行</span></span><br><span class="line">        n++;</span><br><span class="line">        <span class="keyword">return</span> n;</span><br><span class="line">    &#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">        n++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(fun()); <span class="comment">// 2  return为try的</span></span><br><span class="line"><span class="built_in">console</span>.log(n); <span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
+<h1 id="-1"><a href="#-1" class="headerlink" title=""></a></h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> n = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">try</span>&#123;</span><br><span class="line">        n++;</span><br><span class="line">        n += m;  <span class="comment">//出错</span></span><br><span class="line">        <span class="keyword">return</span> n;   </span><br><span class="line">    &#125;<span class="keyword">catch</span>(err)&#123;</span><br><span class="line">        n++;</span><br><span class="line">        <span class="keyword">return</span> n;</span><br><span class="line">    &#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">        n++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(fun());    <span class="comment">// 3 return为catch的</span></span><br><span class="line"><span class="built_in">console</span>.log(n);        <span class="comment">// 4</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/03/17/Error%E5%AF%B9%E8%B1%A1%E8%AF%A6%E8%A7%A3/" data-id="ckmcrlefh0000z0s6h3kq5x1m" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Git-关于GitHub" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/02/26/Git-%E5%85%B3%E4%BA%8EGitHub/" class="article-date">
+  <time datetime="2021-02-26T01:19:39.000Z" itemprop="datePublished">2021-02-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/02/26/Git-%E5%85%B3%E4%BA%8EGitHub/">Git-关于GitHub</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><b>只要在 GitHub 仓库域名后面加上<span class="sf-d">1s</span>，比如<span class="sf-d">github1s.com/facebook/react</span>，就能在浏览器里面使用 VS Code 环境，浏览这个仓库的代码。</b></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/02/26/Git-%E5%85%B3%E4%BA%8EGitHub/" data-id="cklllygbf0000n0s6a916g5ht" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/" rel="tag">Git</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-优雅命名" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/02/03/%E4%BC%98%E9%9B%85%E5%91%BD%E5%90%8D/" class="article-date">
+  <time datetime="2021-02-03T01:17:10.000Z" itemprop="datePublished">2021-02-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/02/03/%E4%BC%98%E9%9B%85%E5%91%BD%E5%90%8D/">优雅命名</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="不适合的命名"><a href="#不适合的命名" class="headerlink" title="不适合的命名"></a>不适合的命名</h3><ul>
+<li>全局的地方不要用前置或后置下划线，前置下划线通常代表了私有变量</li>
+</ul>
+<h3 id="遵从惯例，标准"><a href="#遵从惯例，标准" class="headerlink" title="遵从惯例，标准"></a>遵从惯例，标准</h3><ul>
+<li>用 id 当做数据标识命名，而不是 identifier</li>
+<li>例如布尔值命名类型，通常只有两个值类型：真，假，根据不同的使用场景，也可以有一些常用的命名方式<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 可见、状态等，可用 is+动词/形容词的方式</span></span><br><span class="line"><span class="keyword">const</span> isVisible;</span><br><span class="line"><span class="keyword">const</span> isLoading;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 配置，选项等类型，可以用 withXxx、hasXxx 来标识是否有某个属性等,enableXxx 来表示是否开启配置</span></span><br><span class="line"><span class="keyword">const</span> withTab;</span><br><span class="line"><span class="keyword">const</span> hasPlan;</span><br><span class="line"><span class="keyword">const</span> enableFilter;</span><br></pre></td></tr></table></figure></li>
+<li>例如方法命名，也可以使用动词 + 名次类的组合命名方式，操作类方法 fetchXxx，getXxx，当需要根据某些属性获取数据时可用 ，getXxxByYxx 这类的命名，删除类方法 deleteXxx，格式化数据 formatXxx<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 数据获取方法</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getUserInfo</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fetchSearchList</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 需要根据一些属性去获取数据</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getGoodsById</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">queryUserByName</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除数据</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deleteUser</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">removeGoodsItem</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 格式化数据</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">formatDate</span>(<span class="params"></span>)</span>&#123;&#125;；</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sortByDesc</span>(<span class="params"></span>)</span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="命名规范推荐"><a href="#命名规范推荐" class="headerlink" title="命名规范推荐"></a>命名规范推荐</h2><h3 id="项目名称、文件名称"><a href="#项目名称、文件名称" class="headerlink" title="项目名称、文件名称"></a>项目名称、文件名称</h3><p>项目或者单文件的命名方面，常见规则：</p>
+<ol>
+<li>kebab-case：横短线命名，也叫串式命名法，小写字母的词组，中间加 - 拼接的方式，这种方式命名便于同类内容快速查找<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// good</span></span><br><span class="line">news-index;</span><br><span class="line">news-list;</span><br><span class="line">news-detail;</span><br></pre></td></tr></table></figure></li>
+<li>camelcase：小驼峰命名，第一个单字以小写字母开始，第二个单字的首字母大写<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// good</span></span><br><span class="line">newsIndex;</span><br><span class="line">newsList;</span><br><span class="line">newsDetail;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h3><ul>
+<li>变量：常用小驼峰命名<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">const</span> userInfo;</span><br><span class="line"><span class="keyword">const</span> userAddressList;</span><br><span class="line"><span class="keyword">const</span> currentDate;</span><br></pre></td></tr></table></figure></li>
+<li>全部使用大写字母，单词之间采用 _ 分割<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// good </span></span><br><span class="line"><span class="keyword">const</span> ITEM_LIST;</span><br><span class="line"><span class="keyword">const</span> PAGE_ITEM_LIST;</span><br><span class="line"><span class="keyword">const</span> DEFAULT_CONFIG;</span><br></pre></td></tr></table></figure></li>
+<li>方法：小驼峰命名，并且推荐命名时添加一些动词类，可以帮助快速理解方法含义，例如以 handle 开头，中间 xxx 表示操作内容，show 表示具体操作， handlexxxxChange，handlexxxxShow，而比如数据获取可以用 get，fetch 这类<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 小驼峰命名</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getUserInfo</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addSuplierInfo</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 添加一些操作类的辅助命名</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleUserInfoChange</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleTitleClick</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fetchPageData</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br></pre></td></tr></table></figure></li>
+<li>类名：大驼峰命名<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">CommonLogo</span></span>;</span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">CartCenter</span></span>;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="css"><a href="#css" class="headerlink" title="css"></a>css</h3><h4 id="BEM规范"><a href="#BEM规范" class="headerlink" title="BEM规范"></a>BEM规范</h4><p>BEM 是一种命名 CSS 样式的命名方法和规范，全称 Block（块）、 Element（元素）、Modifier（修饰符）。</p>
+<ul>
+<li>Block：一般可以看做是独立具有实际意义的模块部分，例如 header,container,menu 等</li>
+<li>Element：组成 Block 的一部分，没有具体的实际意义，一般也不独立使用，例如 menu item，list item，header title 等</li>
+<li>Modifier：一般是块或者元素的修饰状态或者行为，例如 disabled，color，checked 等</li>
+</ul>
+<p>而 BEM 的写法一般是 .block-name__element-name–modifier-name，其中 Block 与 Element 之间连接是通过 __ 双下划线，Block，Element 与 Modifier 之间是通过 – 双中划线进行连接，当使用less或者 sass 语法编写 css 时，通过嵌套语法也能够很简洁的书写这部分样式。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&lt;div class="head"&gt;</span><br><span class="line"> &lt;div class="head__title"&gt;</span><br><span class="line">    标题</span><br><span class="line">    &lt;div class="head__title--disabled"&gt;</span><br><span class="line">      置灰内容</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.head</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#fff</span>;</span><br><span class="line">  &amp;__title &#123;</span><br><span class="line">    <span class="selector-tag">font-size</span>: 14<span class="selector-tag">px</span>;</span><br><span class="line">    <span class="selector-tag">color</span>: <span class="selector-id">#666</span>;</span><br><span class="line">    &amp;<span class="selector-tag">--disabled</span>: &#123;</span><br><span class="line">        <span class="attribute">color</span>: <span class="number">#f00</span>; </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>BEM 命名规范可以让样式的命名更加模块化，组件之间结构独立，减少了命名之间的冲突，有着不错的易读性、维护性等等，但可能会让项目中的样式命特别的长。</p>
+<h4 id="常用-CSS-样式名称"><a href="#常用-CSS-样式名称" class="headerlink" title="常用 CSS 样式名称"></a>常用 CSS 样式名称</h4><ul>
+<li>包裹类： container, wrapper, outer, inner, box, header, footer, main, content, aside, page, section, block</li>
+<li>状态类： primary, secondary, success, danger, warning, info, error, Link, light, dark, disabled, active, checked, loading</li>
+<li>尺寸类： large, middle, small, bigger, smaller</li>
+<li>组件类： card, list, picture, carousel, swiper, menu, navs, badge, hint, modal, dialog</li>
+<li>位置类： first, last, current, prev, next, forward, back</li>
+<li>文本类： title, desc, content, date, author, category,label,tag</li>
+<li>人物类： avatar, name, age, post, intro</li>
+</ul>
+<h3 id="取名推荐工具"><a href="#取名推荐工具" class="headerlink" title="取名推荐工具"></a>取名推荐工具</h3><h5 id="Codelf"><a href="#Codelf" class="headerlink" title="Codelf"></a><a href="https://unbug.github.io/codelf/" target="_blank" rel="noopener">Codelf</a></h5><p>这个网站支持 JavaScript、CSS、HTML、Java 等多种语言的搜索，可以方便的过滤不需要的搜索类型。</p>
+<p>参考链接🔗<br><a href="https://mp.weixin.qq.com/s/0PaNfSml357FDVfCPH8DEQ" target="_blank" rel="noopener">编写高质量可维护的代码：优雅命名</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/02/03/%E4%BC%98%E9%9B%85%E5%91%BD%E5%90%8D/" data-id="ckkorbwlv0000vns6clk37vrf" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Git-stash用法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/01/29/Git-stash%E7%94%A8%E6%B3%95/" class="article-date">
+  <time datetime="2021-01-29T02:46:09.000Z" itemprop="datePublished">2021-01-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/29/Git-stash%E7%94%A8%E6%B3%95/">Git-stash用法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="git-stash-用法总结和注意点"><a href="#git-stash-用法总结和注意点" class="headerlink" title="git stash 用法总结和注意点"></a>git stash 用法总结和注意点</h2><h4 id="常用git-stash-命令："><a href="#常用git-stash-命令：" class="headerlink" title="常用git stash 命令："></a>常用git stash 命令：</h4><ul>
+<li><b>git stash save “save message”</b>:<br>  执行存储时，添加备注，方便查找，只有git stash 也是可以的，但是查找时不方便识别。</li>
+<li><b>git stash list</b>:<br>  查看stash了哪些存储。</li>
+<li><b>git stash show</b>:<br>  显示做了哪些改动，默认show第一个存储，如果要显示其他存储，后面加stash@{$num},比如第二个 git stash show stash@{1}</li>
+<li><b>git stash show -p</b>:<br>  显示第一个存储的改动，如果想显示其他存储，命令：git stash show stash@{$num} -p，比如第二个：git stash show stash@{1} -p</li>
+<li><b>git stash apply</b>:<br>  应用某个存储，但不会把存储从存储列表中删除，默认使用第一个存储，即stash@{0}, 如果要使用其他个，git stash apply stash@{$num}, 比如第二个：git stash apply stash@{1}</li>
+<li><b>git stash pop</b>:<br>  命令恢复之前缓存的工作目录，将缓存堆栈中的对应stash删除，并将对应修改应用到当前的工作目录下，默认为第一个stash，即stash@{0}，如果要应用并删除其他stash，命令：git stash pop stash@{$num}, 比如应用并删除第二个：git stash pop stash@{1}</li>
+<li><b>git stash drop stash@{$num}</b>:<br>  丢弃stash@{$num}存储，从列表中删除这个存储</li>
+<li><b>git stash clear</b>:<br>  删除所有缓存的stash</li>
+</ul>
+<p>⚠️注意：</p>
+<ul>
+<li>执行了git stash 存储后，再执行git status, 被存起来的文件在当前目录中就看不到了。</li>
+<li>没有在git版本控制中的文件，是不能被 git stash 存起来的。</li>
+<li>如果刚新增的文件也想存起来，先执行下git add 加到git 版本控制中，然后再git stash 就可以了。</li>
+<li>通过使用git stash apply或者 git stash pop 可以将stash的文件再次导出来。</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
+<li>git add 只是把文件加到git 版本控制里，并不等于就被stash起来了，git add 和 git stash 没有必然的关系，但是执行git stash 能正确存储的前提是文件必须在 git 版本控制中才行。</li>
+<li>常规 git stash 的一个限制是它会一下暂存所有的文件。有时，只备份某些文件更为方便，让另外一些与代码库保持一致。一个非常有用的技巧，用来备份部分文件：<br>1） add 那些你不想备份的文件（例如：git add file1.js, file2.js）<br>2） 调用 git stash -keep-index, 只会备份那些没有被 add 的文件。<br>3） 调用 git reset 取消已经add 的文件的备份，继续自己的工作。  </li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/01/29/Git-stash%E7%94%A8%E6%B3%95/" data-id="ckkhpl5gi0000pos62tll3pgn" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/" rel="tag">Git</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-投资术语" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/01/13/%E6%8A%95%E8%B5%84%E6%9C%AF%E8%AF%AD/" class="article-date">
+  <time datetime="2021-01-13T03:28:03.000Z" itemprop="datePublished">2021-01-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/13/%E6%8A%95%E8%B5%84%E6%9C%AF%E8%AF%AD/">投资术语</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="做空"><a href="#做空" class="headerlink" title="做空"></a>做空</h2><h5 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h5><p>&emsp;&emsp;做空（Short sale），是一个投资术语，是金融资产的一种操作模式。与做多相对，做空是先借入标的资产，然后卖出获得现金，过一段时间之后，再支出现金买入标的资产归还。<br>&emsp;&emsp;做空是股票期货市场常见的一种操作方式，操作为预期股票期货市场会有下跌趋势，操作者将手中筹码按市价卖出，等股票期货下跌之后再买入，赚取中间差价。</p>
+<h5 id="意义"><a href="#意义" class="headerlink" title="意义"></a>意义</h5><p>&emsp;&emsp;做空是股票期货市场常见的一种操作方式，操作为预期股票期货市场会有下跌趋势，操作者将手中筹码按市价卖出，等股票期货下跌之后再买入，赚取中间差价。做空是做多的反向操作，理论上是先借货卖出，再买进归还。<br>&emsp;&emsp;一般正规的做空市场是有一个第三方券商提供借货的平台。通俗来说就是类似赊货交易。这种模式在价格下跌的波段中能够获利，就是先在高位借货进来卖出，等跌了之后再买进归还。这样买进的仍然是低位，卖出的仍然是高位，只不过操作程序反了。<br>&emsp;&emsp;做空的常见作用包括投机、融资和对冲。投机是指预期未来行情下跌，则卖高买低，获取差价利润。融资是在债券市场上做空，将来归还，这可以作为一种借钱的方式。对冲是指当交易商手里的资产风险较高时，他可以通过做空风险资产，减少他的风险暴露。</p>
+<h5 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h5><p>&emsp;&emsp;做空是一种股票期货等投资术语：就是比如说当你预期某一股票未来会跌，就在当期价位高时卖出你的股票，再在股价跌到一定程度时买进，这样差价就是你的利润。其特点为先卖后买的交易行为<br>&emsp;&emsp;做空是股票、期货等市场的一种操作模式。指出做空和做多是反的，理论上是先将货卖出，然后再买进归还。一般正规的做空市场是有一个中立仓提供借货的平台。</p>
+<h2 id="做多"><a href="#做多" class="headerlink" title="做多"></a>做多</h2><h5 id="解释-1"><a href="#解释-1" class="headerlink" title="解释"></a>解释</h5><p>&emsp;&emsp;是一种金融市场如股票、外汇或期货等术语：就是看好股票、外汇或期货等未来的上涨前景而进行买入持有等待上涨获利。 做多就是做多头，多头对市场判断是上涨，就会立即进行股票买入，所以做多就是买入股票、外汇或期货等。</p>
+<h5 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h5><p>&emsp;&emsp;是一种金融市场如股票、期货术语：就是看好股票、外汇或期货未来的上涨前景而进行买入持有等待上涨获利。<br>&emsp;&emsp;做多操作和做空操作正好相反，投资者判断股票证券行情有上涨趋势，以现价买入之后持股待涨，然后在股票、外汇或期货上涨之后卖出，赚取中间的差价，总体来说就是<span class="sf-d">先买后卖</span>。<br>&emsp;&emsp;做多是股票、外汇或期货等市场极为常见的操作方式。特别是中国股市目只有做多机制，只能先买再卖，这样的话只能在股票、外汇或期货等上涨行情中才能获取利润。</p>
+<h5 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h5><p>&emsp;&emsp;例：今天的大豆价格是4500元/吨，某人认为明天大豆价格会上涨，那好，今天某人就买入1手大豆合约(即10吨)，等到了明天，果真大豆价格上涨到了5000元/吨，他把这1手大豆以5000/吨的价格卖掉，那么每吨就能赚500元，1手就能赚5000元。而他要买1手大豆需要多少的本金呢？由于在期货市场，不需要全额付款，只需要付一部分保证金，比如大豆的保证金比例是8%，那么该人要买入1手大豆，实际上只要付45000的8%即3600元即可。这样算来，就用3600元的本金，一天时间通过做多赚取了5000元的利润。</p>
+<h2 id="涨停"><a href="#涨停" class="headerlink" title="涨停"></a>涨停</h2><h5 id="解释-2"><a href="#解释-2" class="headerlink" title="解释"></a>解释</h5><p>&emsp;&emsp;涨停（Limit up），是一个证券市场术语。涨跌停板制度源于国外早期证券市场，是证券市场中为了<b>防止交易价格的暴涨暴跌，抑制过度投机现象</b>，对每支证券当天价格的涨跌幅度予以适当限制的一种交易制度，规定了交易价格在一个交易日中的最大波动幅度为<b>前一交易日收盘价上下百分之几</b>。即规定当日交易最高价格和最低价格。<br>&emsp;&emsp;在中国A股市场，均设有涨幅和跌幅的限制，幅度为上一日收盘价的<b>10%</b>。股票上市首日有效申报价格不得高于发行价格的144%，即新股上市首日涨幅限制为44%  股市中的权证没有涨停和跌停限制。<br>&emsp;&emsp;在技术分析中，涨停和跌停是一种乐观或悲观的极端情绪反映，往往会使技术指标失真，因此在研判市场波动趋势时，需要给予特别的关注。</p>
+<h2 id="跌停"><a href="#跌停" class="headerlink" title="跌停"></a>跌停</h2><h5 id="解释-3"><a href="#解释-3" class="headerlink" title="解释"></a>解释</h5><p>&emsp;&emsp;跌停（Limit down），就是证券交易所给股票规定的每天都有一个跌幅的限度，即股票如果跌到最大的限度的-10%（或者-5%），就叫做跌停。</p>
+<h5 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h5><p>&emsp;&emsp;一般来说，证券交易所规定一个A股市场的股票一天的涨跌幅度为<b>±10%</b>，规定S或者ST打头的股票一天涨跌幅限度为±5%，如果这个股票交易日当天涨了，并且涨到最高的限度也就是10%，这个就是涨停板，如果跌了，跌到最大的限度就是-10%，这就是跌停板。S或者ST打头的股票如果涨到+5%的时候就不涨了，这也是涨停板，跌5%的时候就是跌停板。<br>&emsp;&emsp;股票上市首日，全日投资者的有效申报价格不得高于发行价的144%且不得低于发行价的64%，超过有效申报价格范围的申报为无效申报。</p>
+<h2 id="T-1"><a href="#T-1" class="headerlink" title="T+1"></a>T+1</h2><h5 id="解释-4"><a href="#解释-4" class="headerlink" title="解释"></a>解释</h5><p>&emsp;&emsp;T+1是一种股票交易制度，即当日买进的股票，要到下一个交易日才能卖出。“T”指交易登记日，“T+1”指登记日的次日。</p>
+<h2 id="上证指数（上海证券综合指数）"><a href="#上证指数（上海证券综合指数）" class="headerlink" title="上证指数（上海证券综合指数）"></a>上证指数（上海证券综合指数）</h2><h5 id="解释-5"><a href="#解释-5" class="headerlink" title="解释"></a>解释</h5><p>&emsp;&emsp;上海证券综合指数简称“上证指数”或“上证综指”，其<b>样本股</b>是在上海证券交易所<b>全部</b>上市股票，包括A股和B股，反映了上海证券交易所上市股票价格的变动情况，自1991年7月15日起正式发布。 [1]<br>2017年11月23日，A股低开低走，全线深幅调整。上证综指失守3400点整数位，创下年内最大单日跌幅。上一交易日率先回调的深市三大股指同步出现3%以上的跌幅。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/01/13/%E6%8A%95%E8%B5%84%E6%9C%AF%E8%AF%AD/" data-id="ckjuvdjls0000d4s61i6lh68x" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A6%82%E5%BF%B5/" rel="tag">概念</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-函数柯里化" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/01/13/%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96/" class="article-date">
+  <time datetime="2021-01-13T01:41:41.000Z" itemprop="datePublished">2021-01-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/13/%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96/">函数柯里化</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-概念"><a href="#1-概念" class="headerlink" title="1. 概念"></a>1. 概念</h2><p>柯理化是指将接受多个参数的函数转变成接受一个单一参数的函数，如果其他的参数是必要的，返回接受余下的参数，且返回结果的新函数。</p>
+<p><span class="sf-d">核心是所有参数的保留和第一个参数与后续参数的拆分。</span></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">...args</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> iterator = <span class="function">(<span class="params">...rest</span>) =&gt;</span> &#123;</span><br><span class="line">        args = [...rest, ...args];</span><br><span class="line">        <span class="keyword">return</span> iterator;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    iterator.toString = <span class="function"><span class="params">()</span> =&gt;</span> args.reduce(<span class="function">(<span class="params">a, b</span>) =&gt;</span> a + b);</span><br><span class="line">    <span class="keyword">return</span> iterator;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 注意观察调用方式的区别</span></span><br><span class="line">add(<span class="number">1</span>, <span class="number">2</span>)(<span class="number">3</span>)(<span class="number">4</span>);<span class="comment">//10</span></span><br><span class="line">add(<span class="number">1</span>)(<span class="number">2</span>)(<span class="number">3</span>)(<span class="number">4</span>);<span class="comment">//10</span></span><br><span class="line">add(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>);<span class="comment">//10</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-用途"><a href="#2-用途" class="headerlink" title="2. 用途"></a>2. 用途</h2><h4 id="参数复用"><a href="#参数复用" class="headerlink" title="参数复用"></a>参数复用</h4><p>看下面这个例子：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">uri</span> (<span class="params">protocol,hostname,pathname</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;protocol&#125;</span><span class="subst">$&#123;hostname&#125;</span><span class="subst">$&#123;pathname&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> uri1 = uri(<span class="string">"https://"</span>,<span class="string">"www.csdn.net"</span>,<span class="string">"/blog"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(uri1);</span><br></pre></td></tr></table></figure>
+<p>在这个函数中，protocol这个参数可能每个url都会用到，会造成参数重复。<br>优化如下：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">uri_curring</span> (<span class="params">protocol</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">hostname,pathname</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;protocol&#125;</span><span class="subst">$&#123;hostname&#125;</span><span class="subst">$&#123;pathname&#125;</span>`</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> uri_https = uri_curring(<span class="string">"https://"</span>)(<span class="string">"www.csdn.net"</span>,<span class="string">"/blog"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(uri_https);</span><br></pre></td></tr></table></figure>
+<p>上面的代码<b>将接受多个参数的函数改造为只接受一个参数的函数</b>。这个函数内部返回了一个接受其余参数的函数，由作用域链可知，被返回的最内层函数可以访问外层函数的参数，故可在最内层函数完成原有所有参数的处理。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/01/13/%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96/" data-id="ckjurdizn0000sus6ca2g0gyk" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-《百年孤独》" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/12/25/%E3%80%8A%E7%99%BE%E5%B9%B4%E5%AD%A4%E7%8B%AC%E3%80%8B/" class="article-date">
+  <time datetime="2020-12-25T01:42:14.000Z" itemprop="datePublished">2020-12-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/12/25/%E3%80%8A%E7%99%BE%E5%B9%B4%E5%AD%A4%E7%8B%AC%E3%80%8B/">《百年孤独》</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>孤独是全世界所有人的特性，孤独在人性中是根深蒂固的。没有什么值得回忆的，生命最终都归于寂静。</p>
+<h1 id="经典语录"><a href="#经典语录" class="headerlink" title="经典语录"></a>经典语录</h1><ol>
+<li><p>生命中曾经有过的所有灿烂，原来终究，都需要用寂寞来偿还。</p>
+</li>
+<li><p>过去都是假的，回忆是一条没有归途的路，以往的一切春天都无法复原，即使最狂乱且坚韧的爱情，归根结底也不过是一种瞬息即逝的现实，唯有孤独永恒。</p>
+</li>
+<li><p>预感总是倏然来临，灵光一现，好像一种确凿无疑的信念在瞬间萌生却无从捕捉。</p>
+</li>
+<li><p>当事人的苦笑取代了旁观者的眼泪，“愚者”自我表达的切肤之痛取代了“智者”貌似公允的批判和分析，更能收到唤起被愚弄者群体深刻反省的客观效果。</p>
+</li>
+<li><p>我们趋行在人生这个亘古的旅途，在坎坷中奔跑，在挫折里涅盘，忧愁缠满全身，痛苦飘洒一地。我们累，却无从止歇；我们苦，却无法回避。</p>
+</li>
+<li><p>所有人都显得很寂寞，用自己的方式想尽办法排遣寂寞，事实上仍是延续自己的寂寞。寂寞是造化对群居者的诅咒，孤独才是寂寞的唯一出口。</p>
+</li>
+<li><p>生命从来不曾离开过孤独而独立存在。无论是我们出生、我们成长、我们相爱还是我们成功失败，直到最后的最后，孤独犹如影子一样存在于生命一隅。</p>
+</li>
+<li><p>死亡跟他没有什么关系，而生命对他才有意义。</p>
+</li>
+<li><p>父母是隔在我们和死亡之间的帘子。你和死亡好象隔着什么在看，没有什么感受，你的父母挡在你们中间，等到你的父母过世了，你才会直面这些东西，不然你看到的死亡是很抽象的，你不知道。亲戚，朋友，邻居，隔代，他们去世对你的压力不是那么直接，父母是隔在你和死亡之间的一道帘子，把你挡了一下，你最亲密的人会影响你的生死观。</p>
+</li>
+<li><p>买下一张永久车票，登上一列永无终点的火车。</p>
+</li>
+<li><p>我们打了这么多年仗，一切只不过是为了别把我们的房子涂成蓝色。</p>
+</li>
+</ol>
+<p>他不用去做，也能成为他，你只有做了，才能成为你，这就是人生。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/12/25/%E3%80%8A%E7%99%BE%E5%B9%B4%E5%AD%A4%E7%8B%AC%E3%80%8B/" data-id="ckj3mhruo0000sbs6binm33n4" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9D%82%E7%89%A9%E9%97%B4/" rel="tag">杂物间</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/2/"> 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/4/">下一页 </a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Camunda/" rel="tag">Camunda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GIS/" rel="tag">GIS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ThingJS/" rel="tag">ThingJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/" rel="tag">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Waiting/" rel="tag">Waiting</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E7%89%A9%E9%97%B4/" rel="tag">杂物间</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A6%82%E5%BF%B5/" rel="tag">概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" rel="tag">浏览器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/" rel="tag">物联网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%98%E5%9B%BE/" rel="tag">绘图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag">网络</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS/" style="font-size: 20px;">CSS</a> <a href="/tags/Camunda/" style="font-size: 10px;">Camunda</a> <a href="/tags/GIS/" style="font-size: 12.86px;">GIS</a> <a href="/tags/Git/" style="font-size: 12.86px;">Git</a> <a href="/tags/HTML/" style="font-size: 12.86px;">HTML</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 11.43px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Node-js/" style="font-size: 10px;">Node.js</a> <a href="/tags/React/" style="font-size: 11.43px;">React</a> <a href="/tags/ThingJS/" style="font-size: 10px;">ThingJS</a> <a href="/tags/Vue/" style="font-size: 15.71px;">Vue</a> <a href="/tags/Waiting/" style="font-size: 10px;">Waiting</a> <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 10px;">小程序</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 17.14px;">数据库</a> <a href="/tags/%E6%9D%82%E7%89%A9%E9%97%B4/" style="font-size: 11.43px;">杂物间</a> <a href="/tags/%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">概念</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 18.57px;">浏览器</a> <a href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/" style="font-size: 11.43px;">物联网</a> <a href="/tags/%E7%BB%98%E5%9B%BE/" style="font-size: 10px;">绘图</a> <a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 14.29px;">网络</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/28/State-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">State &amp; 生命周期</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/28/%E7%BB%84%E4%BB%B6-Props/">组件 &amp; Props</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/26/Flex%E5%B8%83%E5%B1%80/">Flex布局</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/09/HTTP%E6%96%B9%E6%B3%95/">HTTP方法</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/09/%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96/">前端优化</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 NiePeng<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

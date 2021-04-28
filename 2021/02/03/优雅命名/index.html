@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>优雅命名 | NiePeng</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="不适合的命名 全局的地方不要用前置或后置下划线，前置下划线通常代表了私有变量  遵从惯例，标准 用 id 当做数据标识命名，而不是 identifier 例如布尔值命名类型，通常只有两个值类型：真，假，根据不同的使用场景，也可以有一些常用的命名方式&#x2F;&#x2F; 可见、状态等，可用 is+动词&#x2F;形容词的方式const isVisible;const isLoading;&#x2F;&#x2F; 配置，选项等类型，可以用 wit">
+<meta property="og:type" content="article">
+<meta property="og:title" content="优雅命名">
+<meta property="og:url" content="http://yoursite.com/2021/02/03/%E4%BC%98%E9%9B%85%E5%91%BD%E5%90%8D/index.html">
+<meta property="og:site_name" content="NiePeng">
+<meta property="og:description" content="不适合的命名 全局的地方不要用前置或后置下划线，前置下划线通常代表了私有变量  遵从惯例，标准 用 id 当做数据标识命名，而不是 identifier 例如布尔值命名类型，通常只有两个值类型：真，假，根据不同的使用场景，也可以有一些常用的命名方式&#x2F;&#x2F; 可见、状态等，可用 is+动词&#x2F;形容词的方式const isVisible;const isLoading;&#x2F;&#x2F; 配置，选项等类型，可以用 wit">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-02-03T01:17:10.000Z">
+<meta property="article:modified_time" content="2021-02-03T02:02:57.701Z">
+<meta property="article:author" content="NiePeng">
+<meta property="article:tag" content="JavaScript">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="NiePeng" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <!-- <h1 id="logo-wrap">
+        <a href="/" id="logo">NiePeng</a><br/>
+      </h1> -->
+      <div id="header-photo"></div>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">合抱之木生于毫末，九层高台起于垒土，千里之行始于足下。</a> 
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-优雅命名" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/02/03/%E4%BC%98%E9%9B%85%E5%91%BD%E5%90%8D/" class="article-date">
+  <time datetime="2021-02-03T01:17:10.000Z" itemprop="datePublished">2021-02-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      优雅命名
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="不适合的命名"><a href="#不适合的命名" class="headerlink" title="不适合的命名"></a>不适合的命名</h3><ul>
+<li>全局的地方不要用前置或后置下划线，前置下划线通常代表了私有变量</li>
+</ul>
+<h3 id="遵从惯例，标准"><a href="#遵从惯例，标准" class="headerlink" title="遵从惯例，标准"></a>遵从惯例，标准</h3><ul>
+<li>用 id 当做数据标识命名，而不是 identifier</li>
+<li>例如布尔值命名类型，通常只有两个值类型：真，假，根据不同的使用场景，也可以有一些常用的命名方式<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 可见、状态等，可用 is+动词/形容词的方式</span></span><br><span class="line"><span class="keyword">const</span> isVisible;</span><br><span class="line"><span class="keyword">const</span> isLoading;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 配置，选项等类型，可以用 withXxx、hasXxx 来标识是否有某个属性等,enableXxx 来表示是否开启配置</span></span><br><span class="line"><span class="keyword">const</span> withTab;</span><br><span class="line"><span class="keyword">const</span> hasPlan;</span><br><span class="line"><span class="keyword">const</span> enableFilter;</span><br></pre></td></tr></table></figure></li>
+<li>例如方法命名，也可以使用动词 + 名次类的组合命名方式，操作类方法 fetchXxx，getXxx，当需要根据某些属性获取数据时可用 ，getXxxByYxx 这类的命名，删除类方法 deleteXxx，格式化数据 formatXxx<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 数据获取方法</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getUserInfo</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fetchSearchList</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 需要根据一些属性去获取数据</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getGoodsById</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">queryUserByName</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除数据</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deleteUser</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">removeGoodsItem</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 格式化数据</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">formatDate</span>(<span class="params"></span>)</span>&#123;&#125;；</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sortByDesc</span>(<span class="params"></span>)</span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="命名规范推荐"><a href="#命名规范推荐" class="headerlink" title="命名规范推荐"></a>命名规范推荐</h2><h3 id="项目名称、文件名称"><a href="#项目名称、文件名称" class="headerlink" title="项目名称、文件名称"></a>项目名称、文件名称</h3><p>项目或者单文件的命名方面，常见规则：</p>
+<ol>
+<li>kebab-case：横短线命名，也叫串式命名法，小写字母的词组，中间加 - 拼接的方式，这种方式命名便于同类内容快速查找<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// good</span></span><br><span class="line">news-index;</span><br><span class="line">news-list;</span><br><span class="line">news-detail;</span><br></pre></td></tr></table></figure></li>
+<li>camelcase：小驼峰命名，第一个单字以小写字母开始，第二个单字的首字母大写<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// good</span></span><br><span class="line">newsIndex;</span><br><span class="line">newsList;</span><br><span class="line">newsDetail;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h3><ul>
+<li>变量：常用小驼峰命名<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">const</span> userInfo;</span><br><span class="line"><span class="keyword">const</span> userAddressList;</span><br><span class="line"><span class="keyword">const</span> currentDate;</span><br></pre></td></tr></table></figure></li>
+<li>全部使用大写字母，单词之间采用 _ 分割<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// good </span></span><br><span class="line"><span class="keyword">const</span> ITEM_LIST;</span><br><span class="line"><span class="keyword">const</span> PAGE_ITEM_LIST;</span><br><span class="line"><span class="keyword">const</span> DEFAULT_CONFIG;</span><br></pre></td></tr></table></figure></li>
+<li>方法：小驼峰命名，并且推荐命名时添加一些动词类，可以帮助快速理解方法含义，例如以 handle 开头，中间 xxx 表示操作内容，show 表示具体操作， handlexxxxChange，handlexxxxShow，而比如数据获取可以用 get，fetch 这类<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 小驼峰命名</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getUserInfo</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addSuplierInfo</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 添加一些操作类的辅助命名</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleUserInfoChange</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleTitleClick</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fetchPageData</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br></pre></td></tr></table></figure></li>
+<li>类名：大驼峰命名<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">CommonLogo</span></span>;</span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">CartCenter</span></span>;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="css"><a href="#css" class="headerlink" title="css"></a>css</h3><h4 id="BEM规范"><a href="#BEM规范" class="headerlink" title="BEM规范"></a>BEM规范</h4><p>BEM 是一种命名 CSS 样式的命名方法和规范，全称 Block（块）、 Element（元素）、Modifier（修饰符）。</p>
+<ul>
+<li>Block：一般可以看做是独立具有实际意义的模块部分，例如 header,container,menu 等</li>
+<li>Element：组成 Block 的一部分，没有具体的实际意义，一般也不独立使用，例如 menu item，list item，header title 等</li>
+<li>Modifier：一般是块或者元素的修饰状态或者行为，例如 disabled，color，checked 等</li>
+</ul>
+<p>而 BEM 的写法一般是 .block-name__element-name–modifier-name，其中 Block 与 Element 之间连接是通过 __ 双下划线，Block，Element 与 Modifier 之间是通过 – 双中划线进行连接，当使用less或者 sass 语法编写 css 时，通过嵌套语法也能够很简洁的书写这部分样式。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&lt;div class="head"&gt;</span><br><span class="line"> &lt;div class="head__title"&gt;</span><br><span class="line">    标题</span><br><span class="line">    &lt;div class="head__title--disabled"&gt;</span><br><span class="line">      置灰内容</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.head</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#fff</span>;</span><br><span class="line">  &amp;__title &#123;</span><br><span class="line">    <span class="selector-tag">font-size</span>: 14<span class="selector-tag">px</span>;</span><br><span class="line">    <span class="selector-tag">color</span>: <span class="selector-id">#666</span>;</span><br><span class="line">    &amp;<span class="selector-tag">--disabled</span>: &#123;</span><br><span class="line">        <span class="attribute">color</span>: <span class="number">#f00</span>; </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>BEM 命名规范可以让样式的命名更加模块化，组件之间结构独立，减少了命名之间的冲突，有着不错的易读性、维护性等等，但可能会让项目中的样式命特别的长。</p>
+<h4 id="常用-CSS-样式名称"><a href="#常用-CSS-样式名称" class="headerlink" title="常用 CSS 样式名称"></a>常用 CSS 样式名称</h4><ul>
+<li>包裹类： container, wrapper, outer, inner, box, header, footer, main, content, aside, page, section, block</li>
+<li>状态类： primary, secondary, success, danger, warning, info, error, Link, light, dark, disabled, active, checked, loading</li>
+<li>尺寸类： large, middle, small, bigger, smaller</li>
+<li>组件类： card, list, picture, carousel, swiper, menu, navs, badge, hint, modal, dialog</li>
+<li>位置类： first, last, current, prev, next, forward, back</li>
+<li>文本类： title, desc, content, date, author, category,label,tag</li>
+<li>人物类： avatar, name, age, post, intro</li>
+</ul>
+<h3 id="取名推荐工具"><a href="#取名推荐工具" class="headerlink" title="取名推荐工具"></a>取名推荐工具</h3><h5 id="Codelf"><a href="#Codelf" class="headerlink" title="Codelf"></a><a href="https://unbug.github.io/codelf/" target="_blank" rel="noopener">Codelf</a></h5><p>这个网站支持 JavaScript、CSS、HTML、Java 等多种语言的搜索，可以方便的过滤不需要的搜索类型。</p>
+<p>参考链接🔗<br><a href="https://mp.weixin.qq.com/s/0PaNfSml357FDVfCPH8DEQ" target="_blank" rel="noopener">编写高质量可维护的代码：优雅命名</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/02/03/%E4%BC%98%E9%9B%85%E5%91%BD%E5%90%8D/" data-id="ckkorbwlv0000vns6clk37vrf" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/02/26/Git-%E5%85%B3%E4%BA%8EGitHub/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Git-关于GitHub
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/01/29/Git-stash%E7%94%A8%E6%B3%95/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Git-stash用法</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Camunda/" rel="tag">Camunda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GIS/" rel="tag">GIS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ThingJS/" rel="tag">ThingJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/" rel="tag">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Waiting/" rel="tag">Waiting</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E7%89%A9%E9%97%B4/" rel="tag">杂物间</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A6%82%E5%BF%B5/" rel="tag">概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" rel="tag">浏览器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/" rel="tag">物联网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%98%E5%9B%BE/" rel="tag">绘图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag">网络</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS/" style="font-size: 20px;">CSS</a> <a href="/tags/Camunda/" style="font-size: 10px;">Camunda</a> <a href="/tags/GIS/" style="font-size: 12.86px;">GIS</a> <a href="/tags/Git/" style="font-size: 12.86px;">Git</a> <a href="/tags/HTML/" style="font-size: 12.86px;">HTML</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 11.43px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Node-js/" style="font-size: 10px;">Node.js</a> <a href="/tags/React/" style="font-size: 11.43px;">React</a> <a href="/tags/ThingJS/" style="font-size: 10px;">ThingJS</a> <a href="/tags/Vue/" style="font-size: 15.71px;">Vue</a> <a href="/tags/Waiting/" style="font-size: 10px;">Waiting</a> <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 10px;">小程序</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 17.14px;">数据库</a> <a href="/tags/%E6%9D%82%E7%89%A9%E9%97%B4/" style="font-size: 11.43px;">杂物间</a> <a href="/tags/%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">概念</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 18.57px;">浏览器</a> <a href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/" style="font-size: 11.43px;">物联网</a> <a href="/tags/%E7%BB%98%E5%9B%BE/" style="font-size: 10px;">绘图</a> <a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 14.29px;">网络</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/28/State-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">State &amp; 生命周期</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/28/%E7%BB%84%E4%BB%B6-Props/">组件 &amp; Props</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/26/Flex%E5%B8%83%E5%B1%80/">Flex布局</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/09/HTTP%E6%96%B9%E6%B3%95/">HTTP方法</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/09/%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96/">前端优化</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 NiePeng<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

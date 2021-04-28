@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>JavaScirpt工具函数 | NiePeng</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="返回数组中的最大值 &#x2F;&#x2F; arrayMax: 返回数组中的最大值&#x2F;&#x2F; 将Math.max()与扩展运算符 (...) 结合使用以获取数组中的最大值。let arrayMax &#x3D; arr &#x3D;&gt; Math.max(...arr);let arr &#x3D; [1,2,3,5];console.log(arrayMax(arr)) &#x2F;&#x2F;5  返回数组中的最小值 &#x2F;&#x2F; arrayMin: 返回数组中的最小值">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScirpt工具函数">
+<meta property="og:url" content="http://yoursite.com/2020/07/24/JavaScirpt%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0/index.html">
+<meta property="og:site_name" content="NiePeng">
+<meta property="og:description" content="返回数组中的最大值 &#x2F;&#x2F; arrayMax: 返回数组中的最大值&#x2F;&#x2F; 将Math.max()与扩展运算符 (...) 结合使用以获取数组中的最大值。let arrayMax &#x3D; arr &#x3D;&gt; Math.max(...arr);let arr &#x3D; [1,2,3,5];console.log(arrayMax(arr)) &#x2F;&#x2F;5  返回数组中的最小值 &#x2F;&#x2F; arrayMin: 返回数组中的最小值">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-07-24T04:44:12.000Z">
+<meta property="article:modified_time" content="2020-08-26T01:52:28.910Z">
+<meta property="article:author" content="NiePeng">
+<meta property="article:tag" content="JavaScript">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="NiePeng" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <!-- <h1 id="logo-wrap">
+        <a href="/" id="logo">NiePeng</a><br/>
+      </h1> -->
+      <div id="header-photo"></div>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">合抱之木生于毫末，九层高台起于垒土，千里之行始于足下。</a> 
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-JavaScirpt工具函数" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/07/24/JavaScirpt%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0/" class="article-date">
+  <time datetime="2020-07-24T04:44:12.000Z" itemprop="datePublished">2020-07-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JavaScirpt工具函数
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="返回数组中的最大值"><a href="#返回数组中的最大值" class="headerlink" title="返回数组中的最大值"></a>返回数组中的最大值</h3><hr>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// arrayMax: 返回数组中的最大值</span></span><br><span class="line"><span class="comment">// 将Math.max()与扩展运算符 (...) 结合使用以获取数组中的最大值。</span></span><br><span class="line"><span class="keyword">let</span> arrayMax = <span class="function"><span class="params">arr</span> =&gt;</span> <span class="built_in">Math</span>.max(...arr);</span><br><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">5</span>];</span><br><span class="line"><span class="built_in">console</span>.log(arrayMax(arr)) <span class="comment">//5</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="返回数组中的最小值"><a href="#返回数组中的最小值" class="headerlink" title="返回数组中的最小值"></a>返回数组中的最小值</h3><hr>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// arrayMin: 返回数组中的最小值</span></span><br><span class="line"><span class="comment">// 将Math.min()与扩展运算符 (...) 结合使用以获取数组中的最小值。</span></span><br><span class="line"><span class="keyword">let</span> arrayMin = <span class="function"><span class="params">arr</span> =&gt;</span> <span class="built_in">Math</span>.min(...arr);</span><br><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>];</span><br><span class="line"><span class="built_in">console</span>.log(arrayMin(arr)) <span class="comment">//1</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="计算数组中值的出现次数"><a href="#计算数组中值的出现次数" class="headerlink" title="计算数组中值的出现次数"></a>计算数组中值的出现次数</h3><hr>
+<p><strong>reduce语法： <span class="sf-d">array.reduce(function(total, currentValue, currentIndex, arr), initialValue)</span></strong></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> countOccurrences = <span class="function">(<span class="params">arr, value</span>) =&gt;</span> arr.reduce(<span class="function">(<span class="params">a, v</span>) =&gt;</span> v === value ? a + <span class="number">1</span> : a + <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>];</span><br><span class="line"><span class="built_in">console</span>.log(countOccurrences(arr,<span class="number">3</span>))<span class="comment">//4</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="深拼合数组"><a href="#深拼合数组" class="headerlink" title="深拼合数组"></a>深拼合数组</h3><hr>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// deepFlatten: 深拼合数组</span></span><br><span class="line"><span class="comment">// 使用递归。使用Array.concat()与空数组 ([]) 和跨页运算符 (...) 来拼合数组。递归拼合作为数组的每个元素。</span></span><br><span class="line"><span class="keyword">let</span> deepFlatten= <span class="function"><span class="params">arr</span> =&gt;</span> [].concat(...arr.map(<span class="function"><span class="params">v</span> =&gt;</span> <span class="built_in">Array</span>.isArray(v) ? deepFlatten(v) : v));</span><br><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, [<span class="number">1</span>, <span class="number">2</span>, [<span class="number">1</span>, <span class="number">2</span>, [<span class="number">2</span>, <span class="number">3</span>]]]];</span><br><span class="line"><span class="built_in">console</span>.log(deepFlatten(arr)) <span class="comment">// [ 1, 2, 1, 2, 1, 2, 2, 3 ]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="返回两个数组之间的差异"><a href="#返回两个数组之间的差异" class="headerlink" title="返回两个数组之间的差异"></a>返回两个数组之间的差异</h3><hr>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// difference: 返回两个数组之间的差异</span></span><br><span class="line"><span class="comment">// 从b创建Set, 然后使用Array.filter() on 只保留a b中不包含的值.</span></span><br><span class="line"><span class="keyword">let</span> difference = <span class="function">(<span class="params">a, b</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="keyword">const</span> s = <span class="keyword">new</span> <span class="built_in">Set</span>(b);</span><br><span class="line">	<span class="keyword">return</span> a.filter(<span class="function"><span class="params">x</span> =&gt;</span> !s.has(x));</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="keyword">let</span> arr2 = [<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>];</span><br><span class="line"><span class="built_in">console</span>.log(difference(arr,arr2))<span class="comment">//[1]</span></span><br><span class="line"><span class="built_in">console</span>.log(difference(arr2,arr))<span class="comment">//[4]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="返回两个数组中的相同元素"><a href="#返回两个数组中的相同元素" class="headerlink" title="返回两个数组中的相同元素"></a>返回两个数组中的相同元素</h3><hr>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment"> * intersection: 返回两个数组中存在的元素的列表</span></span><br><span class="line"><span class="comment"> * 从b创建Set, 然后使用Array.filter()on a只保留b中包含的值.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">let</span> intersection = <span class="function">(<span class="params">a, b</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="keyword">const</span> s = <span class="keyword">new</span> <span class="built_in">Set</span>(b);</span><br><span class="line">	<span class="keyword">return</span> a.filter(<span class="function"><span class="params">x</span> =&gt;</span> s.has(x));</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="返回数组中的所有不同值"><a href="#返回数组中的所有不同值" class="headerlink" title="返回数组中的所有不同值"></a>返回数组中的所有不同值</h3><hr>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// distinctValuesOfArray: 返回数组的所有不同值</span></span><br><span class="line"><span class="comment">// 使用 ES6 Set和...rest运算符放弃所有重复的值。</span></span><br><span class="line"><span class="keyword">let</span> distinctValuesOfArray = <span class="function"><span class="params">arr</span> =&gt;</span> [...new <span class="built_in">Set</span>(arr)];</span><br><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">2</span>];</span><br><span class="line"><span class="built_in">console</span>.log(distinctValuesOfArray(arr)) <span class="comment">// [ 1, 2, 3 ]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="筛选数组中的非唯一值"><a href="#筛选数组中的非唯一值" class="headerlink" title="筛选数组中的非唯一值"></a>筛选数组中的非唯一值</h3><hr>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// filterNonUnique：筛选出数组中的非唯一值</span></span><br><span class="line"><span class="comment">// 对于只包含唯一值的数组, 请使用Array.filter()。</span></span><br><span class="line"><span class="keyword">let</span> filterNonUnique = <span class="function"><span class="params">arr</span> =&gt;</span> arr.filter(<span class="function"><span class="params">i</span> =&gt;</span> arr.indexOf(i) !== arr.lastIndexOf(i));</span><br></pre></td></tr></table></figure>
+
+<h3 id="返回数组中除最后一个元素之外的所有元素"><a href="#返回数组中除最后一个元素之外的所有元素" class="headerlink" title="返回数组中除最后一个元素之外的所有元素"></a>返回数组中除最后一个元素之外的所有元素</h3><hr>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * initial: 返回除最后一个数组之外的所有元素</span></span><br><span class="line"><span class="comment"> * 使用 "arr.slice(0,-1)" 返回数组的最后一个元素。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">let</span> initial = <span class="function"><span class="params">arr</span> =&gt;</span> arr.slice(<span class="number">0</span>, <span class="number">-1</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="初始化并填充具有指定值的数组"><a href="#初始化并填充具有指定值的数组" class="headerlink" title="初始化并填充具有指定值的数组"></a>初始化并填充具有指定值的数组</h3><hr>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment"> * initializeArrayWithValues: 初始化并填充具有指定值的数组</span></span><br><span class="line"><span class="comment"> * 使用Array(n)创建所需长度的数组,fill(v)以填充所需的值。可以省略value以使用默认值0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">let</span> initializeArrayWithValues = <span class="function">(<span class="params">n, value = <span class="number">0</span></span>) =&gt;</span> <span class="built_in">Array</span>(n).fill(value);</span><br></pre></td></tr></table></figure>
+
+<h3 id="生成指定范围随机数"><a href="#生成指定范围随机数" class="headerlink" title="生成指定范围随机数"></a>生成指定范围随机数</h3><hr>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param <span class="type">&#123; number &#125;</span> </span>min </span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param <span class="type">&#123; number &#125;</span> </span>max </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> RandomNum = <span class="function">(<span class="params">min, max</span>) =&gt;</span> <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * (max - min + <span class="number">1</span>)) + min;</span><br></pre></td></tr></table></figure>
+
+<h3 id="数组乱序"><a href="#数组乱序" class="headerlink" title="数组乱序"></a>数组乱序</h3><hr>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;array&#125;</span> <span class="variable">arr</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">let</span> arrScrambling = <span class="function">(<span class="params">arr</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="keyword">let</span> array = arr;</span><br><span class="line">	<span class="keyword">let</span> index = array.length;</span><br><span class="line">	<span class="keyword">while</span>(index) &#123;</span><br><span class="line">		index -= <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">let</span> randomIndex = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * index);</span><br><span class="line">		<span class="keyword">let</span> middleware = array[index];</span><br><span class="line">		array[index] = array[randomIndex];</span><br><span class="line">		array[randomIndex] = middleware;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> array;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="数组交集"><a href="#数组交集" class="headerlink" title="数组交集"></a>数组交集</h3><hr>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;array&#125;</span> <span class="variable">arr1</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;array&#125;</span> <span class="variable">arr2</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">let</span> similarity = <span class="function">(<span class="params">arr1, arr2</span>) =&gt;</span> arr1.filter(<span class="function"><span class="params">v</span> =&gt;</span> arr2.includes(v));</span><br></pre></td></tr></table></figure>
+
+<h3 id="加法函数（精度丢失问题）"><a href="#加法函数（精度丢失问题）" class="headerlink" title="加法函数（精度丢失问题）"></a>加法函数（精度丢失问题）</h3><hr>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number&#125;</span> <span class="variable">arg1</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number&#125;</span> <span class="variable">arg2</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">let</span> add = <span class="function">(<span class="params">arg1, arg2</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="keyword">let</span> r1, r2, m;</span><br><span class="line">	<span class="keyword">try</span>&#123; r1 = arg1.toString().split(<span class="string">"."</span>)[<span class="number">1</span>].length &#125; <span class="keyword">catch</span>(e) &#123;r1 = <span class="number">0</span>&#125;</span><br><span class="line">	<span class="keyword">try</span>&#123; r2 = arg2.toString().split(<span class="string">"."</span>)[<span class="number">1</span>].length &#125; <span class="keyword">catch</span>(e) &#123;r2 = <span class="number">0</span>&#125;</span><br><span class="line">	m = <span class="built_in">Math</span>.pow(<span class="number">10</span>, <span class="built_in">Math</span>.max(r1, r2));</span><br><span class="line">	<span class="keyword">return</span> (arg1 * m + arg2 * m) / m;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+<p>参考链接🔗<br><a href="https://juejin.im/post/5edb6c6be51d4578a2555a9b" target="_blank" rel="noopener">269个JavaScript工具函数，助你提升工作效率</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/07/24/JavaScirpt%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0/" data-id="ckczqtwbo0000ems63h1m076v" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/07/27/js%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6-%E9%A2%98/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          js执行机制--题
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/07/24/Grid%E5%B8%83%E5%B1%80/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Grid布局</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Camunda/" rel="tag">Camunda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GIS/" rel="tag">GIS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ThingJS/" rel="tag">ThingJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/" rel="tag">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Waiting/" rel="tag">Waiting</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E7%89%A9%E9%97%B4/" rel="tag">杂物间</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A6%82%E5%BF%B5/" rel="tag">概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" rel="tag">浏览器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/" rel="tag">物联网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%98%E5%9B%BE/" rel="tag">绘图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag">网络</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS/" style="font-size: 20px;">CSS</a> <a href="/tags/Camunda/" style="font-size: 10px;">Camunda</a> <a href="/tags/GIS/" style="font-size: 12.86px;">GIS</a> <a href="/tags/Git/" style="font-size: 12.86px;">Git</a> <a href="/tags/HTML/" style="font-size: 12.86px;">HTML</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 11.43px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Node-js/" style="font-size: 10px;">Node.js</a> <a href="/tags/React/" style="font-size: 11.43px;">React</a> <a href="/tags/ThingJS/" style="font-size: 10px;">ThingJS</a> <a href="/tags/Vue/" style="font-size: 15.71px;">Vue</a> <a href="/tags/Waiting/" style="font-size: 10px;">Waiting</a> <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 10px;">小程序</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 17.14px;">数据库</a> <a href="/tags/%E6%9D%82%E7%89%A9%E9%97%B4/" style="font-size: 11.43px;">杂物间</a> <a href="/tags/%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">概念</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 18.57px;">浏览器</a> <a href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/" style="font-size: 11.43px;">物联网</a> <a href="/tags/%E7%BB%98%E5%9B%BE/" style="font-size: 10px;">绘图</a> <a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 14.29px;">网络</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/28/State-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">State &amp; 生命周期</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/28/%E7%BB%84%E4%BB%B6-Props/">组件 &amp; Props</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/26/Flex%E5%B8%83%E5%B1%80/">Flex布局</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/09/HTTP%E6%96%B9%E6%B3%95/">HTTP方法</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/09/%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96/">前端优化</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 NiePeng<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
