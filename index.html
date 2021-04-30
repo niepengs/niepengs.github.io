@@ -71,6 +71,110 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Git-工作区、暂存区和版本库" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/04/30/Git-%E5%B7%A5%E4%BD%9C%E5%8C%BA%E3%80%81%E6%9A%82%E5%AD%98%E5%8C%BA%E5%92%8C%E7%89%88%E6%9C%AC%E5%BA%93/" class="article-date">
+  <time datetime="2021-04-30T01:29:37.000Z" itemprop="datePublished">2021-04-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/04/30/Git-%E5%B7%A5%E4%BD%9C%E5%8C%BA%E3%80%81%E6%9A%82%E5%AD%98%E5%8C%BA%E5%92%8C%E7%89%88%E6%9C%AC%E5%BA%93/">Git 工作区、暂存区和版本库</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add .</span><br><span class="line">git reset HEAD</span><br><span class="line">git rm --cached &lt;file&gt;</span><br><span class="line">git checkout .</span><br><span class="line">git checkout -- &lt;file&gt;</span><br><span class="line">git checkout HEAD .</span><br><span class="line">git checkout HEAD &lt;file&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><ul>
+<li>工作区：就是你在电脑里能看到的目录。</li>
+<li>暂存区：英文叫stage或index。一般存放在.git目录下的index文件(.git/index)中，所以我们把暂存区有时也叫做索引(index)。</li>
+<li>版本库：工作区又一个隐藏目录.git，这个不算工作区，而是Git的版本库。</li>
+</ul>
+<p>下面这个图展示了工作区，版本库中的暂存区和版本库之间的关系：</p>
+<img src="/2021/04/30/Git-%E5%B7%A5%E4%BD%9C%E5%8C%BA%E3%80%81%E6%9A%82%E5%AD%98%E5%8C%BA%E5%92%8C%E7%89%88%E6%9C%AC%E5%BA%93/1.jpg" class="" title="工作区，版本库，暂存库关系图">
+
+<ul>
+<li>图中左侧为工作区，右侧为版本库。在版本库中标记为“index”的区域是暂存区（stage/index），标记为“master”的是master分支所代表的目录树。</li>
+<li>图中我们可以看到此时“HEAD”实际是指向master分支的一个<span class="sf-d">“游标”</span>，所以图示的命令出现HEAD的地方可以用master来替换。</li>
+<li>图中的objects标识的区域为Git的对象库，实际位于“.git/objects”目录下，里面包含了创建的各种对象及内容。</li>
+<li>当对工作区修改（或新增）的文件执行 <span class="sf-d">git add</span> 命令时，暂存区的目录树被更新，同时工作区修改（或新增）的文件内容被写入到对象库中的一个新的对象中，而该对象的ID被记录在暂存区的文件索引中。</li>
+<li>当执行提交操作（git commit）时，暂存区的目录树写到版本库（对象库）中，master 分支会做相应的更新。即 master 指向的目录树就是提交时暂存区的目录树。</li>
+<li>当执行 <span class="sf-d">git reset HEAD</span> 命令时，暂存区的目录树会被重写，被 master 分支指向的目录树所替换，但是<span class="sf-d">工作区不受影响</span>。</li>
+<li>当执行 <span class="sf-d">git rm –cached &lt;file&gt;</span> 命令时，会直接<span class="sf-d">从暂存区删除文件，工作区则不做出改变</span>。</li>
+<li>当执行 <span class="sf-d">git checkout .</span> 或者 <span class="sf-d">git checkout – &lt;file&gt;</span> 命令时，会用<span class="sf-d">暂存区</span>全部或指定的文件<span class="sf-d">替换工作区</span>的文件。这个操作很危险，会清除工作区中未添加到暂存区的改动。</li>
+<li>当执行 <span class="sf-d">git checkout HEAD .</span> 或者 <span class="sf-d">git checkout HEAD &lt;file&gt;</span> 命令时，会用 HEAD 指向的 <span class="sf-d">master</span> 分支中的全部或者部分文件<span class="sf-d">替换暂存区和以及工作区</span>中的文件。这个命令也是极具危险性的，因为不但会清除工作区中未提交的改动，也会清除暂存区中未提交的改动。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/04/30/Git-%E5%B7%A5%E4%BD%9C%E5%8C%BA%E3%80%81%E6%9A%82%E5%AD%98%E5%8C%BA%E5%92%8C%E7%89%88%E6%9C%AC%E5%BA%93/" data-id="cko3o84jx0000bns6bk68dagx" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/" rel="tag">Git</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-ES6中的super关键字" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/04/29/ES6%E4%B8%AD%E7%9A%84super%E5%85%B3%E9%94%AE%E5%AD%97/" class="article-date">
+  <time datetime="2021-04-29T01:40:43.000Z" itemprop="datePublished">2021-04-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/04/29/ES6%E4%B8%AD%E7%9A%84super%E5%85%B3%E9%94%AE%E5%AD%97/">ES6中的super关键字</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><p>super 关键字用于访问父对象上的函数。</p>
+<h2 id="详解"><a href="#详解" class="headerlink" title="详解"></a>详解</h2><h3 id="类"><a href="#类" class="headerlink" title="类"></a>类</h3><p><strong>用在子类constructor函数中</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(name) &#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">extends</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(name, age)&#123;</span><br><span class="line">        <span class="keyword">super</span>(name);    <span class="comment">// 用在构造函数中，必须在使用this之前调用</span></span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>super() 调用会生成一个空对象，作为context来调用父类的constructor，<span class="sf-d">返回this对象</span>，作为子类constructor的context继续调用构造函数。<br>context: 执行上下文；<br>constructor: 构造函数；</p>
+<p><strong>调用父类的静态函数</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Human</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>() &#123;&#125;</span><br><span class="line">    <span class="keyword">static</span> ping() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'ping'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Computer</span> <span class="keyword">extends</span> <span class="title">Human</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>() &#123;&#125;</span><br><span class="line">    <span class="keyword">static</span> pingpong() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">super</span>.ping() + <span class="string">' pong'</span>;</span><br><span class="line">    &#125; <span class="comment">// 只有在子类的静态函数中才能调用父类的静态函数（babel环境测试，按理说，在实例函数中应该也可以调用，不过实际测试环境中报错）</span></span><br><span class="line">&#125;</span><br><span class="line">Computer.pingpong(); <span class="comment">// 'ping pong'</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="对象的字面量-proto-项目"><a href="#对象的字面量-proto-项目" class="headerlink" title="对象的字面量(proto 项目)"></a>对象的字面量(<strong>proto</strong> 项目)</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> obj1 = &#123;</span><br><span class="line">    method1()&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"method 1"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj2 = &#123;</span><br><span class="line">    method2()&#123;</span><br><span class="line">        <span class="keyword">super</span>.method1();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 必须利用setPrototypeOf将第二个对象的原型设为第一个对象</span></span><br><span class="line"><span class="built_in">Object</span>.setPrototypeOf(obj2, obj1);</span><br><span class="line">obj2.method2(); <span class="comment">// logs "method 1"</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/04/29/ES6%E4%B8%AD%E7%9A%84super%E5%85%B3%E9%94%AE%E5%AD%97/" data-id="cko3o84k10001bns60uqrcfjq" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-State-生命周期" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/04/28/State-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" class="article-date">
@@ -592,159 +696,11 @@ React 会将以小写字母开头的组件视为原生 DOM 标签。例如，&lt
 
 
   
-    <article id="post-package-json-版本号说明" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/04/08/package-json-%E7%89%88%E6%9C%AC%E5%8F%B7%E8%AF%B4%E6%98%8E/" class="article-date">
-  <time datetime="2021-04-08T07:54:33.000Z" itemprop="datePublished">2021-04-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/04/08/package-json-%E7%89%88%E6%9C%AC%E5%8F%B7%E8%AF%B4%E6%98%8E/">package.json 版本号说明</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="关于版本号的描述"><a href="#关于版本号的描述" class="headerlink" title="关于版本号的描述"></a>关于版本号的描述</h2><p>npm 模块的完整版本号一般是【主版本.次要版本.补丁版本】，一般情况下，次要版本号发生改变的话，表示程序有重大更新。</p>
-<h3 id="语义版本号"><a href="#语义版本号" class="headerlink" title="语义版本号"></a>语义版本号</h3><p>使用NPM下载和发布代码时都会接触到版本号。NPM使用语义版本号来管理代码，这里简单介绍一下。<br>语义版本号分为X.Y.Z三位，分别代表主版本号、次版本号和补丁版本号。当代码变更时，版本号按以下原则更新。</p>
-<ol>
-<li>如果只是修复bug，需要更新Z位。</li>
-<li>如果是新增了功能，但是向下兼容，需要更新Y位。</li>
-<li>如果有大变动，向下不兼容，需要更新X位。<br>版本号有个这个保证后，在申明第三方包依赖时，除了可依赖于一个<span class="sf-d">固定版本号</span>外，还可以依赖于<span class="sf-d">某个范围的版本号</span>。例如：”argv”:”0.0.x”表示依赖于0.0.x系列的最新版argv。</li>
-</ol>
-<h3 id="使用～表示版本范围"><a href="#使用～表示版本范围" class="headerlink" title="使用～表示版本范围"></a>使用～表示版本范围</h3><p class="sf-warning">不改变大版本和次要版本号</p>
-这里大概可以如此概述：
-1⃣️ 补丁版本号缺失，则允许补丁版本号升级；
-2⃣️ 次要版本号+补丁版本号缺失，则允许次要版本号+补丁版本号升级；
-
-<h5 id="～2-3-4"><a href="#～2-3-4" class="headerlink" title="～2.3.4"></a>～2.3.4</h5><ul>
-<li><b>描述：</b>主版本+次要版本+补丁版本 （2.3.4 &lt;= version &lt; 2.4.0）</li>
-<li><b>说明：</b>在主版本+次要版本不允许变更的前提下，允许补丁版本升级（补丁版本号下限是4，无上限）。</li>
-</ul>
-<h5 id="～2-3"><a href="#～2-3" class="headerlink" title="～2.3"></a>～2.3</h5><ul>
-<li><b>描述：</b>主版本+次要版本 （2.3.0 &lt;= version &lt; 2.4.0）</li>
-<li><b>说明：</b>在主版本+次要版本不允许变更的前提下，允许补丁版本升级。</li>
-</ul>
-<h5 id="～2"><a href="#～2" class="headerlink" title="～2"></a>～2</h5><ul>
-<li><b>描述：</b>主版本 （2.0.0 &lt;= version &lt; 3.0.0）</li>
-<li><b>说明：</b>在主版本不允许变更的前提下，允许次要版本+补丁版本升级。</li>
-</ul>
-<h3 id="使用-表示版本范围"><a href="#使用-表示版本范围" class="headerlink" title="使用^表示版本范围"></a>使用^表示版本范围</h3><p class="sf-warning">不改变大版本号</p>
-1⃣️ 若主版本号不为0，则允许次要版本号+补丁版本号升级；
-2⃣️ 若主版本号为0，次要版本号不为0，则允许补丁版本号升级；
-3⃣️ 若主版本号+次要版本号皆为0，将无法升级模块；
-4⃣️ 若主版本号不为0，补丁版本号缺失（将被视为0），那么将允许次要版本+补丁版本升级到最新；
-5⃣️ 若主版本为0，补丁版本缺失（将被视为0），那么允许补丁版本升级到最新；
-6⃣️ 若次要版本+补丁版本均缺失，此时补丁版本被视为1，那么将允许次要版本+补丁版本升级到最新。
-
-<h5 id="1-3-4"><a href="#1-3-4" class="headerlink" title="^1.3.4"></a>^1.3.4</h5><ul>
-<li><b>描述：</b>主版本号不为0 （1.3.4 &lt;= version &lt; 2.0.0）</li>
-<li><b>说明：</b>主版本不为0，允许次要版本+补丁版本升级</li>
-</ul>
-<h5 id="0-2-3"><a href="#0-2-3" class="headerlink" title="^0.2.3"></a>^0.2.3</h5><ul>
-<li><b>描述：</b>主版本号为0，次要版本号不为0 （0.2.3 &lt;= version &lt; 0.3.0）</li>
-<li><b>说明：</b>主版本为0，次要版本不为0，允许补丁版本升级</li>
-</ul>
-<h5 id="0-0-3"><a href="#0-0-3" class="headerlink" title="^0.0.3"></a>^0.0.3</h5><ul>
-<li><b>描述：</b>主版本号+次要版本号均为0 （0.0.3 &lt;= version &lt; 0.0.4）</li>
-<li><b>说明：</b>主版本号+次要版本号均为0，无法升级模块</li>
-</ul>
-<h5 id="1-3"><a href="#1-3" class="headerlink" title="^1.3"></a>^1.3</h5><ul>
-<li><b>描述：</b>主版本号不为0，补丁版本号缺失 （1.3.0 &lt;= version &lt; 2.0.0）</li>
-<li><b>说明：</b>主版本号不为0，补丁版本因缺失被视作0，允许次要版本+补丁版本升级到最新</li>
-</ul>
-<h5 id="0-2"><a href="#0-2" class="headerlink" title="^0.2"></a>^0.2</h5><ul>
-<li><b>描述：</b>主版本为0，补丁版本缺失 （0.2.0 &lt;= version &lt; 0.3.0）</li>
-<li><b>说明：</b>主版本为0，补丁版本因缺失被视作0，允许补丁版本升级到最新</li>
-</ul>
-<h5 id="1"><a href="#1" class="headerlink" title="^1"></a>^1</h5><ul>
-<li><b>描述：</b>主版本号不为0，次要版本+补丁版本均缺失 （1.0.0 &lt;= version &lt; 2.0.0）</li>
-<li><b>说明：</b>主版本不为0，次要版本+补丁版本因缺失被视作0，允许次要版本+补丁版本升级</li>
-</ul>
-<h5 id="0"><a href="#0" class="headerlink" title="^0"></a>^0</h5><ul>
-<li><b>描述：</b>主版本为0，次要版本+补丁版本均缺失 （0.0.1 &lt;= version &lt; 1.0.0）</li>
-<li><b>说明：</b>主版本为0，次要版本因缺失被视作0，补丁版本虽缺失但是智能被视作1，允许缺失的次要版本+补丁版本升级到最新</li>
-</ul>
-<p>参考链接🔗<br><a href="https://www.jianshu.com/p/b3d86ddfd555" target="_blank" rel="noopener">package.json文件说明解释</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2021/04/08/package-json-%E7%89%88%E6%9C%AC%E5%8F%B7%E8%AF%B4%E6%98%8E/" data-id="ckn8l481w00024us6eyuu9q75" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/" rel="tag">Vue</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-z-index详解" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/04/07/z-index%E8%AF%A6%E8%A7%A3/" class="article-date">
-  <time datetime="2021-04-07T03:00:54.000Z" itemprop="datePublished">2021-04-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/04/07/z-index%E8%AF%A6%E8%A7%A3/">z-index详解</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在一个层叠上下文中，一共可能出现<span class="sf-d">七个层叠等级</span>，从最低到最高排列，依次是：</p>
-<ol>
-<li>背景和边框 ：形成层叠上下文的元素的背景和边框，它是整个上下文中层叠等级最低的</li>
-<li>Z-Index 为负数 ：设置了 z-index 为负数的子元素以及由它所产生的层叠上下文</li>
-<li>块级盒模型：位于正常文档流中的、块级的、非定位的子元素</li>
-<li>浮动盒模型 ：浮动的、非定位的子元素</li>
-<li>内联盒模型 ：位于正常文档流中的、内联的、非定位的子元素</li>
-<li>Z-index 为 0：设置了 z-index 为 0 的、定位的子元素以及由它所产生的层叠上下文</li>
-<li>Z-Index 为正数 ：设置了 z-index 为正数的、定位的子元素以及由它所产生的层叠上下文，它是整个上下文中层叠等级最高的<img src="/2021/04/07/z-index%E8%AF%A6%E8%A7%A3/a.png" class="" title="图片描述">
-</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2021/04/07/z-index%E8%AF%A6%E8%A7%A3/" data-id="ckn8l343n00004us60pkncf62" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/">下一页 </a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/">下一页 </a>
   </nav>
 
 </section>
@@ -768,7 +724,7 @@ React 会将以小写字母开头的组件视为原生 DOM 标签。例如，&lt
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CSS/" style="font-size: 20px;">CSS</a> <a href="/tags/Camunda/" style="font-size: 10px;">Camunda</a> <a href="/tags/GIS/" style="font-size: 12.86px;">GIS</a> <a href="/tags/Git/" style="font-size: 12.86px;">Git</a> <a href="/tags/HTML/" style="font-size: 12.86px;">HTML</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 11.43px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Node-js/" style="font-size: 10px;">Node.js</a> <a href="/tags/React/" style="font-size: 11.43px;">React</a> <a href="/tags/ThingJS/" style="font-size: 10px;">ThingJS</a> <a href="/tags/Vue/" style="font-size: 15.71px;">Vue</a> <a href="/tags/Waiting/" style="font-size: 10px;">Waiting</a> <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 10px;">小程序</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 17.14px;">数据库</a> <a href="/tags/%E6%9D%82%E7%89%A9%E9%97%B4/" style="font-size: 11.43px;">杂物间</a> <a href="/tags/%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">概念</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 18.57px;">浏览器</a> <a href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/" style="font-size: 11.43px;">物联网</a> <a href="/tags/%E7%BB%98%E5%9B%BE/" style="font-size: 10px;">绘图</a> <a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 14.29px;">网络</a>
+      <a href="/tags/CSS/" style="font-size: 18.75px;">CSS</a> <a href="/tags/Camunda/" style="font-size: 10px;">Camunda</a> <a href="/tags/GIS/" style="font-size: 12.5px;">GIS</a> <a href="/tags/Git/" style="font-size: 13.75px;">Git</a> <a href="/tags/HTML/" style="font-size: 12.5px;">HTML</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 11.25px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Node-js/" style="font-size: 10px;">Node.js</a> <a href="/tags/React/" style="font-size: 11.25px;">React</a> <a href="/tags/ThingJS/" style="font-size: 10px;">ThingJS</a> <a href="/tags/Vue/" style="font-size: 15px;">Vue</a> <a href="/tags/Waiting/" style="font-size: 10px;">Waiting</a> <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 10px;">小程序</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 16.25px;">数据库</a> <a href="/tags/%E6%9D%82%E7%89%A9%E9%97%B4/" style="font-size: 11.25px;">杂物间</a> <a href="/tags/%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">概念</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 17.5px;">浏览器</a> <a href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/" style="font-size: 11.25px;">物联网</a> <a href="/tags/%E7%BB%98%E5%9B%BE/" style="font-size: 10px;">绘图</a> <a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 13.75px;">网络</a>
     </div>
   </div>
 
@@ -790,6 +746,14 @@ React 会将以小写字母开头的组件视为原生 DOM 标签。例如，&lt
       <ul>
         
           <li>
+            <a href="/2021/04/30/Git-%E5%B7%A5%E4%BD%9C%E5%8C%BA%E3%80%81%E6%9A%82%E5%AD%98%E5%8C%BA%E5%92%8C%E7%89%88%E6%9C%AC%E5%BA%93/">Git 工作区、暂存区和版本库</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/29/ES6%E4%B8%AD%E7%9A%84super%E5%85%B3%E9%94%AE%E5%AD%97/">ES6中的super关键字</a>
+          </li>
+        
+          <li>
             <a href="/2021/04/28/State-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">State &amp; 生命周期</a>
           </li>
         
@@ -799,14 +763,6 @@ React 会将以小写字母开头的组件视为原生 DOM 标签。例如，&lt
         
           <li>
             <a href="/2021/04/26/Flex%E5%B8%83%E5%B1%80/">Flex布局</a>
-          </li>
-        
-          <li>
-            <a href="/2021/04/09/HTTP%E6%96%B9%E6%B3%95/">HTTP方法</a>
-          </li>
-        
-          <li>
-            <a href="/2021/04/09/%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96/">前端优化</a>
           </li>
         
       </ul>
